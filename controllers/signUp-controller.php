@@ -49,45 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error["lastname"] = "Vous devez entrer un nom!!";
         }
 
-
-        //===================== Ville : Nettoyage et validation =======================
-        $city = trim(filter_input(INPUT_POST, 'city', FILTER_SANITIZE_SPECIAL_CHARS));
-
-        if(!empty($city)){
-            $testRegex = filter_var($city, FILTER_VALIDATE_REGEXP, array("option"=>array("regexp"=> '/' . REGEX_TEXTAREA. '/')));
-            if(!$testRegex){
-                $error["city"] = "le nom de ville n'est pas conforme";
-            } else {
-                if(strlen($city) <= 1 || strlen($city)>= 70){
-                    $error['city']= "la longueur de la ville n'est pas bonne";
-                }
-            }
-        } else {
-            $error["city"]= "Merci de renseigner un nom de ville";
-        }
-
-          //=====================  : Nettoyage et validation =======================
-        $address = trim(filter_input(INPUT_POST, 'address', FILTER_SANITIZE_SPECIAL_CHARS));
-
-        if(!empty($address)){
-            $testRegex = filter_var($address, FILTER_VALIDATE_REGEXP, array("option"=>array("regexp"=> '/' . REGEX_TEXTAREA. '/')));
-            if(!$testRegex){
-                $error["address"] = "le nom de ville n'est pas conforme";
-            } else {
-                if(strlen($address) <= 1 || strlen($address)>= 120){
-                    $error['address']= "la longueur de la ville n'est pas bonne";
-                }
-            }
-        } else {
-            $error["address"]= "Merci de renseigner un nom de ville";
-        }
-
-
-
-
-
-
-
         //===================== firstname : Nettoyage et validation =======================
     $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
     // On vérifie que ce n'est pas vide
@@ -132,15 +93,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
 
-        //===================== Ville : Nettoyage et validation =======================
+       //===================== Ville : Nettoyage et validation =======================
         $city = trim(filter_input(INPUT_POST, 'city', FILTER_SANITIZE_SPECIAL_CHARS));
 
         if(!empty($city)){
-
+            $testRegex = filter_var($city, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
+            if(!$testRegex){
+                $error["city"] = "le nom de ville n'est pas conforme";
+            } else {
+                if(strlen($city) <= 1 || strlen($city)>= 70){
+                    $error['city']= "la longueur de la ville n'est pas bonne";
+                }
+            }
+        } else {
+            $error["city"]= "Merci de renseigner un nom de ville";
         }
 
+          //=====================  : Nettoyage et validation =======================
+        $address = trim(filter_input(INPUT_POST, 'address', FILTER_SANITIZE_SPECIAL_CHARS));
 
-
+        if(!empty($address)){
+            $testRegex = filter_var($address, FILTER_VALIDATE_REGEXP,array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
+            if(!$testRegex){
+                $error["address"] = "Votre adresse n'est pas conforme";
+            } else {
+            $error["address"]= "Merci de renseigner un nom de ville";
+        }
+    }
 
 }
 
