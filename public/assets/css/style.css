@@ -1,0 +1,74 @@
+.link{
+    text-decoration: none;
+}
+.iconNav{
+    font-size: 1.6rem;
+}
+.gear{
+    font-size: 1.6rem;
+    width: 64px;
+}
+.logo{
+    width: 150px;
+    height: 150px;
+    padding-right: -12px;
+}
+.title{
+    font-family: 'Walkway Condensed SemiBold', sans-serif;
+}
+.bootIcons{
+font-size: 2.6rem;
+color: black;
+}
+.required{
+    font-size: 10px;
+}
+
+
+
+
+
+
+
+/* Media queries pour la nav bar */
+@media screen and (min-width:576px) {
+    .navBarSm{
+        display: none;
+    }
+    .gear{
+        font-size: 3.6rem;
+    }
+    .logo{
+        height: 200px ;
+        width: 200px ;
+    }
+    .title{
+        font-size: 80px;
+    }
+    .text404{
+        background: rgba( 255, 255, 255, 0.2 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 8px );
+        -webkit-backdrop-filter: blur( 8px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+        font-size: 150px;
+    }
+    .sloganText404{
+        font-size: 30px;
+    }
+    .cardSizes{
+        width: 32%;
+    }
+
+
+}
+
+@media screen and (max-width:576px) {
+    .navBarLg{
+        display: none;
+    }
+    .joParis{
+        height: 200px;
+    }
+}
