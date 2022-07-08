@@ -11,12 +11,12 @@
                     <p class="required">*Votre adresse mail est obligatoire</p>
                     <!-- Modal -->
                     <!-- Button trigger modal -->
-                    <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#passwordModal">
                         <!-- probleme sur la modole -->
                         Envoyer
                     </button>
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -37,3 +37,14 @@
         </div>
     </div>
 </div>
+<?php 
+if  ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+?>
+    <script src="../public/assets/js/modalJS.js" defer></script> 
+    
+<?php
+}
+?>
+
+

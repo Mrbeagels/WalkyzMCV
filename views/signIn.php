@@ -46,6 +46,6 @@
         <div class="text-center">
         <!-- Changer la redirection vers le bon formulaire bg -->
             <a href="#"><button type="button" class="btn btn-success mt-5">Connexion</button></a>
-            <a href="/controllers/forgotPassword-controller.php"><p class="required">Mon chien a mangé mon mot de passe</p></a>
+            <a class=" text-dark" href="/controllers/forgotPassword-controller.php"><p class="required mt-3">Mon chien a mangé mon mot de passe</p></a>
         </div>
 </form>

@@ -23,6 +23,11 @@ color: black;
 .required{
     font-size: 10px;
 }
+.addAPhoto{
+    width: 150px;
+    border: solid 1px black;
+    margin-bottom: 12px ;
+}
 
 
 
@@ -70,5 +75,8 @@ color: black;
     }
     .joParis{
         height: 200px;
+    }
+    .profilPicNone{
+        display: none;
     }
 }

@@ -66,6 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else { // Pour les champs obligatoires, on retourne une erreur
         $error["firstname"] = "Vous devez entrer un prénom!!";
     }
+
+    
         //===================== birthdate : Nettoyage et validation =======================
     $birthdate = filter_input(INPUT_POST, 'birthdate', FILTER_SANITIZE_NUMBER_INT);
     if (!empty($birthdate)) {

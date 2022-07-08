@@ -45,10 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } 
         }
 }
-var_dump($email, $lastname, $contact);
-die;
-
-
 include(__DIR__.'/../views/contact.php');
 include(__DIR__.'/../views/home.php');
 include(__DIR__.'/../views/footer.php');

@@ -6,6 +6,7 @@ define('REGEX_LINKEDIN','^(https:\/\/)?((www\.|fr\.)?([a-zA-Z0-9\.\/=\?\-]*))$')
 define('REGEX_DATE','^([0-9]{4})[\/\-]?([0-9]{2})[\/\-]?([0-9]{2})$');
 define('REGEX_TEXTAREA','^[a-zA-Z0-9 ,.\'-]');
 define('REGEX_PASSWORD', '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}');
+define('REGEX_AGE', '^[0-9]{1,3}');
 
 
 define('CIVILITY', ['HOMME', 'FEMME', 'AUTRE']);
