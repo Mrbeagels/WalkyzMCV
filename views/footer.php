@@ -1,3 +1,4 @@
+</body>
 <footer class="<?= $bgClass ?> text-center <?= $txtClass ?>">
     <!-- Grid container -->
     <div class="container p-4">

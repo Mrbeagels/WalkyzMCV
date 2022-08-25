@@ -1,6 +1,19 @@
 .link{
     text-decoration: none;
 }
+.headingDecoration{
+    font-family: 'Jana', sans-serif;
+    color: #48BF53;
+}
+
+.headerColor{
+    background-color: #11823B ! important;
+}
+.headerMenuColor{
+    background-color: #48BF53;
+    height: 60px;
+    align-items: center ;
+}
 .iconNav{
     font-size: 1.6rem;
 }
@@ -28,8 +41,76 @@ color: black;
     border: solid 1px black;
     margin-bottom: 12px ;
 }
+.iconNav{
+    font-size: 1.6rem;
+}
+/* home page */
+.backgroundImg{
+    height: 60vh;
+    width: 100%;
+    background-image: url(../img/backgroundDogImg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.homeExplanation{
+    display: flex;
+    height: 100%;
+    margin-left: 100px;
+    align-items: center;
+}
+.cardHome{
+    background-color: #48BF53;
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4.5px );
+-webkit-backdrop-filter: blur( 4.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
 
-
+.homeCard{
+    width: 18rem;
+    border: none;
+}
+.smartphone{
+    height:180px;
+    width: 130px;
+    margin-bottom: 30px;
+}
+.illuDog{
+    margin-bottom: 20px;
+}
+.bgHowItWork{
+    background-color:	rgb(152,251,152);
+}
+.illuFront{
+    width: 400px;
+    height: 340px;
+}
+.dogOfTheMonth{
+    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    height: 300px;
+    width: 300px;
+    object-fit: contain;
+    
+}
+/* up and down pour le bouton a la fin de la page home */
+i.vert-move {
+    -webkit-animation: mover 1s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+i.vert-move {
+    -webkit-animation: mover 1s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
 
 
 
@@ -78,5 +159,8 @@ color: black;
     }
     .profilPicNone{
         display: none;
+    }
+    .homeExplanation{
+        margin-left: 5px;
     }
 }

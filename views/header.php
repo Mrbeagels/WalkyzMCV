@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="../public/assets/css/style.css">
     <!-- font -->
     <link href="http://fonts.cdnfonts.com/css/walkway-condensed-semibold" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/jana" rel="stylesheet">
+                
                 
 
     <!-- Attention a bien fermer la balise head quand il faut -->
@@ -34,3 +36,5 @@
 
         </header>
     </head>
+    <!-- ouverture de la balise body  -> je la ferme dans le footer -->
+    <body>

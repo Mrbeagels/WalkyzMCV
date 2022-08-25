@@ -230,7 +230,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <textarea class="form-control mt-3" name="dogDescription" id="dogDescription" rows="10" placeholder="Plutôt du genre à passer sa journée devant la cheminée ou a rester dans le jardin pendant des heures a chasser les nuages ? présentez ici votre doggo ! 🐕‍🦺🚶‍♀️ "><?= $dogDescription ?? '' ?></textarea>
+                                        <textarea class="form-control mt-3" name="dogDescription" id="dogDescription" rows="10" placeholder="Plutôt du genre à passer sa journée devant la cheminée ou à rester dans le jardin pendant des heures a chasser les nuages ? Présentez ici votre doggo ! 🐕‍🦺🚶‍♀️ "><?= $dogDescription ?? '' ?></textarea>
                                         <small class="form-text error"><?= $error['dogDescription'] ?? '' ?></small>
                                     </div>
                                 </div>

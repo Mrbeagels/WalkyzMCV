@@ -1,17 +1,17 @@
                 <!-- Nav bar en mode < 576 px  -->
-                <div>
-    <nav class="navbar navbar-expand-lg text-center text-dark navBarSm">
+                <div class="container-fluid headerColor">
+    <nav class="navbar navbar-expand-lg justify-content-arround text-dark  navBarSm">
         <div class="container-fluid justify-content-between ">
             <a  href="../controllers/parameters-controller.php" class="bi bi-gear gear text-dark img-fluid bootIcons" ></a>
             <div>
                     <a  class="link" href="../controllers/pages-controller.php"><h1 class="title text-dark">WALKYZ </h1></a>
-                    <a  class="link" href="../controllers/pages-controller.php"><h3 class="text-dark">Le rendez-vous balade</h3></a>
+
             </div>
             
             <button class="navbar-toggler buttonNav" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon iconNav <?=$btnClass?>"></span>
+                    <span class="navbar-toggler-icon iconNav"></span>
             </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item dropdown ">
                             <ul  class="list-unstyled" aria-labelledby="navbarDropdown ">
@@ -31,24 +31,24 @@
 
 
                         <!-- Nav bar en mode > 576 px  -->
-<div>
-    <nav class="navbar text-center <?=$bgClass?> navBarLg">
-        <div class="container-fluid justify-content-between  w-100">
-            <a href="../controllers/pages-controller.php"><img src="../public/assets/img/Logo.png" class="logo"  alt="logo de l'équipe 22 avec style, une chaussure multicolor"></a>
-        <div>
-            <a  class="link" href="../controllers/pages-controller.php"><h1 class="title text-dark">WALKYZ </h1></a>
-            <a  class="link" href="../controllers/pages-controller.php"><h3 class="text-dark">Le rendez-vous balade</h3></a>
+<div class="container-fluid headerColor navBarLg">
+    <nav class="navbar text-center">
+        <div class="container-fluid justify-content-arround  ">
+                <a href="../controllers/pages-controller.php"><img src="../public/assets/img/Logo.png" class="logo"  alt="logo de l'équipe 22 avec style, une chaussure multicolor"></a>
+            <div>
+                <a  class="link" href="../controllers/pages-controller.php"><h1 class="title text-dark">WALKYZ </h1></a>
+                <a  class="link" href="../controllers/pages-controller.php"><h3 class="text-dark">Le rendez-vous balade</h3></a>
+            </div>
+            
+                <a  href="../controllers/parameters-controller.php" class="bi bi-gear gear text-dark bootIcons" ></a>
         </div>
-        
-            <a  href="../controllers/parameters-controller.php" class="bi bi-gear gear text-dark bootIcons" ></a>
-
-        </div>
-        <div class="<?=$txtClass?> d-flex justify-content-between w-100 mt-3">
+    </nav>
+        <div class=" d-flex justify-content-around w-100">
             <p><a class="text-decoration-none text-dark" href="/controllers/profil-controller.php">profil </a></p>
             <p><a class="text-decoration-none text-dark" href="/controllers/forgotPassword-controller.php">mot de passe oublie </a></p>
             <p><a class="text-decoration-none text-dark" href="/controllers/signUp-controller.php">Inscription </a></p>
             <p><a class="text-decoration-none text-dark" href="/controllers/signIn-controller.php">Connexion </a></p>
             <p><a class="text-decoration-none text-dark" href="/controllers/contact-controller.php">Contactez-nous </a></p>
         </div>
-    </nav>
+    
 </div>
