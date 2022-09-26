@@ -2,7 +2,7 @@
     <div class="homeExplanation">
         <div class="cardHome text-center" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title mt-3">Trouvez des copains de balade proche de chez vous, c'est facile et rapide ! Que du bonheur.</h5>
+                <h5 id="title" class="card-title mt-3">Trouvez des copains de balade proche de chez vous, c'est facile et rapide ! Que du bonheur.</h5>
                 <p>Vous souhaitez :</p>
                 <form action="">
                     <div class="text-start ps-3 my-3">
@@ -22,10 +22,11 @@
     </div>
 </div>
 <!-- Explication du site -->
-<div class="d-flex justify-content-around h-50 my-5 bg-succe">
-    <img src="../public/assets/img/lime-dog-walk.png" alt="Illustration jaune et bleu d'une femme qui promene son chien en laisse, un papillon passe devant le chien">
-
-    <div class="homeCard">
+<div class=" row d-flex justify-content-around h-50 my-5 container-fluid">
+    <div class="col-12 col-lg-3 text-center">
+        <img src="../public/assets/img/lime-dog-walk.png" alt="Illustration jaune et bleu d'une femme qui promene son chien en laisse, un papillon passe devant le chien">
+    </div>
+    <div class="homeCard col-12 col-lg-4">
         <div class="card-body">
             <h4 class="card-title headingDecoration">Rejoindre un groupe de balade</h4>
             <h5 class=" my-3">Vous pouvez voir en quelques instants si une balade proche de chez vous va démarrer</h5>
@@ -34,7 +35,7 @@
         </div>
     </div>
 
-    <div class="homeCard">
+    <div class="homeCard col-12 col-lg-4">
         <div class="card-body">
             <h4 class="card-title headingDecoration ">Créer une balade</h4>
             <h5 class=" my-3">Regroupez-vous avec d'autres maîtres afin de vous balader ensemble</h5>
@@ -96,29 +97,39 @@
     <div class="d-flex justify-content-center text-decoration-underline ">
         <h2 class="headingDecoration mb-5">Les chiens du mois d'Octobre</h2>
     </div>
-    <div class="row justify-content-around mb-5">
-        <div class=" col-12 col-lg-3">
-        <img class="dogOfTheMonth text-center" src="../public/assets/img/DogsOfTheMonth.png" alt="Photo des chiens du mois, pour le mois d'octobre c'est  pipa, rick et monk d'amiens">
-            <div class="card-body d-flex flex-column justify-content-around bgSeo">
-                <h5 class="headingDecoration text-center mt-5 ps-3">Monk, Pipa & Rick</h5>
+        <div class="row">
+        <div class="d-flex justify-content-center col-12 col-lg-4">
+            <div >
+                <img src="../public/assets/img/DogsOfTheMonth.png" class="card-img-top" alt="chien du mois d'octobre, pipa, rick et monk">
+                <div class="card-body">
+                    <h5 class=" text-center headingDecoration card-title fs-1 mt-3">Monk, Pipa & Rick</h5>
+                </div>
             </div>
         </div>
-        <div class=" col-12 col-lg-3">
-        <img class="dogOfTheMonth" src="../public/assets/img/dogOfTheMonth2.png" alt="Photo des chiens du mois, pour le mois d'octobre c'est  pipa, rick et monk d'amiens">
-            <div class="card-body d-flex flex-column justify-content-around bgSeo">
-                <h5 class="headingDecoration text-center mt-5 ps-3">Capone & Baya</h5>
+        
+
+            <div class=" col-12 col-lg-4">
+                <div>
+                    <img src="../public/assets/img/dogOfTheMonth2.png" class="card-img-top" alt="chien du mois d'octobre,Baya et Capone">
+                    <div class="card-body">
+                        <h5 class=" text-center headingDecoration card-title fs-1 mt-3">Baya & Capone</h5>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class=" col-12 col-lg-3">
-        <img class="dogOfTheMonth" src="../public/assets/img/dogOfTheMonth3.jpeg" alt="Photo des chiens du mois, pour le mois d'octobre c'est  pipa, rick et monk d'amiens">
-            <div class="card-body d-flex flex-column justify-content-around bgSeo">
-                <h5 class="headingDecoration text-center mt-5 ps-3">Goku, Hermione & charco</h5>
+
+            <div class=" col-12 col-lg-4">
+                <div>
+                    <img src="../public/assets/img/dogOfTheMonth3.jpeg" class="card-img-top" alt="chien du mois d'octobre,chien du mois d'octobre Gogu, hermione et charco">
+                    <div class="card-body">
+                        <h5 class=" text-center headingDecoration card-title fs-1 mt-3">Goku, Hermione & charco</h5>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
     <div class="d-flex justify-content-end">
-        <i class="bi bi-arrow-up-square-fill fs-1 vert-move"></i>
+        <a href="#title"><i class="bi bi-arrow-up-square-fill fs-1 vert-move"></i></a>
     </div>
-</div>
-<!-- go up -->
 
+<!-- go up -->

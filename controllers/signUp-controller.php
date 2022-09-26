@@ -1,14 +1,15 @@
 <?php
-include(dirname(__FILE__) . '/../config/config.php');
-include(__DIR__.'/../views/header.php');
+require_once(dirname(__FILE__) . '/../config/config.php');
+require_once(dirname(__FILE__) . '/../models/user.php');
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // php des formulaire
         //===================== email : Nettoyage et validation =======================
-    $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+    $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
 
-    if (!empty($email)) {
-        $testEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if (!empty($mail)) {
+        $testEmail = filter_var($mail, FILTER_VALIDATE_EMAIL);
         if (!$testEmail) {
             $error["email"] = "L'adresse email n'est pas au bon format!!";
         }
@@ -17,8 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // mdp 1 
-
+    $password = isset($_POST['password']);
     // mdp 2 
+    $password_verif = isset($_POST['passwordConfirm']);
+    
+    // Je m'assure que le mots de passe soit bien deux fois le meme 
+    if($password!==$password_verif){
+        $errors['password'] = 'Les mots de passe ne sont pas identiques';
+    } else {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+    }
+    
 
     //===================== civilité : Nettoyage et validation =======================
 
@@ -111,23 +121,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error["city"]= "Merci de renseigner un nom de ville";
         }
 
-          //=====================  : Nettoyage et validation =======================
+          //===================== address : Nettoyage et validation =======================
         $address = trim(filter_input(INPUT_POST, 'address', FILTER_SANITIZE_SPECIAL_CHARS));
 
-        if(!empty($address)){
-            $testRegex = filter_var($address, FILTER_VALIDATE_REGEXP,array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
-            if(!$testRegex){
-                $error["address"] = "Votre adresse n'est pas conforme";
-            } else {
-            $error["address"]= "Merci de renseigner un nom de ville";
+        // if(!empty($address)){
+        //     $testRegex = filter_var($address, FILTER_VALIDATE_REGEXP,array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
+        //     // var_dump($testRegex); die;
+        //     if(!$testRegex)
+        //     {
+        //         $error["address"] = "Votre adresse n'est pas conforme";
+        //     } else 
+        //     {
+        //     $error["address"]= "Merci de renseigner un nom de ville";
+        //     }
+        // }
+
+
+
+// Si il n'y a pas d'erreur et que les champs en require sont rempli on passe a l'enregistrement en BDD
+
+    if(empty($error)){
+        // **HYDRATATION **/
+        $user = new Users;
+        $user->setCivility($civility);
+        $user->setFirstname($firstname);
+        $user->setLastname($lastname);
+        $user->setBirthdate($birthdate);
+        $user->setAddress($address);
+        // $user->setProfilPictures($profilPictures);
+        // $user->setRole($role);
+        $user->setMail($mail);
+        $response = $user->insertUser();
+
+        if($response){
+            $errorArray['global']='Votre profil est bien enregistré';
         }
     }
+    /*************************************************************/
 
+    
 }
-
-
-
+include(__DIR__.'/../views/header.php');
 include(__DIR__.'/../views/signUp.php');
-include(__DIR__.'/../views/home.php');
 include(__DIR__.'/../views/footer.php');
-?>

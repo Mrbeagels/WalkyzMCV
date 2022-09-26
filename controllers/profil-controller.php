@@ -1,6 +1,8 @@
 <?php
-include(dirname(__FILE__) . '/../config/config.php');
-include(__DIR__.'/../views/header.php');
+require_once(dirname(__FILE__) . '/../config/config.php');
+require_once(dirname(__FILE__) . '/../models/dogs.php');
+require_once(dirname(__FILE__) . '/../models/user.php');
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //===================== typeOfWalkyz : Nettoyage et validation =======================
@@ -165,7 +167,6 @@ if (!empty($dogBehavior)) {
     die;
 }
 
-
+include(__DIR__.'/../views/header.php');
 include(__DIR__.'/../views/profil.php');
-include(__DIR__.'/../views/home.php');
 include(__DIR__.'/../views/footer.php');

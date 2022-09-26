@@ -7,7 +7,7 @@
 }
 
 .headerColor{
-    background-color: #11823B ! important;
+    background-color: rgb(152,251,152)! important;
 }
 .headerMenuColor{
     background-color: #48BF53;
@@ -60,12 +60,12 @@ color: black;
     align-items: center;
 }
 .cardHome{
-    background-color: #48BF53;
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 4.5px );
--webkit-backdrop-filter: blur( 4.5px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+    background: rgba( 72, 191, 83, 0.6 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8.5px );
+    -webkit-backdrop-filter: blur( 8.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .homeCard{
@@ -88,10 +88,12 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     height: 340px;
 }
 .dogOfTheMonth{
-    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
-    height: 300px;
-    width: 300px;
     object-fit: contain;
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
     
 }
 /* up and down pour le bouton a la fin de la page home */

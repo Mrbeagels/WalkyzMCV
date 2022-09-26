@@ -1,5 +1,5 @@
 </body>
-<footer class="<?= $bgClass ?> text-center <?= $txtClass ?>">
+<footer  text-center>
     <!-- Grid container -->
     <div class="container p-4">
         <!-- Section: Text -->
@@ -20,23 +20,23 @@
             <div class="row">
                 <!--Grid column-->
                 <div class="col-auto text-center mx-auto">
-                    <h5 class="text-uppercase <?= $txtClass ?>">Liens</h5>
+                    <h5 class="text-uppercase">Liens</h5>
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="../controllers/pages-controller.php?cat=global" class="<?= $txtClass ?> text-decoration-none">Actualités générales</a>
+                            <a href="../controllers/pages-controller.php?cat=global" text-decoration-none">Actualités générales</a>
                         </li>
                         <li>
-                            <a href="../controllers/pages-controller.php?cat=foot" class="<?= $txtClass ?> text-decoration-none">Football</a>
+                            <a href="../controllers/pages-controller.php?cat=foot" text-decoration-none">Football</a>
                         </li>
                         <li>
-                            <a href="../controllers/pages-controller.php?cat=tennis" class="<?= $txtClass ?> text-decoration-none">Tennis</a>
+                            <a href="../controllers/pages-controller.php?cat=tennis" text-decoration-none">Tennis</a>
                         </li>
                         <li>
-                            <a href="../controllers/pages-controller.php?cat=rugby" class="<?= $txtClass ?> text-decoration-none">Rugby</a>
+                            <a href="../controllers/pages-controller.php?cat=rugby" text-decoration-none">Rugby</a>
                         </li>
                         <li>
-                            <a href="/controllers/contact-controller.php" class="<?= $txtClass ?> text-decoration-none">Contactez-nous</a>
+                            <a href="/controllers/contact-controller.php" text-decoration-none">Contactez-nous</a>
                         </li>
                     </ul>
                 </div>

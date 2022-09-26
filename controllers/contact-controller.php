@@ -45,8 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } 
         }
 }
+
 include(__DIR__.'/../views/contact.php');
-include(__DIR__.'/../views/home.php');
 include(__DIR__.'/../views/footer.php');
 
 ?>
