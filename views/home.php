@@ -42,7 +42,8 @@
             <p class="card-text">Fatigué de faire votre balade tout seul ? Envie de partager un moment convivial avec d'autres maîtres et d'autres chien ? Grâce à Walkyz, vous pouvez indiquer ou, quand et pour combien de temps vous allez vous balader afin d'inviter vos amis.</p>
         </div>
     </div>
-</div>
+</div> 
+<a href="../controllers/createWalk-controller.php"> provisoir creation de balade </a>
 <!-- Video de présentation -->
 <div class="d-flex justify-content-center mt-5">
     <h2 class="mb-5 headingDecoration">Présentation du concept de Walkyz :</h2>
@@ -98,32 +99,26 @@
         <h2 class="headingDecoration mb-5">Les chiens du mois d'Octobre</h2>
     </div>
         <div class="row">
-        <div class="d-flex justify-content-center col-12 col-lg-4">
-            <div >
-                <img src="../public/assets/img/DogsOfTheMonth.png" class="card-img-top" alt="chien du mois d'octobre, pipa, rick et monk">
+        <div class="d-flex flex-column justify-content-center align-items-center col-12 col-lg-4">
+                <img src="../public/assets/img/DogsOfTheMonth.png" class="card-img-top dogOfTheMonth" alt="chien du mois d'octobre, pipa, rick et monk">
                 <div class="card-body">
                     <h5 class=" text-center headingDecoration card-title fs-1 mt-3">Monk, Pipa & Rick</h5>
                 </div>
-            </div>
         </div>
         
 
-            <div class=" col-12 col-lg-4">
-                <div>
-                    <img src="../public/assets/img/dogOfTheMonth2.png" class="card-img-top" alt="chien du mois d'octobre,Baya et Capone">
+            <div class="d-flex flex-column justify-content-center align-items-center col-12 col-lg-4">
+                    <img src="../public/assets/img/dogOfTheMonth2.png" class="card-img-top dogOfTheMonth" alt="chien du mois d'octobre,Baya et Capone">
                     <div class="card-body">
                         <h5 class=" text-center headingDecoration card-title fs-1 mt-3">Baya & Capone</h5>
                     </div>
-                </div>
             </div>
 
-            <div class=" col-12 col-lg-4">
-                <div>
-                    <img src="../public/assets/img/dogOfTheMonth3.jpeg" class="card-img-top" alt="chien du mois d'octobre,chien du mois d'octobre Gogu, hermione et charco">
+            <div class="d-flex flex-column justify-content-center align-items-center col-12 col-lg-4">
+                    <img src="../public/assets/img/dogOfTheMonth3.jpeg" class="card-img-top dogOfTheMonth" alt="chien du mois d'octobre,chien du mois d'octobre Gogu, hermione et charco">
                     <div class="card-body">
                         <h5 class=" text-center headingDecoration card-title fs-1 mt-3">Goku, Hermione & charco</h5>
                     </div>
-                </div>
             </div>
 
         </div>

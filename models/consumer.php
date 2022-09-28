@@ -1,26 +1,19 @@
 <?php
 
 require_once(dirname(__FILE__) . '/../config/database.php');
-
-class Users {
+// var_dump($walk_type); die;
+class Consumer {
     // SignUp-controller.php ajout d'un utilisateur en BDD 
-    private int $id_users;
-    private string $civility;
+    private int $id_consumer;
+    private int $civility;
     private string $firstname;
     private string $lastname;
     private string $birthdate;
-    private string $address;
-    private string $profilPictures;
-    private string $role;
     private string $mail;
     private string $password;
-
-    // profil-controller.php ajout des préférences utilisateurs en BDD
-    private string $id_users_preferences;
-    private string $walk_type;
-    private string $time_slot;
-    private string $description;
-
+    private int $walk_type;
+    private int $walk_time_slot;
+    private string $walk_description;
 
     private object $pdo;
 
@@ -38,13 +31,13 @@ class Users {
      * 
      * @return void
      */
-    public function setId(int $id_users): void
+    public function setId(int $id_consumer): void
     {
-        $this->id = $id_users;
+        $this->id = $id_consumer;
     }
 
         /**
-     * @param string $lastname
+     * @param string $civility
      * 
      * @return void
      */
@@ -80,24 +73,6 @@ class Users {
         $this->birthdate = $birthdate;
     }
         /**
-     * @param string $address
-     * 
-     * @return void
-     */
-    public function setAddress(string $address): void
-    {
-        $this->address = $address;
-    }
-        /**
-     * @param string $profilPictures
-     * 
-     * @return void
-     */
-    public function setProfilPictures(string $profilPictures): void
-    {
-        $this->profilPictures = $profilPictures;
-    }
-        /**
      * @param string $role
      * 
      * @return void
@@ -124,14 +99,43 @@ class Users {
     {
         $this->password = $password;
     }
+    
+    /**
+     * @param int $id
+     * 
+     * @return void
+     */
+    public function setWalk_type(int $walk_type): void
+    {
+        $this->walk_type =$walk_type;
+        
+    }
+        /**
+     * @param string $walk_time_slot
+     * 
+     * @return void
+     */
+    public function setWalk_time_slot(string $walk_time_slot): void
+    {
+        $this->walk_time_slot = $walk_time_slot;
+    }
+        /**
+     * @param string $walk_description
+     * 
+     * @return void
+     */
+    public function setWalk_description(string $walk_description): void
+    {
+        $this->walk_description = $walk_description;
+    }
 
     // Les guetters
     /**
      * @return int
      */
-    public function getId_users(): int
+    public function getId_consumer(): int
     {
-        return $this->id_users;
+        return $this->id_consumer;
     }
         /**
      * @return string
@@ -164,20 +168,6 @@ class Users {
         /**
      * @return string
      */
-    public function getAddress(): string
-    {
-        return $this->address;
-    }
-        /**
-     * @return string
-     */
-    public function getProfilPictures(): string
-    {
-        return $this->profilPictures;
-    }
-        /**
-     * @return string
-     */
     public function getRole(): string
     {
         return $this->role;
@@ -197,70 +187,26 @@ class Users {
         return $this->password;
     }
 
-    // Getter et setter pour l'ajout des préférences utilisateurs 
-    /**
-     * @param int $id_users_preferences
-     * 
-     * @return void
-     */
-    public function setId_users_preferences(int $id_users_preferences): void
-    {
-        $this->id_users_preferences = $id_users_preferences;
-    }
         /**
-     * @param int $walk_type
-     * 
-     * @return void
-     */
-    public function setWalk_type(int $walk_type): void
-    {
-        $this->walk_type = $walk_type;
-    }
-        /**
-     * @param int time_slot
-     * 
-     * @return void
-     */
-    public function setTime_slot(int $time_slot): void
-    {
-        $this->time_slot = $time_slot;
-    }
-        /**
-     * @param int $description
-     * 
-     * @return void
-     */
-    public function setDescription(int $description): void
-    {
-        $this->description = $description;
-    }
-    /**
-     * @return int
-     */
-    public function getId_users_preferences(): int
-    {
-        return $this->id_users_preferences;
-    }
-    /**
      * @return int
      */
     public function getWalk_type(): int
     {
         return $this->walk_type;
     }
-    /**
+        /**
      * @return int
      */
-    public function getTime_slot(): int
+    public function getWalk_time_slot(): int
     {
-        return $this->time_slot;
+        return $this->walk_time_slot;
     }
-    /**
-     * @return int
+        /**
+     * @return string
      */
-    public function getDescription(): int
+    public function getWalk_description(): string
     {
-        return $this->description;
+        return $this->walk_description;
     }
 
 
@@ -275,7 +221,7 @@ class Users {
     public static function isMailExists(string $mail): bool
     {
         try {
-            $sql = 'SELECT * FROM `users` WHERE `mail` = :mail';
+            $sql = 'SELECT * FROM `consumer` WHERE `mail` = :mail';
 
             $sth = Database::getInstance()->prepare($sql);
             $sth->bindValue(':mail', $mail, PDO::PARAM_STR);
@@ -283,67 +229,39 @@ class Users {
 
             return empty($sth->fetch()) ? false : true;
         } catch (\PDOException $ex) {
-            //var_dump($ex);
             return false;
         }
     }
 //                  Insertion des utilisateurs
-    public function insertUser():bool 
+    public function insertConsumer():bool 
     {
         try{
             $pdo = Database::getInstance();
 
             // on crée la requête avec des marqueurs nominatifs
-            $sql = 'INSERT INTO `users` (`civility`, `firstname`, `lastname`, `birthdate`, `address`, `profilPictures`, `role`, `mail`, `password`)
-            VALUES (:civility, :firstname, :lastname, :birthdate, :address, :profilPictures, :role, :mail, :password);';
+            $sql = 'INSERT INTO `consumer` (`civility`, `firstname`, `lastname`, `birthdate`, `mail`, `password`, `walk_type`, `walk_time_slot`, `walk_description`)
+            VALUES (:civility, :firstname, :lastname, :birthdate, :mail, :password, :walk_type, :walk_time_slot, :walk_description);';
 
             //  on prépare la requête
             $sth = $this->pdo->prepare($sql);
 
             // affectation des valeurs aux marqueurs nominatifs
             $sth->bindValue(':civility', $this->getCivility(), PDO::PARAM_STR);
-            $sth->bindValue(':fistname', $this->getFirstname(), PDO::PARAM_STR);
+            $sth->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
             $sth->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
             $sth->bindValue(':birthdate', $this->getBirthdate(), PDO::PARAM_STR);
-            $sth->bindValue(':address', $this->getAddress(), PDO::PARAM_STR);
-            $sth->bindValue(':profilPictures', $this->getProfilPictures(), PDO::PARAM_STR);
-            $sth->bindValue(':role', $this->getRole(), PDO::PARAM_STR);
             $sth->bindValue(':mail', $this->getMail(), PDO::PARAM_STR);
             $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
-            $sth->bindValue(':civility', $this->getCivility(), PDO::PARAM_STR);
-
+            $sth->bindValue(':walk_type', $this->getWalk_type(), PDO::PARAM_INT);
+            $sth->bindValue(':walk_time_slot', $this->getWalk_time_slot(), PDO::PARAM_INT);
+            $sth->bindValue(':walk_description', $this->getWalk_description(), PDO::PARAM_STR);
+            
             // On retourne directement true si la requete s'est bien exécutée ou false dans le cas contraire
 
             return $sth->execute();
-        
+            
         }catch (PDOException $ex) {
-            // on retourne false si une exception est levée
-            return false;
-        }
-    } 
-//                  Insertion des préférences utilisateurs
-
-    public function insertUserPreferences():bool 
-    {
-        try{
-            $pdo = Database::getInstance();
-
-            // on crée la requête avec des marqueurs nominatifs
-            $sql = 'INSERT INTO `users_preferences` (`walk_type`, `time_slot`, `description`)
-            VALUES (:walk_type, :time_slot, :description);';
-
-            //  on prépare la requête
-            $sth = $this->pdo->prepare($sql);
-
-            // affectation des valeurs aux marqueurs nominatifs
-            $sth->bindValue(':walk_type', $this->getWalk_type(), PDO::PARAM_STR);
-            $sth->bindValue(':time_slot', $this->getTime_slot(), PDO::PARAM_STR);
-            $sth->bindValue(':description', $this->getDescription(), PDO::PARAM_STR);
-            // On retourne directement true si la requete s'est bien exécutée ou false dans le cas contraire
-
-            return $sth->execute();
-        
-        }catch (PDOException $ex) {
+            var_dump($ex);die;
             // on retourne false si une exception est levée
             return false;
         }
@@ -390,9 +308,9 @@ class Users {
      * @param int $id
      * 
      * @return mixed
-     * Retourne un objet issu de la class Users ou false
+     * Retourne un objet issu de la class consumer ou false
      */
-    public static function get(int $id_users): mixed
+    public static function get(int $id_consumer): mixed
     {
 
         try {
@@ -400,28 +318,27 @@ class Users {
             $pdo = Database::getInstance();
 
             // On créé la requête
-            $sql = 'SELECT * FROM users WHERE `id_users` = :id_users';
+            $sql = 'SELECT * FROM consumer WHERE `id_consumer` = :id_consumer';
 
             // On prépare la requête
             $sth = $pdo->prepare($sql);
 
             // On affecte chaque valeur à chaque marqueur nominatif
-            $sth->bindValue(':id_users', $id_users, PDO::PARAM_INT);
+            $sth->bindValue(':id_consumer', $id_consumer, PDO::PARAM_INT);
 
             if ($sth->execute() === false) {
                 //Erreur générale
                 return false;
             } else {
-                $user = $sth->fetch();
-                if ($user === false) {
+                $consumer = $sth->fetch();
+                if ($consumer === false) {
                     //Patient non trouvé
                     return false;
                 } else {
-                    return $user;
+                    return $consumer;
                 }
             }
         } catch (\PDOException $ex) {
-            //var_dump($ex);
             return false;
         }
     }
@@ -434,66 +351,37 @@ class Users {
      * @return boolean
      */
 
-    public function update(int $id_user): bool
+    public function update(int $id_consumer): bool
     {
         try {
-
-            $sql = 'UPDATE `user` SET
+            $sql = 'UPDATE `consumer` SET
                         `civility` = :civility
                         `firstname` = :firstname, 
                         `lastname` = :lastname, 
                         `birthdate` = :birthdate, 
-                        `address` = :address, 
-                        `profilPictures` = :profilPictures,
-                        `role` =  :role,
                         `mail` =:mail,
-                    WHERE `id_user` = :id_user';
+                        `walk_type` = :walk_type,
+                        `walk_time_slot` = : walk_time_slot,
+                        `walk_description` = : walk_description,
+                    WHERE `id_consumer` = :id_consumer';
 
             $sth = $this->_pdo->prepare($sql);
             $sth->bindValue(':civility', $this->getCivility());
             $sth->bindValue(':lastname', $this->getLastname());
             $sth->bindValue(':firstname', $this->getFirstname());
             $sth->bindValue(':birthdate', $this->getBirthdate());
-            $sth->bindValue(':address', $this->getAddress());
-            $sth->bindValue(':profilPictures', $this->getProfilPictures());
-            $sth->bindValue(':role', $this->getRole());
             $sth->bindValue(':mail', $this->getMail());
-            $sth->bindValue(':id_user', $id_user, PDO::PARAM_INT);
-            return $sth->execute();
-        } catch (PDOException $ex) {
-            //var_dump($ex);
-            return false;
-        }
-    }
-    /**
-     * Méthode qui permet de mettre à jour les préférences d'un user
-     * 
-     * @param int $id
-     * 
-     * @return boolean
-     */
-
-    public function updatePreferences(int $id_users_preferences): bool
-    {
-        try {
-
-            $sql = 'UPDATE `users_preferences` SET 
-                        `walk_type` = :walk_type, 
-                        `time_slot` = :time_slot, 
-                        `description` = :birthdate, 
-                    WHERE `id_users_preferences` = :id_user_preferences';
-
-            $sth = $this->_pdo->prepare($sql);
             $sth->bindValue(':walk_type', $this->getWalk_type());
-            $sth->bindValue(':time_slot', $this->getTime_slot());
-            $sth->bindValue(':description', $this->getDescription());
-            $sth->bindValue(':id_users_preferences', $id_users_preferences, PDO::PARAM_INT);
+            $sth->bindValue(':walk_time_slot', $this->getWalk_time_slot());
+            $sth->bindValue(':walk_description', $this->getWalk_description());
+            
+            $sth->bindValue(':id_consumer', $id_consumer, PDO::PARAM_INT);
             return $sth->execute();
         } catch (PDOException $ex) {
-            //var_dump($ex);
             return false;
         }
     }
+    
 
         // Methode delete 
 /**
@@ -501,14 +389,14 @@ class Users {
  * 
  * @return [type]
  */
-public static function delete($id_users) 
+public static function delete($id_consumer) 
 {
     try
     {
         $pdo = DATABASE::getInstance();
-        $sql = 'DELETE FROM `users` WHERE `id_users` = :id_users';
+        $sql = 'DELETE FROM `consumer` WHERE `id_consumer` = :id_consumer';
         $sth = $pdo->prepare($sql);
-        $sth->bindValue(':id',$id_users,PDO::PARAM_INT);
+        $sth->bindValue(':id_consumer',$id_consumer,PDO::PARAM_INT);
         $sth->execute();
         if ($sth->rowCount() >0){
             return true;
@@ -520,30 +408,6 @@ public static function delete($id_users)
     }
 }
 
-        // Methode delete preferences users
-/**
- * @param mixed $id
- * 
- * @return [type]
- */
-public static function deletePreferences($id_users_preferences) 
-{
-    try
-    {
-        $pdo = DATABASE::getInstance();
-        $sql = 'DELETE FROM `users_preferences` WHERE `id_users_preferences` = :id_users_preferences';
-        $sth = $pdo->prepare($sql);
-        $sth->bindValue(':id_users_preferences',$id_users_preferences,PDO::PARAM_INT);
-        $sth->execute();
-        if ($sth->rowCount() >0){
-            return true;
-        }else{
-            return false;
-        }
-    }catch (PDOException $ex){
-        return false;
-    }
-}
 
 /**
      * Méthode statique qui permet de lister tous les patients depuis le champs de recherche
@@ -557,9 +421,9 @@ public static function deletePreferences($id_users_preferences)
             // On stocke une instance de la classe PDO dans une variable
             $pdo = Database::getInstance();
             // On créé la requête
-            $sql = "SELECT `civility`,`firstname`, `lastname`,`birthdate`, `mail`, `id_users` 
-            FROM `users` 
-            WHERE((`lastname` LIKE :search) OR (`firstname` LIKE :search) OR (`mail` LIKE :search))";
+            $sql = "SELECT `civility`,`firstname`, `lastname`,`birthdate`, `mail`, `walk_type`,`walk_time_slot`,`walk_description` `id_consumer` 
+            FROM `consumer` 
+            WHERE((`lastname` LIKE :search) OR (`firstname` LIKE :search) OR (`mail` LIKE :search) OR (`civility` LIKE :search))";
             if($limit!=0){
                 $sql .= " LIMIT :limit OFFSET :offset";
             }
@@ -577,7 +441,6 @@ public static function deletePreferences($id_users_preferences)
             
             
         } catch (PDOException $ex) {
-            //var_dump($ex);
             return [];
         }
     }

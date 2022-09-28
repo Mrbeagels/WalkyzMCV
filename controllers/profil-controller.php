@@ -5,34 +5,6 @@ require_once(dirname(__FILE__) . '/../models/user.php');
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //===================== typeOfWalkyz : Nettoyage et validation =======================
-    $typeOfWalkyz = intval(filter_input(INPUT_POST, 'typeOfWalkyz', FILTER_SANITIZE_NUMBER_INT));
-
-    if (!empty($typeOfWalkyz)) {
-        $testTypeOfWalkyz = filter_var($typeOfWalkyz, FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 4)));
-        if (!$testTypeOfWalkyz) {
-            $error["typeOfWalkyz"] = "Merci de choisir un type de balade";
-        }
-    }
-
-     //===================== whenWalkyz : Nettoyage et validation =======================
-        $whenWalkyz = intval(filter_input(INPUT_POST, 'whenWalkyz', FILTER_SANITIZE_NUMBER_INT));
-
-        if (!empty($whenWalkyz)) {
-            $testWhenWalkyz = filter_var($whenWalkyz, FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 4)));
-            if (!$testWhenWalkyz) {
-                $error["whenWalkyz"] = "Merci de choisir une préférence de temps pour votre balade";
-            }
-        }
-         //===================== Description : Nettoyage et validation =======================
-        $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));    
-        if(!empty($description)){
-            $testDescription = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
-        
-            if(!$testDescription){
-                $error["description"] = "Votre description n'est pas conforme, merci de n'utiliser que des lettres et des chiffres.";
-            } 
-        }
         //===================== firstname : Nettoyage et validation =======================
         $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
         // On vérifie que ce n'est pas vide
@@ -96,7 +68,7 @@ if (!empty($weight)) {
 }
 }
     //===================== DOGBREED : Nettoyage et validation =======================
-    $dogBreed = trim(filter_input(INPUT_POST, 'dogBreed$dogBreed', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+    $dogBreed = trim(filter_input(INPUT_POST, 'dogBreed', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
     // On vérifie que ce n'est pas vide
     if (!empty($dogBreed)) {
         $testRegex = filter_var($dogBreed, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
@@ -117,7 +89,7 @@ if (!empty($weight)) {
 $dogStats = intval(filter_input(INPUT_POST, 'dogStats', FILTER_SANITIZE_NUMBER_INT));
 
 if (!empty($dogStats)) {
-    $testdogStats = filter_var($dogStats, FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 2)));
+    $testdogStats = filter_var($dogStats, FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 5)));
     if (!$testdogStats) {
         $error["dogStats"] = "Merci de renseigner le caractére principal de votre chien";
     }
@@ -128,42 +100,22 @@ if (!empty($dogStats)) {
 $dogBehavior = intval(filter_input(INPUT_POST, 'dogBehavior', FILTER_SANITIZE_NUMBER_INT));
 
 if (!empty($dogBehavior)) {
-    $testdogBehavior = filter_var($dogBehavior, FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 2)));
+    $testdogBehavior = filter_var($dogBehavior, FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 3)));
     if (!$testdogBehavior) {
         $error["dogBehavior"] = "Merci de renseigner le caractére principal de votre chien";
     }
 }
 
          //===================== dogDescription : Nettoyage et validation =======================
-        $dogDescription = trim(filter_input(INPUT_POST, 'dogDescription', FILTER_SANITIZE_SPECIAL_CHARS));    
-        if(!empty($dogDescription)){
-            $testdogDescription = filter_var($dogDescription, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
+        $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));    
+        if(!empty($description)){
+            $testdescription = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
         
-            if(!$testdogDescription){
-                $error["dogDescription"] = "Votre dogDescription n'est pas conforme, merci de n'utiliser que des lettres et des chiffres.";
+            if(!$testdescription){
+                $error["description"] = "Votre description n'est pas conforme, merci de n'utiliser que des lettres et des chiffres.";
             } 
         }
-
-         //===================== filePicture : Nettoyage et validation =======================
-    if (isset($_FILES['filePicture'])) {
-        $filePicture = $_FILES['filePicture'];
-        if(!empty($filePicture['tmp_name'])){
-            if($filePicture['error']>0){
-                $error["filePicture"] = "erreur lors du transfert du fichier"; 
-            } else {
-                if(!in_array($filePicture['type'], AUTHORIZED_IMAGE_FORMAT)){
-                    $error["filePicture"] = "Le format du fichier n'est pas accepté";
-                } else {
-                    $extension = pathinfo($filePicture['name'],PATHINFO_EXTENSION);
-                    $from = $filePicture['tmp_name'];
-                    $fileName = uniqid('img_').'.'.$extension;
-                    $to = dirname(__FILE__).'/../public/uploads/'.$fileName;
-                    move_uploaded_file($from, $to);
-                }
-            }
-        } 
-    }
-    var_dump($typeOfWalkyz, $whenWalkyz, $description, $firstname, $nickname, $age, $weight, $dogBreed, $dogStats, $dogBehavior, $dogDescription, $filePicture );
+    var_dump($firstname, $nickname, $age, $weight, $dogBreed, $dogStats, $dogBehavior, $description);
     die;
 }
 

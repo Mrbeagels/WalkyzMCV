@@ -11,15 +11,7 @@
             <div class="col-7 ">
                 <div class="mb-4">
                     <!-- Champs email -->
-                    <input 
-                    required aria-describedby="emailHelp" 
-                    type="email" 
-                    name="mail" 
-                    id="mail" 
-                    value="<?= htmlentities($mail ?? '') ?>" 
-                    class="form-control <?= isset($error['mail']) ? 'errorField' : '' ?>" 
-                    placeholder="Votre E-mail*" 
-                    autocomplete="email">
+                    <input required aria-describedby="emailHelp" type="email" name="mail" id="mail" value="<?= htmlentities($mail ?? '') ?>" class="form-control <?= isset($error['mail']) ? 'errorField' : '' ?>" placeholder="Votre E-mail*" autocomplete="email">
                     <small id="emailHelp" class="form-text error"><?= $error['mail'] ?? '' ?></small>
                     <p class="required">* Champs obligatoires</p>
                 </div>
@@ -31,13 +23,7 @@
             <div class="col-7">
                 <div class="mb-4">
                     <!-- Password -->
-                    <input 
-                    type="password" 
-                    name="password" 
-                    id="password" 
-                    class="form-control" 
-                    placeholder="Mot de passe**" 
-                    pattern="^<?= REGEX_PASSWORD ?>">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe**" pattern="^<?= REGEX_PASSWORD ?>">
                     <p class="required">** Doit contenir une majuscule, une minuscule, un chiffre et faire minimum 8 caracteres</p>
                 </div>
             </div>
@@ -47,13 +33,7 @@
             <div class="col-7 ">
                 <div class="mb-4">
                     <!-- Password -->
-                    <input 
-                    type="password" 
-                    name="passwordConfirm" 
-                    id="passwordConfirm" 
-                    class="form-control" 
-                    placeholder="Confirmation MDP**" 
-                    pattern="^<?= REGEX_PASSWORD ?>">
+                    <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control" placeholder="Confirmation MDP**" pattern="^<?= REGEX_PASSWORD ?>">
                     <p class="required">** Doit contenir une majuscule, une minuscule, un chiffre et faire minimum 8 caracteres</p>
                 </div>
             </div>
@@ -62,83 +42,44 @@
         <div class="text-center">
             <h2 class="m-5">2.Vos informations personnelles</h2>
         </div>
-                        <!-- Civilité -->
-        <div class="col my-5 text-center justify-content-center">        
-                <label class="my-3 fs-4">Votre civilité </label>
-                <div class="form-check d-flex justify-content-center ">
-                    <input 
-                    class="form-check-input" 
-                    type="radio" 
-                    name="civility" 
-                    id="civility0" 
-                    value="0" <?= (isset($civility) && $civility == 0) ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="civility0">
-                        FEMME
-                    </label>
-                </div>
-                <div class="form-check d-flex justify-content-center">
-                    <input 
-                    class="form-check-input" 
-                    type="radio" 
-                    name="civility" 
-                    id="civility1" 
-                    value="1" <?= (isset($civility) && $civility == 1) ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="civility1">
-                        HOMME
-                    </label>
-                </div>
-                <div class="form-check d-flex justify-content-center">
-                    <input 
-                    class="form-check-input" 
-                    type="radio" 
-                    name="civility" 
-                    id="civility2" 
-                    value="2" <?= (isset($civility) && $civility == 2) ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="civility2">
-                        AUTRE
-                    </label>
-                </div>
-                <small class="form-text error"><?= $error['civility'] ?? '' ?></small>
+        <!-- Civilité -->
+        <div class="col my-5 text-center justify-content-center">
+            <label class="my-3 fs-4">Votre civilité </label>
+            <div class="form-check d-flex justify-content-center ">
+                <input class="form-check-input" type="radio" name="civility" id="civility0" value="0" <?= (isset($civility) && $civility == 0) ? 'checked' : '' ?>>
+                <label class="form-check-label" for="civility0">
+                    FEMME
+                </label>
+            </div>
+            <div class="form-check d-flex justify-content-center">
+                <input class="form-check-input" type="radio" name="civility" id="civility1" value="1" <?= (isset($civility) && $civility == 1) ? 'checked' : '' ?>>
+                <label class="form-check-label" for="civility1">
+                    HOMME
+                </label>
+            </div>
+            <div class="form-check d-flex justify-content-center">
+                <input class="form-check-input" type="radio" name="civility" id="civility2" value="2" <?= (isset($civility) && $civility == 2) ? 'checked' : '' ?>>
+                <label class="form-check-label" for="civility2">
+                    AUTRE
+                </label>
+            </div>
+            <small class="form-text error"><?= $error['civility'] ?? '' ?></small>
         </div>
-                    <!-- fin de la civilité  -->
+        <!-- fin de la civilité  -->
 
 
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-7">
                 <div class="mb-4">
                     <!-- Champs prénom -->
-                    <input 
-                    required aria-describedby="firstnameHelp" 
-                    type="text" 
-                    name="firstname" 
-                    id="firstname" 
-                    title="Veuillez entrer un prénom sans chiffres" 
-                    placeholder="Entrez votre prénom*" 
-                    class="form-control <?= isset($error['firstname']) ? 'errorField' : '' ?>" 
-                    autocomplete="first-name" 
-                    value="<?= htmlentities($firstname ?? '') ?>" 
-                    minlength="2" 
-                    maxlength="70" 
-                    pattern="<?= REGEX_NO_NUMBER ?>">
+                    <input required aria-describedby="firstnameHelp" type="text" name="firstname" id="firstname" title="Veuillez entrer un prénom sans chiffres" placeholder="Entrez votre prénom*" class="form-control <?= isset($error['firstname']) ? 'errorField' : '' ?>" autocomplete="first-name" value="<?= htmlentities($firstname ?? '') ?>" minlength="2" maxlength="70" pattern="<?= REGEX_NO_NUMBER ?>">
                     <small id="firstnameHelp" class="form-text error"><?= $error['firstname'] ?? '' ?></small>
                 </div>
             </div>
             <div class="col-7">
                 <div class="mb-4">
                     <!-- Champs nom -->
-                    <input 
-                    required aria-describedby="lastnameHelp" 
-                    type="text" 
-                    name="lastname" 
-                    id="lastname" 
-                    title="Veuillez entrer un nom sans chiffres" 
-                    placeholder="Entrez votre nom*" 
-                    class="form-control <?= isset($error['lastname']) ? 'errorField' : '' ?>" 
-                    autocomplete="family-name" 
-                    value="<?= htmlentities($lastname ?? '') ?>" 
-                    minlength="2" 
-                    maxlength="70" 
-                    pattern="<?= REGEX_NO_NUMBER ?>">
+                    <input required aria-describedby="lastnameHelp" type="text" name="lastname" id="lastname" title="Veuillez entrer un nom sans chiffres" placeholder="Entrez votre nom*" class="form-control <?= isset($error['lastname']) ? 'errorField' : '' ?>" autocomplete="family-name" value="<?= htmlentities($lastname ?? '') ?>" minlength="2" maxlength="70" pattern="<?= REGEX_NO_NUMBER ?>">
                     <small id="lastnameHelp" class="form-text error"><?= $error['lastname'] ?? '' ?></small>
                 </div>
             </div>
@@ -150,77 +91,101 @@
                 <div class="mb-4">
                     <!-- Champs date de naissance -->
                     <label class="text-center" for="birthday">Date de naissance * </label>
-                    <input 
-                    type="date" 
-                    name="birthdate" 
-                    id="birthdate" 
-                    value="<?= htmlentities($birthdate ?? '') ?>" 
-                    title="La date de naissance n' est pas au format attendu" 
-                    placeholder="Entrez votre date de naissance" 
-                    class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" 
-                    autocomplete="bday" 
-                    aria-describedby="birthdateHelp">
+                    <input type="date" name="birthdate" id="birthdate" value="<?= htmlentities($birthdate ?? '') ?>" title="La date de naissance n' est pas au format attendu" placeholder="Entrez votre date de naissance" class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp">
                     <small id="birthdateHelp" class="form-text error"><?= $error['birthdate'] ?? '' ?></small>
                 </div>
             </div>
-
-            <div class="col-7">
-                <div class="mb-4">
-                    <!-- Zip code -->
-                    <input 
-                    type="text" 
-                    class="form-control" 
-                    name="zipCode" 
-                    id="zipCode" 
-                    aria-describedby="zipCodeHelp" 
-                    placeholder="Code postal" 
-                    pattern="[0-9]{5}">
-                    <small id="zipCodeHelp" class="form-text error"><?= $error['zipCode'] ?? '' ?></small>
-                </div>
-            </div>
         </div>
-        <div class="row d-flex justify-content-center mt-3">
-            <div class="col-7">
-                <div class="mb-4">
-                    <!-- Champs ville -->
-                    <input 
-                    required aria-describedby="cityHelp" 
-                    type="text" 
-                    name="city"
-                    id="city" 
-                    title="Veuillez entrer un nom de ville" 
-                    placeholder="Entrez votre ville*" 
-                    class="form-control <?= isset($error['city']) ? 'errorField' : '' ?>" 
-                    autocomplete="city-name" 
-                    value="<?= htmlentities($city ?? '') ?>" 
-                    minlength="1" 
-                    maxlength="50">
-                    <small id="cityHelp" class="form-text error"><?= $error['city'] ?? '' ?></small>
+
+
+        <div class="text-center">
+            <input type="submit" value="Envoyer" class="btn btn-primary mt-3" id="validForm">
+        </div>
+
+</div>
+<!-- Complement d'information pour le profil utilisateur-->
+
+<div class="text-center">
+    <h1>Votre profil</h1>
+</div>
+<!-- Type de balade -->
+<div class="text-center">
+    <h3>Quel type de balade souhaitez-vous faire ? </h3>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="walk_type" id="walk_type0" value="0" <?= (isset($walk_type) && $walk_type == 0) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="walk_type0">
+                Courte balade (≃ 1h)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="walk_type" id="walk_type1" value="1" <?= (isset($walk_type) && $walk_type == 1) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="walk_type1">
+                Longue balade (> 2h)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="walk_type" id="walk_type2" value="2" <?= (isset($walk_type) && $walk_type == 2) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="walk_type2">
+                Faire jouer nos chiens
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="walk_type" id="walk_type3" value="3" <?= (isset($walk_type) && $walk_type == 3) ? 'checked' : '' ?>>
+            <label class="form-check-label" for="walk_type3">
+                Autre
+            </label>
+        </div>
+        <!-- Quand la balade -->
+        <div class="text-center">
+            <h3>Quand êtes-vous habituellement disponible</h3>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="walk_time_slot" id="walk_time_slot0" value="0" <?= (isset($walk_time_slot) && $walk_time_slot == 0) ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="walk_time_slot0">
+                        En semaine, pendant la journée
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="walk_time_slot" id="walk_time_slot1" value="1" <?= (isset($walk_time_slot) && $walk_time_slot == 1) ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="walk_time_slot1">
+                        En semaine, le soir
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="walk_time_slot" id="walk_time_slot2" value="2" <?= (isset($walk_time_slot) && $walk_time_slot == 2) ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="walk_time_slot2">
+                        Le Week-end
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="walk_time_slot" id="walk_time_slot3" value="3" <?= (isset($walk_time_slot) && $walk_time_slot == 3) ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="walk_time_slot3">
+                        Autre
+                    </label>
                 </div>
             </div>
-            <div class="col-7">
-                <div class="mb-4">
-                    <!-- Champs adresse -->
-                    <input 
-                    required aria-describedby="addressHelp" 
-                    type="text" 
-                    name="address" 
-                    id="address" 
-                    title="Veuillez entrer votre adresse" 
-                    placeholder="Entrez votre adresse*" 
-                    class="form-control <?= isset($error['address']) ? 'errorField' : '' ?>" 
-                    autocomplete="family-name" value="<?= htmlentities($address ?? '') ?>" 
-                    minlength="2"
-                    maxlength="250">
-                    <small id="addressHelp" class="form-text error"><?= $error['address'] ?? '' ?></small>
-                </div>
-            </div>
-                
+            <div>
+
                 <div class="text-center">
-                    <input type="submit" value="Envoyer" class="btn btn-primary mt-3" id="validForm">
+                    <label class="bi bi-pen-fill mb-4" for="aboutU"> Votre description</label>
                 </div>
-
+                <div class="row">
+                    <div class="col">
+                        <textarea class="form-control mt-3" name="walk_description" id="walk_description" rows="10" placeholder="Randonnée de plusieurs heures ou simplement lancer de frisbee dans le parc du village ? Parlez nous de vous et de ce que vous aimez faire avec votre chien  🐕‍🦺🚶‍♀️ "><?= $walk_description ?? '' ?></textarea>
+                        <small class="form-text error"><?= $error['walk_description'] ?? '' ?></small>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-success mt-5">Valider son profil</button>
+    </div>
     </form>
     <p class="required">* Champs obligatoires</p>
     <p class="required">** Doit contenir une majuscule, une minuscule, un chiffre et faire minimum 8 caracteres</p>
