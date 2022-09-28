@@ -2,9 +2,9 @@
 
 require_once(dirname(__FILE__) . '/../config/database.php');
 
-class Dogs_profils {
+class Dog_profil {
     // Attributs
-    private int $id_dog_profil;
+    private int $id;
     private string $name;
     private string $nickname;
     private string $birthdate;
@@ -22,7 +22,7 @@ class Dogs_profils {
      */
     public function __construct()
     {
-        
+        $this->pdo = Database::getInstance();
     }
 
     // Les setters
@@ -31,9 +31,9 @@ class Dogs_profils {
      * 
      * @return void
      */
-    public function setIdDogProfil(int $idDogProfil): void
+    public function setId(int $id): void
     {
-        $this->id = $idDogProfil;
+        $this->id = $id;
     }
 
         /**
@@ -99,23 +99,33 @@ class Dogs_profils {
     {
         $this->behavior = $behavior;
     }
-        /**
-     * @param string $mail
+  
+    /**
+     * @param string $description
      * 
      * @return void
      */
-    public function setDecription(string $decription): void
+    public function setDescription(string $description): void
     {
-        $this->decription = $decription;
+        $this->description = $description;
     }
 
+    /**
+     * @param string $id_consumer
+     * 
+     * @return void
+     */
+    public function setId_consumer(string $id_consumer): void
+    {
+        $this->id_consumer = $id_consumer;
+    }
     // Les guetters
     /**
      * @return int
      */
-    public function getIdDogProfil(): int
+    public function getId(): int
     {
-        return $this->idDogProfil;
+        return $this->Id;
     }
         /**
      * @return string
@@ -173,6 +183,13 @@ class Dogs_profils {
     {
         return $this->description;
     }
+            /**
+     * @return string
+     */
+    public function getId_consumer(): string
+    {
+        return $this->id_consumer;
+    }
 
         /**
      * Méthode qui permet de créer un chien
@@ -183,12 +200,13 @@ class Dogs_profils {
     {
 
         try {
+            $pdo = Database::getInstance();
             // On créé la requête avec des marqueurs nominatifs
-            $sql = 'INSERT INTO `dogs_profils` (`name`, `nickname`, `birthdate`, `weight`, `breed`, `stats`,`behavior`,`description`) 
+            $sql = 'INSERT INTO `dog_profil` (`name`, `nickname`, `birthdate`, `weight`, `breed`, `stats`,`behavior`,`description`) 
                 VALUES (:name, :nickname, :birthdate, :weight, :breed, :stats, :behavior, :description);';
 
             // On prépare la requête
-            $sth = $this->_pdo->prepare($sql);
+            $sth = $this->pdo->prepare($sql);
 
             //Affectation des valeurs aux marqueurs nominatifs
             $sth->bindValue(':name', $this->getName(), PDO::PARAM_STR);
@@ -198,11 +216,11 @@ class Dogs_profils {
             $sth->bindValue(':breed', $this->getBreed(), PDO::PARAM_STR);
             $sth->bindValue(':stats', $this->getStats(), PDO::PARAM_STR);
             $sth->bindValue(':behavior', $this->getBehavior(), PDO::PARAM_STR);
-            $sth->bindValue(':description', $this->getdescription(), PDO::PARAM_STR);
+            $sth->bindValue(':description', $this->getDescription(), PDO::PARAM_STR);
             // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
             return $sth->execute();
         } catch (PDOException $ex) {
-            //var_dump($ex);
+            var_dump($ex);die;
             // On retourne false si une exception est levée
             return false;
         }
@@ -224,7 +242,7 @@ class Dogs_profils {
             $pdo = Database::getInstance();
 
             // On créé la requête
-            $sql = 'SELECT * FROM dogs_profils WHERE `id_dog_profil` = :id';
+            $sql = 'SELECT * FROM dog_profil WHERE `id` = :id';
 
             // On prépare la requête
             $sth = $pdo->prepare($sql);

@@ -15,7 +15,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item dropdown ">
                             <ul  class="list-unstyled" aria-labelledby="navbarDropdown ">
-                                <li><a class="dropdown-item" href="/controllers/profil-controller.php">profil</a></li>
+                                <li><a class="dropdown-item" href="/controllers/dogProfil-controller.php">profil</a></li>
                                 <li><a class="dropdown-item" href="/controllers/forgotPassword-controller.php">mot de passe oublié</a></li>
                                 <li><a class="dropdown-item" href="/controllers/signUp-controller.php">Inscription</a></li>
                                 <li><a class="dropdown-item" href="/controllers/signIn-controller.php">Connexion</a></li>
@@ -44,7 +44,7 @@
         </div>
     </nav>
         <div class=" d-flex justify-content-around w-100">
-            <p><a class="text-decoration-none text-dark" href="/controllers/profil-controller.php">profil </a></p>
+            <p><a class="text-decoration-none text-dark" href="/controllers/dogProfil-controller.php">profil </a></p>
             <p><a class="text-decoration-none text-dark" href="/controllers/forgotPassword-controller.php">mot de passe oublie </a></p>
             <p><a class="text-decoration-none text-dark" href="/controllers/signUp-controller.php">Inscription </a></p>
             <p><a class="text-decoration-none text-dark" href="/controllers/signIn-controller.php">Connexion </a></p>

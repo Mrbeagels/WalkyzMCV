@@ -19,6 +19,7 @@
 <table class="table table-striped  mb-5">
     <thead>
         <tr>
+            <th class="text-success fs-3" scope="col">Id</th>
             <th class="text-success fs-3" scope="col">Civilité</th>
             <th class="text-success fs-3" scope="col">Prénom</th>
             <th class="text-success fs-3" scope="col">Nom</th>
@@ -35,8 +36,9 @@
         <?php
         // Si la variable $search n'est pas vide alors j'affiche comme avant la liste des utilisateurs issu de la recherche
         foreach ($consumers as $consumer) { ?>
-
+            
             <tr>
+                <td class="text-success"><?= htmlentities($consumer->id_consumer) ?></td>
                 <td class="text-success"><?= htmlentities($consumer->civility) ?></td>
                 <td class="text-success"><?= htmlentities($consumer->firstname) ?></td>
                 <td class="text-success"><?= htmlentities($consumer->lastname) ?></td>

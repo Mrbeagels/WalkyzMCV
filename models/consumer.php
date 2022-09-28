@@ -261,7 +261,7 @@ class Consumer {
             return $sth->execute();
             
         }catch (PDOException $ex) {
-            var_dump($ex);die;
+            // var_dump($ex);die;
             // on retourne false si une exception est levée
             return false;
         }
@@ -421,7 +421,7 @@ public static function delete($id_consumer)
             // On stocke une instance de la classe PDO dans une variable
             $pdo = Database::getInstance();
             // On créé la requête
-            $sql = "SELECT `civility`,`firstname`, `lastname`,`birthdate`, `mail`, `walk_type`,`walk_time_slot`,`walk_description` `id_consumer` 
+            $sql = "SELECT`id_consumer`,`civility`,`firstname`, `lastname`,`birthdate`, `mail`, `walk_type`,`walk_time_slot`  
             FROM `consumer` 
             WHERE((`lastname` LIKE :search) OR (`firstname` LIKE :search) OR (`mail` LIKE :search) OR (`civility` LIKE :search))";
             if($limit!=0){

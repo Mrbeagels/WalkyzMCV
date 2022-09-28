@@ -9,10 +9,12 @@ $errorsArray = array();
 /*************************************/
 
 // Nettoyage de l'id passé en GET dans l'url
-$id = intval(filter_input(INPUT_GET, 'id_consumer', FILTER_SANITIZE_NUMBER_INT));
+$id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
 /*************************************************************/
 
 $consumer = Consumer::get($id);
+var_dump($consumer);
+
 
 
 // Si $consumer vaut false,
@@ -22,19 +24,6 @@ if ($consumer === false) {
 } else {
     //On ne controle que s'il y a des données envoyées 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-
-        $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
-
-        if (!empty($mail)) {
-            $testEmail = filter_var($mail, FILTER_VALIDATE_EMAIL);
-            if (!$testEmail) {
-                $error["email"] = "L'adresse email n'est pas au bon format!!";
-            }
-        } else {
-            $error["email"] = "L'adresse mail est obligatoire!!";
-        }
-    
         // mdp 1 
         $password = isset($_POST['password']);
         // mdp 2 
@@ -140,14 +129,6 @@ if ($consumer === false) {
                 $error["walk_description"] = "Votre description n'est pas conforme, merci de n'utiliser que des lettres et des chiffres.";
             }
         }
-
-        //**** VERIFICATION ****/
-        if (!empty($phone)) {
-            $isOk = filter_var($phone, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEXP_PHONE . '/')));
-            if (!$isOk) {
-                $errorsArray['phone'] = 'Le numero n\'est pas valide, les séparateur sont - . /';
-            }
-        }
         /***********************************************************/
 
 
@@ -164,7 +145,7 @@ if ($consumer === false) {
                 $errorsArray['mail'] = 'Le mail n\'est pas valide';
             }
             // Si le mail de l'input est nouveau ET qu'il existe déjà en bdd, --> Erreur
-            if ($mail != $patient->mail && Patient::isMailExists($mail)) {
+            if ($mail != $patient->mail && Consumer::isMailExists($mail)) {
                 $errorsArray['mail'] = ERRORS[5];
             }
         }
@@ -174,15 +155,24 @@ if ($consumer === false) {
         if (empty($errorsArray)) {
             
             //**** HYDRATATION ****/
-            $patient = new Patient;
-            $patient->setLastname($lastname);
-            $patient->setFirstname($firstname);
-            $patient->setBirthdate($birthdate);
-            $patient->setPhone($phone);
-            $patient->setMail($mail);
-            $patient = $patient->update($id);
+            $consumer = new Consumer;
+            $consumer->setCivility($civility);
+            $consumer->setFirstname($firstname);
+            $consumer->setLastname($lastname);
+            $consumer->setBirthdate($birthdate);
+            $consumer->setMail($mail);
+            // si vide aller rechercher celui de la base, sinon ecraser
+            if(empty($password)){
+                $sth->bindValue(':password', $this->getPassword(), PDO::PARAM_STR);
+            }else {
+                $consumer->setPassword($password);
+            }
+            $consumer->setWalk_type($walk_type);
+            $consumer->setWalk_time_slot($walk_time_slot);
+            $consumer->setWalk_description($walk_description);
+            $response = $consumer->update($id);
 
-            if($patient){
+            if($consumer){
                 $errorsArray['global'] = MESSAGES[1];
             } else {
                 $errorsArray['global'] = ERRORS[4];
@@ -191,8 +181,9 @@ if ($consumer === false) {
     }
 }
 // On récupère les données du patient mis à jour
-$patient = Patient::get($id);
-$appointments = Appointment::getAll($id);
+$consumer = Consumer::get($id);
+// $appointments = Appointment::getAll($id);
+
 
 /* ************* AFFICHAGE DES VUES **************************/
 

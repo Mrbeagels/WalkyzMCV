@@ -27,25 +27,16 @@
                 <div class="mb-4">
                     <!-- Password -->
                     <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe**" pattern="^<?= REGEX_PASSWORD ?>">
-                    <p class="required">** Doit contenir une majuscule, une minuscule, un chiffre et faire minimum 8 caracteres</p>
+                    <p class="required">* Champs obligatoires</p>
                 </div>
             </div>
         </div>
 
-        <div class="row d-flex justify-content-center mt-3">
-            <div class="col-7 ">
-                <div class="mb-4">
-                    <!-- Password -->
-                    <input type="password" name="passwordConfirm" id="passwordConfirm" class="form-control" placeholder="Confirmation MDP**" pattern="^<?= REGEX_PASSWORD ?>">
-                    <p class="required">** Doit contenir une majuscule, une minuscule, un chiffre et faire minimum 8 caracteres</p>
-                </div>
-            </div>
-        </div>
 
 
         <div class="text-center">
         <!-- Changer la redirection vers le bon formulaire bg -->
-            <a href="#"><button type="button" class="btn btn-success mt-5">Connexion</button></a>
+            <button type="submit" class="btn btn-success mt-5">Connexion</button>
             <a class=" text-dark" href="/controllers/forgotPassword-controller.php"><p class="required mt-3">Mon chien a mangé mon mot de passe</p></a>
         </div>
 </form>

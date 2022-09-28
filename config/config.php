@@ -6,7 +6,7 @@ define('REGEX_LINKEDIN','^(https:\/\/)?((www\.|fr\.)?([a-zA-Z0-9\.\/=\?\-]*))$')
 define('REGEX_DATE','^([0-9]{4})[\/\-]?([0-9]{2})[\/\-]?([0-9]{2})$');
 define('REGEX_TEXTAREA','^[a-zA-Z0-9 ,.\'-]');
 define('REGEX_PASSWORD', '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}');
-define('REGEX_AGE', '^[0-9]{1,3}');
+define('REGEX_AGE', '^[0-9]{1,3}$');
 
 // Tableau de valeurs pour mes champs
 define('CIVILITY', ['HOMME', 'FEMME', 'AUTRE']);
@@ -40,3 +40,6 @@ define('MESSAGES', [
     2=>'Le rendez-vous a été créé',
     3=>'Le rendez-vous a bien été mis à jour',
 ]);
+
+// JWT
+define('SECRET_KEY', 'jkgjgj4<@!/ù¨5sdg46f{èç_èç"&é');

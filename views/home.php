@@ -43,7 +43,9 @@
         </div>
     </div>
 </div> 
-<a href="../controllers/createWalk-controller.php"> provisoir creation de balade </a>
+<a href="../controllers/createWalk-controller.php"> provisoir creation de balade </a> <br>
+<a href="../controllers/listConsumer-controller.php"> list utilisateur </a>
+
 <!-- Video de présentation -->
 <div class="d-flex justify-content-center mt-5">
     <h2 class="mb-5 headingDecoration">Présentation du concept de Walkyz :</h2>
