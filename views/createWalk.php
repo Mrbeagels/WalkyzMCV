@@ -1,6 +1,8 @@
 <section class="container-fluid">
-    <h1>Création d'une nouvelle balade</h1>
-    <h4>Votre premiere (ou prochaine) balade en bonne compagnie est à portée de main ! </h4>
+    <div class="text-center ">
+    <h1 class="my-3">Création d'une nouvelle balade</h1>
+    <h4 class="mb-3"><?= htmlentities($_SESSION['consumer']->firstname) ?> (ou prochaine) balade en bonne compagnie est à portée de main ! </h4>
+    </div>
 
     <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <!-- Champs name -->

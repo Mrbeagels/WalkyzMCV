@@ -16,11 +16,113 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item dropdown ">
                             <ul  class="list-unstyled" aria-labelledby="navbarDropdown ">
-                                <li><a class="dropdown-item" href="/controllers/dogProfil-controller.php">profil</a></li>
-                                <li><a class="dropdown-item" href="/controllers/forgotPassword-controller.php">mot de passe oublié</a></li>
-                                <li><a class="dropdown-item" href="/controllers/signUp-controller.php">Inscription</a></li>
-                                <li><a class="dropdown-item" href="/controllers/signIn-controller.php">Connexion</a></li>
-                                <li><a class="dropdown-item" href="/controllers/contact-controller.php">Contactez-nous</a></li>
+                            <?php
+                    if(empty($_SESSION['consumer']))
+                    {?>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Faire une balade</a></li>
+                    <?php 
+                    }
+                        if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role))
+                        {?>
+                        <li><a class="text-decoration-none text-dark" href="../controllers/createWalk-controller.php">Créer une balade</a></li>
+                        
+                    <?php 
+                    } 
+                        if(isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role))
+                        {?>
+                        <li>
+                            <div class="btn-group dropstart">
+                                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Balade
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../controllers/listWalk-controller.php">Liste des balades</a></li>
+                                    <li><a class="dropdown-item" href="../controllers/createWalk-controller.php">Créer une balade</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    <?php 
+                    }
+                    if(empty($_SESSION['consumer']))
+                    {?>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Inscription</a></li>
+                    <?php 
+                    }
+                        if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role))
+                        {?>
+                        <li><a class="text-decoration-none text-dark" href="../controllers/listWalk-controller.php">Voir les balades</a></li>
+                        
+                    <?php 
+                    } 
+                        if(isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role))
+                        {?>
+                            <li>
+                            <div class="btn-group dropstart">
+                                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Chien
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../controllers/listDog-controller.php">Liste des chiens</a></li>
+                                    <li><a class="dropdown-item" href="../controllers/createDog-controller.php">Créer un chien</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    <?php } ?>
+                    <?php
+                    if(empty($_SESSION['consumer']))
+                    {?>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/signin-controller.php">Connexion</a></li>
+                    <?php 
+                    }
+                        if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role))
+                        {?>
+                        <li><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Modifier mon profil</a></li>
+                        
+                    <?php 
+                    } 
+                        if(isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role))
+                        {?>
+                            <div class="btn-group dropstart">
+                            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Utilisateurs
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../controllers/listConsumer-controller.php">Liste des utilisateurs</a></li>
+                                <li><a class="dropdown-item" href="../controllers/signUp-controller.php">Créer un utilisateur</a></li>
+                            </ul>
+                            </div>
+                    <?php 
+                    } 
+                    if(empty($_SESSION['consumer']))
+                    {?>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">Contact</a></li>
+                    <?php 
+                    }
+                        if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role))
+                        {?>
+                        <li><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">Contact</a></li>
+                        
+                    <?php 
+                    } 
+                        if(isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role))
+                        {?>
+                        <li><a class="text-decoration-none text-dark" href="../controllers/signOut-controller.php">Déconnexion</a></li>
+                    <?php 
+                    } ?>
+
+
+                    <?php 
+                    if(empty($_SESSION['consumer']))
+                    {?>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/news-controller.php">Actualités</a></li>
+                    <?php 
+                    }
+                        if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role))
+                        {?>
+                        <li><a class="text-decoration-none text-light btn-success" href="../controllers/signOut-controller.php">Déconnexion</a></li>
+                        
+                    <?php 
+                    } ?>
                             </ul>
                         </li>
                     </ul>
@@ -29,7 +131,6 @@
         </div>
     </nav>
 </div>
-
 
                         <!-- Nav bar en mode > 576 px  -->
 <div class="container-fluid headerColor navBarLg">
@@ -44,16 +145,24 @@
                 <a  href="../controllers/parameters-controller.php" class="bi bi-gear gear text-dark bootIcons" ></a>
         </div>
     </nav>
+    
         <div class=" d-flex justify-content-around w-100">
                 <?php
-                    if(!isset($_SESSION)){?>
+                    if(empty($_SESSION['consumer']))
+                    {?>
                     <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Faire une balade</a></p>
-                    <?php }
-                    if(is_null($_SESSION['consumer']->role)){?>
+                    <?php 
+                    }
+                        if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role))
+                        {?>
                         <p><a class="text-decoration-none text-dark" href="../controllers/createWalk-controller.php">Créer une balade</a></p>
-                        <?php } else { ?>
+                        
+                    <?php 
+                    } 
+                        if(isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role))
+                        {?>
                             <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Balades
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -61,17 +170,25 @@
                                 <li><a class="dropdown-item" href="../controllers/createWalk-controller.php">Créer une balade</a></li>
                             </ul>
                             </div>
-                        <?php }
+                    <?php 
+                    }
 
 
-                if(!isset($_SESSION)){?>
+                if(empty($_SESSION))
+                {
+                ?>
                     <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Inscription</a></p>
-                    <?php }
-                    if(is_null($_SESSION['consumer']->role)){?>
+                <?php 
+                }
+                    if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role))
+                    {?>
                         <p><a class="text-decoration-none text-dark" href="../controllers/listWalk-controller.php">Voir les balades</a></p>
-                        <?php } else { ?>
+                        <?php 
+                    } 
+                    if(isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role))
+                    { ?>
                             <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Utilisateurs
                             </button>
                             <ul class="dropdown-menu">
@@ -81,14 +198,18 @@
                             </div>
                             <?php } 
 
-                            if(!isset($_SESSION)){?>
+
+                            if(empty($_SESSION)){?>
                     <p><a class="text-decoration-none text-dark" href="../controllers/signin-controller.php">Connexion</a></p>
                     <?php }
-                    if(is_null($_SESSION['consumer']->role)){?>
+                    if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role)){?>
                         <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Modifier mon profil</a></p>
-                        <?php } else { ?>
+                        <?php 
+                        }
+                        if(isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role))
+                        { ?>
                             <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Chiens
                             </button>
                             <ul class="dropdown-menu">
@@ -98,27 +219,24 @@
                             </div>
                             <?php }
 
-                            if(!isset($_SESSION)){?>
+                            if(empty($_SESSION)){?>
                     <p><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">Contact</a></p>
                     <?php }
-                    if(is_null($_SESSION['consumer']->role)){?>
+                    if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role)){?>
                         <p><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">Contact</a></p>
                         <?php } 
+                        if(isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role)){ ?>
+                            <p><a class="text-decoration-none text-light btn btn-success" href="../controllers/signOut-controller.php">Déconnexion</a></p>
+                        <?php }
 
 
-                        if(!isset($_SESSION)){?>
+                        if(empty($_SESSION)){?>
                             <p><a class="text-decoration-none text-dark" href="../controllers/news-controller.php">Actualités</a></p>
                             <?php }
-                            if(is_null($_SESSION['consumer']->role)){?>
-                                <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Modifier mon profil</a></p>
-                                <?php }
+                            if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role)){?>
+                                <p><a class="text-decoration-none text-dark" href="../controllers/signOut-controller.php">Déconnexion</a></p>
+                                <?php } ?>
 
-
-                            
-            <p><a class="text-decoration-none text-dark" href="/controllers/forgotPassword-controller.php">mot de passe oublie </a></p>
-            <p><a class="text-decoration-none text-dark" href="/controllers/signUp-controller.php">Inscription </a></p>
-            <p><a class="text-decoration-none text-dark" href="/controllers/signIn-controller.php">Connexion </a></p>
-            <p><a class="text-decoration-none text-dark" href="/controllers/contact-controller.php">Contactez-nous </a></p>
         </div>
     
 </div>

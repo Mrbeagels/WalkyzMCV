@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Si il n'y a pas d'erreur et que les champs en require sont rempli on passe a l'enregistrement en BDD
-
+var_dump($_SESSION);die;
     if (empty($error)) {
         // **HYDRATATION **/
         $consumer = new Consumer;
@@ -158,6 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errorArray['global'] = 'Votre profil est bien enregistré';
         }
     }
+    
     /*************************************************************/
 }
 include(__DIR__ . '/../views/header.php');

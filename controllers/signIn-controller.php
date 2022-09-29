@@ -12,16 +12,15 @@ require_once __DIR__ . '/../models/dog.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
     $password = $_POST['password'];
-    var_dump($password);
+    
 
     // Récupération de toutes les infos du user en fonction de son email.
     $consumer = Consumer::getByEmail($mail);
-    var_dump($consumer);
+    
     $password_hash = $consumer->password;
-    var_dump($password_hash);
+    
     // Cette fonction native renvoie un bool si le password en clair est reconnu dans le password_hash
     $isConsumerVerified = password_verify($password, $password_hash);
-    var_dump($isConsumerVerified);
     
     if(!$isConsumerVerified){
         $errors['global'] = 'Problème de login';

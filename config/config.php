@@ -1,5 +1,7 @@
 <?php
+if(!isset($_SESSION)){
     session_start();
+}
 // Regex
 define('REGEX_NO_NUMBER',"^[A-Za-zéèêëàâäôöûüç' \-]+$");
 define('REGEX_ZIPCODE','^[0-9]{5}$');

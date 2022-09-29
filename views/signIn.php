@@ -1,7 +1,7 @@
 <div class="container">
     <div class="text-center">
         <!-- Changer la redirection vers le bon formulaire bg -->
-        <a href="Connexion.html"><button type="button" class="btn btn-success mt-5">Pas encore inscrit ? C'est ici que ça se passe ! </button></a>
+        <a href="/controllers/signUp-controller.php"><button type="button" class="btn btn-success mt-5">Pas encore inscrit ? C'est ici que ça se passe ! </button></a>
 
 
     </div>

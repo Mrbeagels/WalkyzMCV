@@ -217,6 +217,7 @@ class Dog_profil {
             $sth->bindValue(':stats', $this->getStats(), PDO::PARAM_STR);
             $sth->bindValue(':behavior', $this->getBehavior(), PDO::PARAM_STR);
             $sth->bindValue(':description', $this->getDescription(), PDO::PARAM_STR);
+            
             // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
             return $sth->execute();
         } catch (PDOException $ex) {
