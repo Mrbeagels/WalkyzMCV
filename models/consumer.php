@@ -278,24 +278,24 @@ class Consumer {
             $pdo = Database::getInstance();
 
             // On créé la requête avec des marqueurs nominatifs
-            $sql = 'SELECT * FROM `users` WHERE `mail` = :mail;';
+            $sql = 'SELECT * FROM `consumer` WHERE `mail` = :mail;';
 
             // On prépare la requête
             $sth = $pdo->prepare($sql);
 
             //Affectation des valeurs aux marqueurs nominatifs
-            $sth->bindValue(':email', $mail, PDO::PARAM_STR);
+            $sth->bindValue(':mail', $mail, PDO::PARAM_STR);
 
             if (!$sth->execute()) {
                 return false;
             } else {
-                $user = $sth->fetch();
-                if (empty($user)) {
+                $consumer = $sth->fetch();
+                if (empty($consumer)) {
                     return false;
                 }
             }
 
-            return $user;
+            return $consumer;
         } catch (\PDOException $ex) {
             return false;
         }
@@ -442,6 +442,24 @@ public static function delete($id_consumer)
             
         } catch (PDOException $ex) {
             return [];
+        }
+    }
+
+    public static function validate(string $mail):bool
+    {
+        try {
+            // On stocke une instance de la classe PDO dans une variable
+            $pdo = Database::getInstance();
+            $sql = 'UPDATE `consumer` SET 
+                        `validated_at` = CURRENT_TIMESTAMP
+                    WHERE `mail` = :mail';
+
+            $sth = $pdo->prepare($sql);
+            $sth->bindValue(':mail', $mail);
+            return $sth->execute();
+        } catch (PDOException $ex) {
+            //var_dump($ex);
+            return false;
         }
     }
 }

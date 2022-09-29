@@ -10,27 +10,31 @@ require_once __DIR__ . '/../models/dog.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
+    $password = $_POST['password'];
+    var_dump($password);
 
-    //===================== email : Nettoyage et validation =======================
-    $mail = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
-
-    if (!empty($mail)) {
-        $testMail = filter_var($mail, FILTER_VALIDATE_EMAIL);
-        if (!$testEmail) {
-            $error["email"] = "L'adresse email n'est pas au bon format!!";
-        }
+    // Récupération de toutes les infos du user en fonction de son email.
+    $consumer = Consumer::getByEmail($mail);
+    var_dump($consumer);
+    $password_hash = $consumer->password;
+    var_dump($password_hash);
+    // Cette fonction native renvoie un bool si le password en clair est reconnu dans le password_hash
+    $isConsumerVerified = password_verify($password, $password_hash);
+    var_dump($isConsumerVerified);
+    
+    if(!$isConsumerVerified){
+        $errors['global'] = 'Problème de login';
     } else {
-        $error["email"] = "L'adresse mail est obligatoire!!";
-    }
-}
-$password = isset($_POST['password']);
-$password_verif = isset($_POST['passwordConfirm']);
+        // Si la colonne validate_at est à NULL c'est que l'utilisateur n'a pas encore validé son compte
+        if(is_null($consumer->validated_at)){
+            $errors['global'] = 'Votre compte n\'est pas encore validé';
+        } else {
+            $_SESSION['consumer'] = $consumer;
+            header('location:/controllers/pages-controller.php');
+        }
 
-// Je m'assure que le mots de passe soit bien deux foi le meme 
-if($password!==$password_verif){
-    $errors['password'] = 'Les mots de passe ne sont pas identiques';
-} else {
-    $password = password_hash($password, PASSWORD_DEFAULT);
+    }
 }
 
 

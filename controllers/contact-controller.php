@@ -1,7 +1,7 @@
 <?php
 
-include(__DIR__.'/../views/header.php');
-include(dirname(__FILE__) . '/../config/config.php');
+
+require_once __DIR__ . '/../config/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } 
         }
 }
-
+include(__DIR__.'/../views/header.php');
 include(__DIR__.'/../views/contact.php');
 include(__DIR__.'/../views/footer.php');
 

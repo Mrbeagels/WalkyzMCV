@@ -1,6 +1,7 @@
 <?php
 require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../models/consumer.php');
+require_once __DIR__ . '/../helpers/JWT.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,18 +19,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // mdp 1 
-    $password = isset($_POST['password']);
+    $password = $_POST['password'];
     // mdp 2 
-    $password_verif = isset($_POST['passwordConfirm']);
+    $password_verif = $_POST['passwordConfirm'];
 
+    if(!empty($password_verif)){
     // Je m'assure que le mots de passe soit bien deux fois le meme 
     if ($password !== $password_verif) {
         $errors['password'] = 'Les mots de passe ne sont pas identiques';
     } else {
         $password = password_hash($password, PASSWORD_DEFAULT);
     }
-
-
+}
     //===================== civilité : Nettoyage et validation =======================
 
     $civility = intval(filter_input(INPUT_POST, 'civility', FILTER_SANITIZE_NUMBER_INT));
@@ -140,7 +141,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $consumer->setWalk_time_slot($walk_time_slot);
         $consumer->setWalk_description($walk_description);
         $response = $consumer->insertConsumer();
-
+        if($response){
+            //envoi d'un mail avec lien contenant un jwt
+            $subject = "Validez votre inscription";
+            $payload = array('mail'=> $mail, 'exp'=>(time() + 3600));
+            $token = JWT::generate($payload);
+            $message = 'Merci de valider votre compte en cliquant sur ce lien: <a href="'.$_SERVER['HTTP_ORIGIN'].'/controllers/validateSignUp-controller.php?token='.$token.'">Cliquez-ici</a>';
+            mail($mail, $subject, $message);
+            header('location: /controllers/signin-controller.php');
+            die;
+        } else {
+            $errors['mail'] = 'Un problème est survenu';
+        }
         // var_dump($consumer,$response); die;
         if ($response) {
             $errorArray['global'] = 'Votre profil est bien enregistré';

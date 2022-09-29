@@ -14,7 +14,7 @@
             <div class="col-7 ">
                 <div class="mb-4">
                     <!-- Champs email -->
-                    <input required aria-describedby="emailHelp" type="email" name="mail" id="email" value="<?= htmlentities($email ?? '') ?>" class="form-control <?= isset($error['email']) ? 'errorField' : '' ?>" placeholder="Votre E-mail*" autocomplete="email">
+                    <input required aria-describedby="emailHelp" type="email" name="mail" id="email" value="<?= htmlentities($mail ?? '') ?>" class="form-control <?= isset($error['email']) ? 'errorField' : '' ?>" placeholder="Votre E-mail*" autocomplete="email">
                     <small id="emailHelp" class="form-text error"><?= $error['email'] ?? '' ?></small>
                     <p class="required">* Champs obligatoires</p>
                 </div>
@@ -26,7 +26,7 @@
             <div class="col-7 ">
                 <div class="mb-4">
                     <!-- Password -->
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe**" pattern="^<?= REGEX_PASSWORD ?>">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe*" pattern="^<?= REGEX_PASSWORD ?>">
                     <p class="required">* Champs obligatoires</p>
                 </div>
             </div>

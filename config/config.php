@@ -1,4 +1,5 @@
 <?php
+    session_start();
 // Regex
 define('REGEX_NO_NUMBER',"^[A-Za-zéèêëàâäôöûüç' \-]+$");
 define('REGEX_ZIPCODE','^[0-9]{5}$');
@@ -42,4 +43,4 @@ define('MESSAGES', [
 ]);
 
 // JWT
-define('SECRET_KEY', 'jkgjgj4<@!/ù¨5sdg46f{èç_èç"&é');
+define('SECRET_KEY', '/wIr#j_]d$fTCk%;lL.wblFOox_}a?');

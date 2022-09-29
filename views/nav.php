@@ -1,3 +1,4 @@
+
                 <!-- Nav bar en mode < 576 px  -->
                 <div class="container-fluid headerColor">
     <nav class="navbar navbar-expand-lg justify-content-arround text-dark  navBarSm">
@@ -44,7 +45,76 @@
         </div>
     </nav>
         <div class=" d-flex justify-content-around w-100">
-            <p><a class="text-decoration-none text-dark" href="/controllers/dogProfil-controller.php">profil </a></p>
+                <?php
+                    if(!isset($_SESSION)){?>
+                    <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Faire une balade</a></p>
+                    <?php }
+                    if(is_null($_SESSION['consumer']->role)){?>
+                        <p><a class="text-decoration-none text-dark" href="../controllers/createWalk-controller.php">Créer une balade</a></p>
+                        <?php } else { ?>
+                            <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Balades
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="../controllers/listWalk-controller.php">Liste des balades</a></li>
+                                <li><a class="dropdown-item" href="../controllers/createWalk-controller.php">Créer une balade</a></li>
+                            </ul>
+                            </div>
+                        <?php }
+
+
+                if(!isset($_SESSION)){?>
+                    <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Inscription</a></p>
+                    <?php }
+                    if(is_null($_SESSION['consumer']->role)){?>
+                        <p><a class="text-decoration-none text-dark" href="../controllers/listWalk-controller.php">Voir les balades</a></p>
+                        <?php } else { ?>
+                            <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Utilisateurs
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../controllers/listConsumer-controller.php">Liste des utilisateurs</a></li>
+                                <li><a class="dropdown-item" href="../controllers/signUp-controller.php">Créer un utilisateur</a></li>
+                            </ul>
+                            </div>
+                            <?php } 
+
+                            if(!isset($_SESSION)){?>
+                    <p><a class="text-decoration-none text-dark" href="../controllers/signin-controller.php">Connexion</a></p>
+                    <?php }
+                    if(is_null($_SESSION['consumer']->role)){?>
+                        <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Modifier mon profil</a></p>
+                        <?php } else { ?>
+                            <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Chiens
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../controllers/listDog-controller.php">Liste des chiens</a></li>
+                                <li><a class="dropdown-item" href="createDog-controller.php">Créer un chien</a></li>
+                            </ul>
+                            </div>
+                            <?php }
+
+                            if(!isset($_SESSION)){?>
+                    <p><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">Contact</a></p>
+                    <?php }
+                    if(is_null($_SESSION['consumer']->role)){?>
+                        <p><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">Contact</a></p>
+                        <?php } 
+
+
+                        if(!isset($_SESSION)){?>
+                            <p><a class="text-decoration-none text-dark" href="../controllers/news-controller.php">Actualités</a></p>
+                            <?php }
+                            if(is_null($_SESSION['consumer']->role)){?>
+                                <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Modifier mon profil</a></p>
+                                <?php }
+
+
+                            
             <p><a class="text-decoration-none text-dark" href="/controllers/forgotPassword-controller.php">mot de passe oublie </a></p>
             <p><a class="text-decoration-none text-dark" href="/controllers/signUp-controller.php">Inscription </a></p>
             <p><a class="text-decoration-none text-dark" href="/controllers/signIn-controller.php">Connexion </a></p>
