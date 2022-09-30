@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // php des formulaire
     //===================== email : Nettoyage et validation =======================
     $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
+    var_dump($_SESSION['consumer']);die;
 
     if (!empty($mail)) {
         $testEmail = filter_var($mail, FILTER_VALIDATE_EMAIL);
@@ -127,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Si il n'y a pas d'erreur et que les champs en require sont rempli on passe a l'enregistrement en BDD
-var_dump($_SESSION);die;
+
     if (empty($error)) {
         // **HYDRATATION **/
         $consumer = new Consumer;
@@ -153,12 +154,10 @@ var_dump($_SESSION);die;
         } else {
             $errors['mail'] = 'Un problème est survenu';
         }
-        // var_dump($consumer,$response); die;
         if ($response) {
             $errorArray['global'] = 'Votre profil est bien enregistré';
         }
     }
-    
     /*************************************************************/
 }
 include(__DIR__ . '/../views/header.php');

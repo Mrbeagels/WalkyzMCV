@@ -202,8 +202,8 @@ class Dog_profil {
         try {
             $pdo = Database::getInstance();
             // On créé la requête avec des marqueurs nominatifs
-            $sql = 'INSERT INTO `dog_profil` (`name`, `nickname`, `birthdate`, `weight`, `breed`, `stats`,`behavior`,`description`) 
-                VALUES (:name, :nickname, :birthdate, :weight, :breed, :stats, :behavior, :description);';
+            $sql = 'INSERT INTO `dog_profil` (`name`, `nickname`, `birthdate`, `weight`, `breed`, `stats`,`behavior`,`description`, `id_consumer`) 
+                VALUES (:name, :nickname, :birthdate, :weight, :breed, :stats, :behavior, :description, :id_consumer);';
 
             // On prépare la requête
             $sth = $this->pdo->prepare($sql);
@@ -217,7 +217,7 @@ class Dog_profil {
             $sth->bindValue(':stats', $this->getStats(), PDO::PARAM_STR);
             $sth->bindValue(':behavior', $this->getBehavior(), PDO::PARAM_STR);
             $sth->bindValue(':description', $this->getDescription(), PDO::PARAM_STR);
-            
+            $sth->bindValue('id_consumer', $this->getId_consumer(), PDO::PARAM_STR);
             // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
             return $sth->execute();
         } catch (PDOException $ex) {
@@ -281,7 +281,7 @@ class Dog_profil {
     {
         try {
 
-            $sql = 'UPDATE `dogs_profils` SET 
+            $sql = 'UPDATE `dog_profil` SET 
                         `name` = :name, 
                         `nickname` = :nickname, 
                         `birthdate` = :birthdate,
@@ -290,7 +290,7 @@ class Dog_profil {
                         `stats` = :stats, 
                         `behavior` = :behavior
                         `description` = :description
-                    WHERE `id_dog_profil` = :id_dog_profil';
+                    WHERE `id` = :id';
 
             $sth = $this->_pdo->prepare($sql);
             $sth->bindValue(':name', $this->getName());
@@ -301,7 +301,7 @@ class Dog_profil {
             $sth->bindValue(':stats', $this->getStats());
             $sth->bindValue(':behavior', $this->getBehavior());
             $sth->bindValue(':description', $this->getDescription());
-            $sth->bindValue(':id_dog_profil', $id, PDO::PARAM_INT);
+            $sth->bindValue(':id', $id, PDO::PARAM_INT);
             return $sth->execute();
         } catch (PDOException $ex) {
             //var_dump($ex);
@@ -320,9 +320,9 @@ public static function delete($id)
     try
     {
         $pdo = DATABASE::getInstance();
-        $sql = 'DELETE FROM `dogs_users` WHERE `id_dog_profil` = :id_dogs_profils';
+        $sql = 'DELETE FROM `dog_user` WHERE `id` = :id';
         $sth = $pdo->prepare($sql);
-        $sth->bindValue(':id_dogs_profils',$id,PDO::PARAM_INT);
+        $sth->bindValue(':id',$id,PDO::PARAM_INT);
         $sth->execute();
         if ($sth->rowCount() >0){
             return true;
@@ -347,7 +347,7 @@ public static function delete($id)
             $pdo = Database::getInstance();
             // On créé la requête
             $sql = "SELECT `name`, `nickname`,`breed`, `birthdate`, `id` 
-            FROM `dogs_profils` 
+            FROM `dog_profil` 
             WHERE((`name` LIKE :search) OR (`nickname` LIKE :search) OR (`breed` LIKE :search)) OR (`birhdate` LIKE :search)";
             if($limit!=0){
                 $sql .= " LIMIT :limit OFFSET :offset";

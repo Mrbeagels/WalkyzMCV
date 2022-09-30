@@ -6,7 +6,6 @@
             <a  href="../controllers/parameters-controller.php" class="bi bi-gear gear text-dark img-fluid bootIcons" ></a>
             <div>
                     <a  class="link" href="../controllers/pages-controller.php"><h1 class="title text-dark">WALKYZ </h1></a>
-
             </div>
             
             <button class="navbar-toggler buttonNav" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +75,7 @@
                     }
                         if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role))
                         {?>
-                        <li><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Modifier mon profil</a></li>
+                        <li><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php?id=<?= htmlentities($consumer->id_consumer) ?>">Modifier mon profil</a></li>
                         
                     <?php 
                     } 
@@ -119,7 +118,7 @@
                     }
                         if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role))
                         {?>
-                        <li><a class="text-decoration-none text-light btn-success" href="../controllers/signOut-controller.php">Déconnexion</a></li>
+                        <li><a class="text-decoration-none text-dark btn-success" href="../controllers/signOut-controller.php">Déconnexion</a></li>
                         
                     <?php 
                     } ?>
@@ -203,7 +202,7 @@
                     <p><a class="text-decoration-none text-dark" href="../controllers/signin-controller.php">Connexion</a></p>
                     <?php }
                     if(isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role)){?>
-                        <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Modifier mon profil</a></p>
+                        <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php?id=<?= htmlentities($_SESSION['consumer']->id_consumer) ?>">Modifier mon profil</a></p>
                         <?php 
                         }
                         if(isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role))

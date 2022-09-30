@@ -29,7 +29,7 @@
                 <div class="col-7">
                     <div class="mb-4">
                         <!-- Champs prénom -->
-                        <input type="text" name="name" id="name" title="Veuillez entrer un prénom sans chiffres" placeholder="Entrez son nom *" class="form-control <?= isset($error['firstname']) ? 'errorField' : '' ?>" autocomplete="name" value="<?= htmlentities($firstname ?? '') ?>" minlength="1" maxlength="70" pattern="<?= REGEX_NO_NUMBER ?>">
+                        <input type="text" name="name" id="name" title="Veuillez entrer un prénom sans chiffres" placeholder="Entrez son nom *" class="form-control <?= isset($error['name']) ? 'errorField' : '' ?>" autocomplete="name" value="<?= htmlentities($name ?? '') ?>" minlength="1" maxlength="70" pattern="<?= REGEX_NO_NUMBER ?>">
                         <small id="firstnameHelp" class="form-text error"><?= $error['firstname'] ?? '' ?></small>
                     </div>
                 </div>
@@ -47,8 +47,9 @@
                 <div class="col-7">
                     <div class="mb-4">
                         <!-- Champs âge -->
-                        <label class="text-center" for="birthday">Date de naissance * </label>
-                    <input type="date" name="birthdate" id="birthdate" value="<?= htmlentities($consumer->birthdate ?? '') ?>" title="La date de naissance n' est pas au format attendu" placeholder="Entrez votre date de naissance" class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp">
+                        <!-- Champs date de naissance -->
+                    <label class="text-center" for="birthdate">Date de naissance * </label>
+                    <input type="date" name="birthdate" id="birthdate" value="<?= htmlentities($_SESSION['consumer']->birthdate ?? '') ?>" title="La date de naissance n' est pas au format attendu" placeholder="Entrez votre date de naissance" class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp">
                     <small id="birthdateHelp" class="form-text error"><?= $error['birthdate'] ?? '' ?></small>
                     </div>
                 </div>

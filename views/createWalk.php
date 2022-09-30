@@ -1,13 +1,14 @@
 <section class="container-fluid">
     <div class="text-center ">
     <h1 class="my-3">Création d'une nouvelle balade</h1>
-    <h4 class="mb-3"><?= htmlentities($_SESSION['consumer']->firstname) ?> (ou prochaine) balade en bonne compagnie est à portée de main ! </h4>
+    <h4 class="mb-3"><?= htmlentities($_SESSION['consumer']->firstname) ?>, (ou prochaine) balade en bonne compagnie est à portée de main ! </h4>
     </div>
 
     <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <!-- Champs name -->
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-7 ">
+                <label for="name"> Nom de votre promenade</label>
                 <div class="mb-4">
                     <input 
                     type="text" 
@@ -25,6 +26,7 @@
         <!-- zip code -->
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-7 ">
+                <label for="zipcode">Code Postal</label>
                 <div class="mb-4">
                     <input 
                     type="text" 
@@ -42,6 +44,7 @@
         <!-- ville -->
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-7 ">
+                <label for="city">Ville</label>
                 <div class="mb-4">
                     <input 
                     type="text" 
@@ -60,6 +63,7 @@
         <!-- Address -->
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-7 ">
+                <label for="address">Adresse de la promenade</label>
                 <div class="mb-4">
                     <input 
                     type="text" 
@@ -77,6 +81,7 @@
         <!-- date -->
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-7 ">
+                <label for="date"> Date et heure</label>
                 <div class="mb-4">
                     <input 
                     type="datetime-local" 
@@ -94,6 +99,7 @@
         <!-- duration -->
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-7">
+                <label for="duration">Durée estimée de la balade</label>
                 <div class="mb-4">
                     <input type="text" name="duration" id="duration" class="form-control" placeholder="Ex : 1h30">
                     <p class="required">* Champs obligatoires</p>

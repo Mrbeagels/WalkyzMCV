@@ -13,7 +13,7 @@ $id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
 /*************************************************************/
 
 $consumer = Consumer::get($id);
-var_dump($consumer);
+
 
 
 

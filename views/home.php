@@ -1,21 +1,31 @@
+
 <div class="backgroundImg">
     <div class="homeExplanation">
         <div class="cardHome text-center" style="width: 18rem;">
             <div class="card-body">
                 <h5 id="title" class="card-title mt-3">Trouvez des copains de balade proche de chez vous, c'est facile et rapide ! Que du bonheur.</h5>
                 <p>Vous souhaitez :</p>
-                <form action="">
-                    <div class="text-start ps-3 my-3">
-                        <input type="radio" id="createWalkyz" name="choose" value="">
-                        <label for="createWalkyz"> Créer une balade près de chez vous</label>
-                    </div>
+                <!-- Créer une nouvelle balade pour visiteur -- pour utilisateur connecter / admin -->
+                <?php 
+                if (empty($_SESSION)){ ?>
+                    <p><a class="text-decoration-none text-dark" href="/controllers/signUp-controller.php">Créer une nouvelle balade <i class="bi bi-check"></i></a></p>
+                <?php }
+                if (isset($_SESSION['consumer'])){ ?>
+                    <p><a class="text-decoration-none text-dark" href="/controllers/createWalk-controller.php">Créer une nouvelle balade <i class="bi bi-check"></i></a></p>
+                <?php } ?>
 
-                    <div class="text-start ps-3 my-3">
-                        <input type="radio" id="seeWalkyz" name="choose" value="">
-                        <label for="seeWalkyz"> Voir les balades en cours</label>
-                    </div>
-                </form>
-                <a href="#" class="btn btn-primary mb-3">Go somewhere</a>
+                <!-- Voir les balades  pour visiteur -- pour utilisateur connecter / admin du coup faire différence !!  -->
+                <?php
+                if (empty($_SESSION)){ ?>
+                    <p><a class="text-decoration-none text-dark" href="/controllers/signUp-controller.php">Voir les balades existante <i class="bi bi-check"></i></a></p>
+                <?php }
+                if (isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role)){ ?>
+                    <p><a class="text-decoration-none text-dark" href="/controllers/listWalkConsumer-controller.php">Voir les balades existante <i class="bi bi-check"></i></a></p>
+                <?php }
+                    
+                if (isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role)){ ?>
+                    <p><a class="text-decoration-none text-dark" href="/controllers/listWalkAdmin-controller.php">Voir les balades existante <i class="bi bi-check"></i></a></p>
+                <?php } ?>
                 <p>Grâce a nous, ne vous promenez plus jamais seul 🐶</p>
             </div>
         </div>
