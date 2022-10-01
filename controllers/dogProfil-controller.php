@@ -3,6 +3,7 @@ require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../models/dog.php');
 
 // var_dump($_SESSION['consumer']);
+// 
 $id_consumer = $_SESSION['consumer']->id_consumer;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -23,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else { // Pour les champs obligatoires, on retourne une erreur
         $error["name"] = "Vous devez entrer un prénom!!";
     }
-
     //===================== nickname : Nettoyage et validation =======================
     $nickname = trim(filter_input(INPUT_POST, 'nickname', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
     // On vérifie que ce n'est pas vide
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error["description"] = "Votre description n'est pas conforme, merci de n'utiliser que des lettres et des chiffres.";
         }
     }
-    // var_dump($name, $nickname, $birthdate, $weight, $breed, $stats, $behavior, $description, $id_consumer);die;
+
     if (empty($error)) {
         // **HYDRATATION **/
         $dog = new Dog_profil;
@@ -123,9 +123,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $dog->setDescription($description);
         $dog->setId_consumer($id_consumer);
         $response = $dog->insert();
+        
 
+        // Tentative d'ajouter le chieng a la session
+        $dog = Dog_profil::getByConsumer($id_consumer);
 
-        // var_dump($consumer,$response); die;
+        
         if ($response) {
             $errorArray['global'] = 'Votre profil est bien enregistré';
         }

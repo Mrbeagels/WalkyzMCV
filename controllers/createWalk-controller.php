@@ -3,6 +3,7 @@ require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../models/consumer.php');
 
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // name de la balade

@@ -54,7 +54,9 @@
     </div>
 </div> 
 <a href="../controllers/createWalk-controller.php"> provisoir creation de balade </a> <br>
-<a href="../controllers/listConsumer-controller.php"> list utilisateur </a>
+<a href="../controllers/listConsumer-controller.php"> list utilisateur </a> <br>
+<a href="../controllers/dogProfil-controller.php"> créer un chien </a>
+
 
 <!-- Video de présentation -->
 <div class="d-flex justify-content-center mt-5">

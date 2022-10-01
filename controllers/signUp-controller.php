@@ -8,7 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // php des formulaire
     //===================== email : Nettoyage et validation =======================
     $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
-    var_dump($_SESSION['consumer']);die;
 
     if (!empty($mail)) {
         $testEmail = filter_var($mail, FILTER_VALIDATE_EMAIL);

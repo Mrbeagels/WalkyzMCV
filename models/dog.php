@@ -221,7 +221,7 @@ class Dog_profil {
             // On retourne directement true si la requête s'est bien exécutée ou false dans le cas contraire
             return $sth->execute();
         } catch (PDOException $ex) {
-            var_dump($ex);die;
+            // var_dump($ex);die;
             // On retourne false si une exception est levée
             return false;
         }
@@ -315,14 +315,14 @@ class Dog_profil {
  * 
  * @return [type]
  */
-public static function delete($id) 
+public static function delete($id_consumer) 
 {
     try
     {
         $pdo = DATABASE::getInstance();
-        $sql = 'DELETE FROM `dog_user` WHERE `id` = :id';
+        $sql = 'DELETE FROM `dog_profil` WHERE `id_consumer` = :id_consumer';
         $sth = $pdo->prepare($sql);
-        $sth->bindValue(':id',$id,PDO::PARAM_INT);
+        $sth->bindValue(':id_consumer',$id_consumer,PDO::PARAM_INT);
         $sth->execute();
         if ($sth->rowCount() >0){
             return true;
@@ -330,6 +330,7 @@ public static function delete($id)
             return false;
         }
     }catch (PDOException $ex){
+        var_dump($ex);
         return false;
     }
 }
@@ -346,9 +347,9 @@ public static function delete($id)
             // On stocke une instance de la classe PDO dans une variable
             $pdo = Database::getInstance();
             // On créé la requête
-            $sql = "SELECT `name`, `nickname`,`breed`, `birthdate`, `id` 
+            $sql = "SELECT `name`, `nickname`,`weight`,`breed`, `birthdate`, `id_consumer` 
             FROM `dog_profil` 
-            WHERE((`name` LIKE :search) OR (`nickname` LIKE :search) OR (`breed` LIKE :search)) OR (`birhdate` LIKE :search)";
+            WHERE((`name` LIKE :search) OR (`nickname` LIKE :search) OR (`breed` LIKE :search) OR (`birthdate` LIKE :search))";
             if($limit!=0){
                 $sql .= " LIMIT :limit OFFSET :offset";
             }
@@ -366,8 +367,40 @@ public static function delete($id)
             
             
         } catch (PDOException $ex) {
-            //var_dump($ex);
+            // var_dump($ex);
             return [];
+        }
+    }
+
+    // Recupération d'un chien 
+
+    public static function getByConsumer(string $id_consumer): object|bool
+    {
+        try {
+            // On stocke une instance de la classe PDO dans une variable
+            $pdo = Database::getInstance();
+
+            // On créé la requête avec des marqueurs nominatifs
+            $sql = 'SELECT * FROM `dog_profil` WHERE `id_consumer` = :id_consumer;';
+
+            // On prépare la requête
+            $sth = $pdo->prepare($sql);
+
+            //Affectation des valeurs aux marqueurs nominatifs
+            $sth->bindValue(':id_consumer', $id_consumer, PDO::PARAM_STR);
+
+            if (!$sth->execute()) {
+                return false;
+            } else {
+                $dog = $sth->fetch();
+                if (empty($dog)) {
+                    return false;
+                }
+            }
+
+            return $dog;
+        } catch (\PDOException $ex) {
+            return false;
         }
     }
 
