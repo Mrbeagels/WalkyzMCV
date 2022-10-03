@@ -189,7 +189,6 @@ $consumer = Consumer::get($id);
 
 include(dirname(__FILE__) . '/../views/header.php');
 include(dirname(__FILE__) . '/../views/signUp.php');
-// include(dirname(__FILE__).'/../views/appointments/list-appointments.php');
 include(dirname(__FILE__) . '/../views/footer.php');
 
 /*************************************************************/

@@ -55,7 +55,12 @@
 </div> 
 <a href="../controllers/createWalk-controller.php"> provisoir creation de balade </a> <br>
 <a href="../controllers/listConsumer-controller.php"> list utilisateur </a> <br>
-<a href="../controllers/dogProfil-controller.php"> créer un chien </a>
+<a href="../controllers/dogProfil-controller.php"> créer un chien </a> <br>
+<a href="../controllers/editDog-controller.php">Modifier un chieng</a> <br>
+<a href="../controllers/listDog-controller.php">liste des chieng</a> <br>
+<a href="../controllers/listWalk-controller.php">liste des balades</a>
+
+
 
 
 <!-- Video de présentation -->

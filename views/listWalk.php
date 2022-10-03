@@ -22,10 +22,11 @@
     <thead>
         <tr>
             <th class="text-success fs-3" scope="col">Nom</th>
-            <th class="text-success fs-3" scope="col">Surnom</th>
-            <th class="text-success fs-3" scope="col">Date de naissance</th>
-            <th class="text-success fs-3" scope="col">Poids</th>
-            <th class="text-success fs-3" scope="col">Race</th>
+            <th class="text-success fs-3" scope="col">Addresse</th>
+            <th class="text-success fs-3" scope="col">Ville</th>
+            <th class="text-success fs-3" scope="col">Date</th>
+            <th class="text-success fs-3" scope="col">Type</th>
+            <th class="text-success fs-3" scope="col">Description</th>
             <th class="text-success fs-3" scope="col">Id_consumer</th>
         </tr>
     </thead>
@@ -34,18 +35,19 @@
 
         <?php
         // Si la variable $search n'est pas vide alors j'affiche comme avant la liste des utilisateurs issu de la recherche
-        foreach ($dog_profils as $dog) { ?>
+        foreach ($walks as $walk) { ?>
             
             <tr>
-                <td class="text-success"><?= htmlentities($dog->name) ?></td>
-                <td class="text-success"><?= htmlentities($dog->nickname) ?></td>
-                <td class="text-success"><?= htmlentities(date('d.m.Y', strtotime($dog->birthdate))) ?></td>
-                <td class="text-success"><?= htmlentities($dog->weight) ?></td>
-                <td class="text-success"><?= htmlentities($dog->breed) ?></td>
-                <td class="text-success"><?= htmlentities($dog->id_consumer) ?></td>
+                <td class="text-success"><?= htmlentities($walk->name) ?></td>
+                <td class="text-success"><?= htmlentities($walk->address) ?></td>
+                <td class="text-success"><?= htmlentities($walk->city) ?></td>
+                <td class="text-success"><?= htmlentities($walk->walk_date) ?></td>
+                <td class="text-success"><?= TYPEOFWALKYZ[htmlentities($walk->type)] ?></td>
+                <td class="text-success"><?= htmlentities($walk->description) ?></td>
+                <td class="text-success"><?= htmlentities($walk->id_consumer) ?></td>
                 <td class="text-success">
-                    <a href="/controllers/editDog-controller.php?id=<?= htmlentities($dog->id_consumer) ?>"><i class="text-success bi bi-pencil fs-3"></i></a>
-                    <a href="/controllers/deleteDog-controller.php?id=<?= htmlentities($dog->id_consumer) ?>"><i class=" text-success bi bi-trash fs-3"></i> </a>
+                    <a href="/controllers/editWalk-controller.php?id=<?= htmlentities($walk->id_consumer) ?>"><i class="text-success bi bi-pencil fs-3"></i></a>
+                    <a href="/controllers/deleteWalk-controller.php?id=<?= htmlentities($walk->id_consumer) ?>"><i class=" text-success bi bi-trash fs-3"></i> </a>
                 </td>
             </tr>
         <?php

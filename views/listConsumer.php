@@ -39,13 +39,13 @@
             
             <tr>
                 <td class="text-success"><?= htmlentities($consumer->id_consumer) ?></td>
-                <td class="text-success"><?= htmlentities($consumer->civility) ?></td>
+                <td class="text-success"><?= CIVILITY [htmlentities($consumer->civility)] ?></td>
                 <td class="text-success"><?= htmlentities($consumer->firstname) ?></td>
                 <td class="text-success"><?= htmlentities($consumer->lastname) ?></td>
                 <td class="text-success"><?= htmlentities(date('d.m.Y', strtotime($consumer->birthdate))) ?></td>                
                 <td class="text-success"><a href="mailto:<?= htmlentities($consumer->mail) ?>"><?= htmlentities($consumer->mail) ?></a></td>
-                <td class="text-success"><?= htmlentities($consumer->walk_type) ?></td>
-                <td class="text-success"><?= htmlentities($consumer->walk_time_slot) ?></td>
+                <td class="text-success"><?= BEHAVIOR[htmlentities($consumer->walk_type)] ?></td>
+                <td class="text-success"><?= WHENWALKYZ[htmlentities($consumer->walk_time_slot)] ?></td>
                 <td class="text-success">
                     <a href="/controllers/editConsumer-controller.php?id=<?= htmlentities($consumer->id_consumer) ?>"><i class="text-success bi bi-pencil fs-3"></i></a>
                     <a href="/controllers/deleteConsumer-controller.php?id=<?= htmlentities($consumer->id_consumer) ?>"><i class=" text-success bi bi-trash fs-3"></i> </a>

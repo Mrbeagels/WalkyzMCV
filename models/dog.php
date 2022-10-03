@@ -277,7 +277,7 @@ class Dog_profil {
      * @return boolean
      */
 
-    public function update(int $id): bool
+    public function update(int $id_consumer): bool
     {
         try {
 
@@ -286,13 +286,13 @@ class Dog_profil {
                         `nickname` = :nickname, 
                         `birthdate` = :birthdate,
                         `weight` = :weight,
-                        `breed` = :breed
+                        `breed` = :breed,
                         `stats` = :stats, 
-                        `behavior` = :behavior
+                        `behavior` = :behavior,
                         `description` = :description
-                    WHERE `id` = :id';
+                    WHERE `id_consumer` = :id_consumer';
 
-            $sth = $this->_pdo->prepare($sql);
+            $sth = $this->pdo->prepare($sql);
             $sth->bindValue(':name', $this->getName());
             $sth->bindValue(':nickname', $this->getNickname());
             $sth->bindValue(':birthdate', $this->getBirthdate());
@@ -301,10 +301,10 @@ class Dog_profil {
             $sth->bindValue(':stats', $this->getStats());
             $sth->bindValue(':behavior', $this->getBehavior());
             $sth->bindValue(':description', $this->getDescription());
-            $sth->bindValue(':id', $id, PDO::PARAM_INT);
+            $sth->bindValue(':id_consumer', $id_consumer, PDO::PARAM_INT);
             return $sth->execute();
         } catch (PDOException $ex) {
-            //var_dump($ex);
+            var_dump($ex);
             return false;
         }
     }

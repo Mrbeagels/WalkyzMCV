@@ -17,7 +17,7 @@
                     <div class="col-md-12 col-sm-6 col-xs-12 profilPicNone" style="background-color:green; height: 400px; margin: 15px;"></div>
                 </div>
             </div>
-<?php  var_dump($_SESSION); ?>
+
                 <div class="text-center my-3">
                     <h2>Le profil de votre chien</h2>
                     <p>parlez nous de votre compagnons ! 🐶 </p>
@@ -74,11 +74,9 @@
             </div>
 
             <!-- stats -->
-            <div class="text-center">
-                <h3>Comment definiriez vous le caractère de votre chien avec les humains ?</h3>
-            </div>
-            <div class="row ">
-                <div class="col">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-6">
+                    <h3 class="my-4 text-center">Comment definiriez vous le caractère de votre chien avec les humains ?</h3>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="stats" id="stats0" value="0" <?= (isset($_SESSION['dog']->stats) && $_SESSION['dog']->stats == 0) ? 'checked' : '' ?>>
                         <label class="form-check-label" for="stats0">
@@ -119,7 +117,7 @@
 
                     <!-- behavior -->
                     <div class="text-center">
-                        <h3>Quel est son comportement vis a vis des autres chiens ?</h3>
+                        <h3 class="my-4">Quel est son comportement vis a vis des autres chiens ?</h3>
                     </div>
                     <div class="row">
                         <div class="col">
@@ -149,7 +147,7 @@
                             </div>
 
                                 <div class="text-center">
-                                    <label class="bi bi-pen-fill mb-4" for="aboutU">La description de votre chien</label>
+                                    <label class="bi bi-pen-fill my-4" for="aboutU">La description de votre chien</label>
                                     
                                 </div>
                                 <div class="row">

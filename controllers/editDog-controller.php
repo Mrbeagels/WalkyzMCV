@@ -3,9 +3,17 @@ require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../models/dog.php');
 
 
-$id_consumer = $_SESSION['consumer']->id_consumer;
+
+// Initialisation du tableau d'erreurs
+$error = array();
+/*************************************/
+
+// Nettoyage de l'id passé en GET dans l'url
+$id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
+$id_consumer=$_SESSION['consumer']->id_consumer;
+/*************************************************************/
+
 $dog = Dog_profil::getByConsumer($id_consumer);
-$_SESSION['dog']=$dog;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //===================== name : Nettoyage et validation =======================
@@ -110,33 +118,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error["description"] = "Votre description n'est pas conforme, merci de n'utiliser que des lettres et des chiffres.";
         }
     }
-    
+
+    // Si il n'y a pas d'erreurs, on met à jour le patient.
+
     if (empty($error)) {
-        // **HYDRATATION **/
-        $dog = new Dog_profil;
-        $dog->setName($name);
-        $dog->setNickname($nickname);
-        $dog->setBirthdate($birthdate);
-        $dog->setWeight($weight);
-        $dog->setBreed($breed);
-        $dog->setStats($stats);
-        $dog->setBehavior($behavior);
-        $dog->setDescription($description);
-        $dog->setId_consumer($id_consumer);
-        $response = $dog->insert();
-    
-        
+            // **HYDRATATION **/
+            $dog = new Dog_profil;
+            $dog->setName($name);
+            $dog->setNickname($nickname);
+            $dog->setBirthdate($birthdate);
+            $dog->setWeight($weight);
+            $dog->setBreed($breed);
+            $dog->setStats($stats);
+            $dog->setBehavior($behavior);
+            $dog->setDescription($description);
+            $dog->setId_consumer($id_consumer);
+            $response = $dog->update($id_consumer);
+            // var_dump($ex);
 
-        // Tentative d'ajouter le chieng a la session
-        $dog = Dog_profil::getByConsumer($id_consumer);
-
-        
-        if ($response) {
-            $errorArray['global'] = 'Votre profil est bien enregistré';
-        }
+        if($response){
+            $error['global'] = MESSAGES[1];
+        } else {
+            $error['global'] = ERRORS[4];
+        }    
     }
+
+    // On récupère les données du patient mis à jour
+$dog = Dog_profil::getByConsumer($id_consumer);
+
 }
 
-include(__DIR__ . '/../views/header.php');
-include(__DIR__ . '/../views/dogProfil.php');
-include(__DIR__ . '/../views/footer.php');
+$_SESSION['dog']=$dog;
+
+
+include(dirname(__FILE__) . '/../views/header.php');
+include(dirname(__FILE__) . '/../views/dogProfil.php');
+include(dirname(__FILE__) . '/../views/footer.php');

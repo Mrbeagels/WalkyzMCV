@@ -1,7 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__) . '/../config/database.php');
-// var_dump($walk_type); die;
+
 class Consumer {
     // SignUp-controller.php ajout d'un utilisateur en BDD 
     private int $id_consumer;

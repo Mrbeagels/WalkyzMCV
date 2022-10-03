@@ -12,10 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($mail)) {
         $testEmail = filter_var($mail, FILTER_VALIDATE_EMAIL);
         if (!$testEmail) {
-            $error["email"] = "L'adresse email n'est pas au bon format!!";
+            $error["mail"] = "L'adresse email n'est pas au bon format!!";
         }
     } else {
-        $error["email"] = "L'adresse mail est obligatoire!!";
+        $error["mail"] = "L'adresse mail est obligatoire!!";
     }
 
     // mdp 1 
@@ -123,7 +123,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error["walk_description"] = "Votre description n'est pas conforme, merci de n'utiliser que des lettres et des chiffres.";
         }
     }
-// var_dump($mail, $password, $password_verif, $civility, $lastname, $firstname, $birthdate, $walk_type, $walk_time_slot, $walk_description); die;
 
 
     // Si il n'y a pas d'erreur et que les champs en require sont rempli on passe a l'enregistrement en BDD

@@ -1,7 +1,8 @@
+
 <section class="container-fluid">
     <div class="text-center ">
     <h1 class="my-3">Création d'une nouvelle balade</h1>
-    <h4 class="mb-3"><?= htmlentities($_SESSION['consumer']->firstname) ?>, (ou prochaine) balade en bonne compagnie est à portée de main ! </h4>
+    <h4 class="mb-3"><?= htmlentities($_SESSION['consumer']->firstname) ?> votre prochaine balade en bonne compagnie est à portée de main ! </h4>
     </div>
 
     <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
@@ -14,7 +15,7 @@
                     type="text" 
                     name="name" 
                     id="name" 
-                    value="<?= htmlentities($name ?? '') ?>" 
+                    value="<?= htmlentities($_SESSION['walk']->name ?? '') ?>" 
                     class="form-control <?= isset($error['name']) ? 'errorField' : '' ?>" 
                     placeholder="Ex : Randonnée du marais des boeufs, mercredi apres-midi" 
                     autocomplete="name">
@@ -26,17 +27,17 @@
         <!-- zip code -->
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-7 ">
-                <label for="zipcode">Code Postal</label>
+                <label for="zipCode">Code Postal</label>
                 <div class="mb-4">
                     <input 
                     type="text" 
-                    name="zipcode" 
-                    id="zipcode" 
-                    value="<?= htmlentities($zipcode ?? '') ?>" 
-                    class="form-control <?= isset($error['zipcode']) ? 'errorField' : '' ?>" 
+                    name="zipCode" 
+                    id="zipCode" 
+                    value="<?= htmlentities($_SESSION['walk']->zipCode ?? '') ?>" 
+                    class="form-control <?= isset($error['zipCode']) ? 'errorField' : '' ?>" 
                     placeholder="Ex : 80450" 
-                    autocomplete="zipcode">
-                    <small class="form-text error"><?= $error['zipcode'] ?? '' ?></small>
+                    autocomplete="zipCode">
+                    <small class="form-text error"><?= $error['zipCode'] ?? '' ?></small>
                     <p class="required">* Champs obligatoires</p>
                 </div>
             </div>
@@ -50,7 +51,7 @@
                     type="text" 
                     name="city" 
                     id="city" 
-                    value="<?= htmlentities($city ?? '') ?>" 
+                    value="<?= htmlentities($_SESSION['walk']->city ?? '') ?>" 
                     class="form-control <?= isset($error['city']) ? 'errorField' : '' ?>" 
                     placeholder="Ex : Camon" 
                     autocomplete="city">
@@ -69,7 +70,7 @@
                     type="text" 
                     name="address" 
                     id="address" 
-                    value="<?= htmlentities($address ?? '') ?>" 
+                    value="<?= htmlentities($_SESSION['walk']->address ?? '') ?>" 
                     class="form-control <?= isset($error['address']) ? 'errorField' : '' ?>" 
                     placeholder="Ex : 8 Rue René Gambier" 
                     autocomplete="address">
@@ -84,13 +85,13 @@
                 <label for="date"> Date et heure</label>
                 <div class="mb-4">
                     <input 
-                    type="datetime-local" 
-                    name="date" 
-                    id="date" 
-                    value="<?= htmlentities($date ?? '') ?>" 
-                    class="form-control <?= isset($error['date']) ? 'errorField' : '' ?>" 
-                    autocomplete="date">
-                    <small class="form-text error"><?= $error['date'] ?? '' ?></small>
+                    type="date" 
+                    name="walk_date" 
+                    id="walk_date" 
+                    value="<?= htmlentities($_SESSION['walk']->walk_date ?? '') ?>" 
+                    class="form-control <?= isset($error['walk_date']) ? 'errorField' : '' ?>" 
+                    autocomplete="walk_date">
+                    <small class="form-text error"><?= $error['walk_date'] ?? '' ?></small>
                     <p class="required">* Champs obligatoires</p>
                 </div>
             </div>
@@ -101,7 +102,8 @@
             <div class="col-7">
                 <label for="duration">Durée estimée de la balade</label>
                 <div class="mb-4">
-                    <input type="text" name="duration" id="duration" class="form-control" placeholder="Ex : 1h30">
+                    <input type="text" name="duration"
+                    value="<?= htmlentities($_SESSION['walk']->duration ?? '') ?>" id="duration" class="form-control" placeholder="Ex : 1h30">
                     <p class="required">* Champs obligatoires</p>
                 </div>
             </div>
@@ -110,29 +112,29 @@
         <div class="text-center">
             <h3>Quel type de balade souhaitez-vous faire ? </h3>
         </div>
-        <div class="row">
-            <div class="col">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="typeOfWalkyz" id="typeOfWalkyz0" value="0" <?= (isset($typeOfWalkyz) && $typeOfWalkyz == 0) ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="typeOfWalkyz0">
+                    <input class="form-check-input" type="radio" name="type" id="type0" value="0" <?= (isset($_SESSION['walk']->type) && $_SESSION['walk']->type == 0) ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="type0">
                         Courte balade (≃ 1h)
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="typeOfWalkyz" id="typeOfWalkyz1" value="1" <?= (isset($typeOfWalkyz) && $typeOfWalkyz == 1) ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="typeOfWalkyz1">
+                    <input class="form-check-input" type="radio" name="type" id="type1" value="1" <?= (isset($_SESSION['walk']->type) && $_SESSION['walk']->type == 1) ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="type1">
                         Longue balade (> 2h)
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="typeOfWalkyz" id="typeOfWalkyz2" value="2" <?= (isset($typeOfWalkyz) && $typeOfWalkyz == 2) ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="typeOfWalkyz2">
+                    <input class="form-check-input" type="radio" name="type" id="type2" value="2" <?= (isset($_SESSION['walk']->type) && $_SESSION['walk']->type == 2) ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="type2">
                         Faire jouer nos chiens
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="typeOfWalkyz" id="typeOfWalkyz3" value="3" <?= (isset($typeOfWalkyz) && $typeOfWalkyz == 3) ? 'checked' : '' ?>>
-                    <label class="form-check-label" for="typeOfWalkyz3">
+                    <input class="form-check-input" type="radio" name="type" id="type3" value="3" <?= (isset($_SESSION['walk']->type) && $_SESSION['walk']->type == 3) ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="type3">
                         Autre
                     </label>
                     <p class="required">* Champs obligatoires</p>
@@ -149,6 +151,7 @@
                             name="description" 
                             id="description" 
                             rows="10" 
+                            value="<?= htmlentities($_SESSION['walk']->description ?? '') ?>"
                             placeholder="Randonnée de plusieurs heures ou simplement lancer de frisbee dans le parc du village ? Informez les utilisateurs de ce que voulez faire pendant cette balade "><?= $description ?? '' ?></textarea>
                             <small 
                             class="form-text error"><?= $error['description'] ?? '' ?></small>
