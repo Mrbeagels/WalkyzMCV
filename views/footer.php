@@ -1,60 +1,50 @@
 </body>
-<footer  text-center>
-    <!-- Grid container -->
-    <div class="container p-4">
-        <!-- Section: Text -->
-        <section class="mb-4">
-            <p>
-                Walkyz le site qui met en relation des propriétaires de chien qui cherchent un peu de compagnie pour eux, ou pour leurs compagnons a quatres pattes.
-            </p>
-            <p>
-                bottom text intensifie
-            </p>
-
-        </section>
-        <!-- Section: Text -->
-
-        <!-- Section: Links -->
-        <section class="">
-            <!--Grid row-->
-            <div class="row">
-                <!--Grid column-->
-                <div class="col-auto text-center mx-auto">
-                    <h5 class="text-uppercase">Liens</h5>
-
-                    <ul class="list-unstyled mb-0">
+<footer class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-lg-4">
+        <img src="../public/assets/img/illu-footer.jpg" class="img-fluid" alt="centre ville vivant pleins de gens et au millieu une dame rousse promene son chien">
+        </div>
+        <div class="col-12 col-lg-4 ">
+            <ul class="text-center list-unstyled">
+                <?php 
+                    if(empty($_SESSION['consumer']))
+                    {?>
+                <li><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Faire une balade</a></li>
+                                <li><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Inscription</a></li>
+                                <li><a class="text-decoration-none text-dark" href="../controllers/signIn-controller.php">Connexion</a></li>
+                                <li><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">Contact</a></li>
+                                <li><a class="text-decoration-none text-dark" href="../controllers/naws-controller.php">Actualité</a></li>
+            
+                <?php }else { ?>
                         <li>
-                            <a href="../controllers/pages-controller.php?cat=global" text-decoration-none">Actualités générales</a>
-                        </li>
-                        <li>
-                            <a href="../controllers/pages-controller.php?cat=foot" text-decoration-none">Football</a>
-                        </li>
-                        <li>
-                            <a href="../controllers/pages-controller.php?cat=tennis" text-decoration-none">Tennis</a>
-                        </li>
-                        <li>
-                            <a href="../controllers/pages-controller.php?cat=rugby" text-decoration-none">Rugby</a>
-                        </li>
-                        <li>
-                            <a href="/controllers/contact-controller.php" text-decoration-none">Contactez-nous</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--Grid row-->
-        </section>
-        <!-- Section: Links -->
-    </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="container-fluid">
-        <div class=" d-flex justify-content-between align-items-start w-100">
-            <a class="link" href=""><p class="text-dark">Mention légales</p></a>
-            <a class="link" href=""><p class="text-dark"> © 2022 Copyright Thibaud Marin</p></a>
-            <a class="link" href=""><p class="text-dark">CGU</p></a>
+                        <h4 class="text-dark fw-bold">Les balades</h4>
+                    </li>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/createWalk-controller.php">Créer une balade</a></li>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/listWalk-controller.php">Voir les balades</a></li>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/editWalk-controller.php">Modifier une balade</a></li>
+                    <li>
+                        <h4 class="text-dark fw-bold">Mon chien</h4>
+                    </li>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/dogProfil-controller.php">Créer son profil</a></li>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/editDog-controller.php">Modifier son profil</a></li>
+                    <li>
+                        <h4 class="text-dark fw-bold">Informations complémentaires</h4>
+                    </li>
+                    <li><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">contactez-nous</a></li>
+                    <li><a class="text-decoration-none text-dark" href="#bgHowItWork">Comment ça marche</a></li>
+                <?php } ?>
+            </ul>
+        </div>
+        <div class="col-12 col-lg-3">
+            <a href="../controllers/pages-controller.php"><img src="../public/assets/img/Logo.png" class="img-fluid" alt="logo du site walkyz, une tête de chien orange et blanche"></a>
         </div>
     </div>
-    <!-- Copyright -->
+    <div class="row text-center mt-5">
+        <div class="col-3"><a  class="text-decoration-none text-black" href="../controllers/CGU-controller.php">CGU</a></div>
+        <div class="col-6"><p>Copyright Thibaud Marin 2022 pour l'examen de la Manu</p></div>
+        <div class="col-3"><a class="text-decoration-none text-black"  href="../controllers/legalNotice-controller.php">Mention légales</a></div>
+    </div>
+
 </footer>
 <!-- CDN js BOOTSTRAP -->
 <!-- JavaScript Bundle with Popper -->

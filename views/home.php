@@ -53,12 +53,12 @@
         </div>
     </div>
 </div> 
-<a href="../controllers/createWalk-controller.php"> provisoir creation de balade </a> <br>
+<!-- <a href="../controllers/createWalk-controller.php"> provisoir creation de balade </a> <br>
 <a href="../controllers/listConsumer-controller.php"> list utilisateur </a> <br>
 <a href="../controllers/dogProfil-controller.php"> créer un chien </a> <br>
 <a href="../controllers/editDog-controller.php">Modifier un chieng</a> <br>
 <a href="../controllers/listDog-controller.php">liste des chieng</a> <br>
-<a href="../controllers/listWalk-controller.php">liste des balades</a>
+<a href="../controllers/listWalk-controller.php">liste des balades</a> -->
 
 
 
@@ -75,7 +75,7 @@
 
 
 <!-- Comment ça marche -->
-<div class="container-fluid bgHowItWork">
+<div class="container-fluid bgHowItWork" id="bgHowItWork">
     <div class="d-flex justify-content-center align-items-center my-5 ">
         <h2 class="headingDecoration mt-5">Comment ça marche ? Simplicité et envie d'aventure :</h2>
     </div>

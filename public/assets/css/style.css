@@ -114,6 +114,10 @@ i.vert-move {
     100% { transform: translateY(-10px); }
 }
 
+footer{
+    background-color:	rgb(152,251,152);
+}
+
 
 
 
