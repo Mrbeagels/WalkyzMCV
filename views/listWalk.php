@@ -8,7 +8,7 @@
 
 <?php } else { ?>
 <section class="bgFooter">
-<h1 class="text-success text-center py-5">Liste des chiens</h1>
+<h1 class="text-success text-center py-5">Liste des balades  <span class="text-danger">admin</span>  </h1>
 
 <form method="GET">
     <div class="col-12 text-center pb-4">
@@ -64,7 +64,7 @@
         <?php 
         for ($p=$page-2; $p <= $page +2; $p++) {
             if($p >= 1 && $p <= $nbPages ){?> 
-            <li class="page-item <?=($p == $page) ? 'active' :'' ;  ?>"><a class="page-link" href="/controllers/list-patientCtrl.php?page=<?=$p?>&search=<?= $search?> "><?=$p?></a></li>
+            <li class="page-item <?=($p == $page) ? 'active' :'' ;  ?>"><a class="page-link" href="/controllers/listWalk.php?page=<?=$p?>&search=<?= $search?> "><?=$p?></a></li>
         <?php }} ?>
     </ul>
 </nav>

@@ -12,7 +12,7 @@ $page = intval(filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT));
 
 $nbrtotalelmnt= count(Walk::getAll($search));
 
-$limit = 10;
+$limit = 30;
 
 $nbPages = ceil($nbrtotalelmnt / $limit);
 

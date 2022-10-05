@@ -5,18 +5,12 @@ require_once(dirname(__FILE__) . '/../models/walk.php');
 $id_consumer = $_SESSION['consumer']->id_consumer;
 $walk = Walk::getUserWalk($id_consumer);
 $_SESSION['walk']=$walk;
-
-
+$dayDate= date('Y-m-d');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // name de la balade
     $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
-    if (!empty($name)) {
-        $testRegex = filter_var($name, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-    }if (!$testRegex) {
-        $error["name"] = "Le nom n'est pas au bon format!!";
-    }
 
     //===================== zipCode : Nettoyage et validation =======================
     $zipCode = trim(filter_input(INPUT_POST, 'zipCode', FILTER_SANITIZE_NUMBER_INT));
@@ -37,18 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //===================== birthdate : Nettoyage et validation =======================
 
 
-        $walk_date = filter_input(INPUT_POST, 'walk_date', FILTER_SANITIZE_NUMBER_INT);
+        $walk_date = filter_input(INPUT_POST, 'walk_date', FILTER_SANITIZE_SPECIAL_CHARS);
         if (!empty($walk_date)) {
-            $walk_dateObj = DateTime::createFromFormat('Y-m-d', $walk_date);
-            $currentWalk_dateObj = new DateTime();
-            if(!$walk_dateObj){
-                $error["walk_date"] = "La date entrée n'est pas valide!";
-            } else {
-                $diff = $walk_dateObj->diff($currentWalk_dateObj);
-                $age = $diff->days/365;
-                if (!$walk_dateObj || $diff->invert == 1 || $walk_dateObj->format('Y-m-d') !== $walk_date || $age==0 || $age>120) {
-                    $error["date"] = "La date entrée n'est pas valide!";
-                }
+            $testRegex = filter_var($walk_date, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_DATETIME . '/')));
+            if (!$testRegex) {
+                $error["walk_date"] = "Vous devez entrer un code postal valide";
             }
         }
 
@@ -75,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    // var_dump($error);die;
 if (empty($error)) {
     // **HYDRATATION **/
     $walk = new Walk;

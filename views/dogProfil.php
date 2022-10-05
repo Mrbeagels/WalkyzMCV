@@ -2,6 +2,7 @@
 
     <div class="container">
         <!-- Profil canin -->
+        <h1 class="text-center my-5 title">LE PROFIL DE VOTRE CHIEN</h1>
         <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
             <div class="row">
                 <div class="col-md-4">
@@ -19,8 +20,12 @@
             </div>
 
                 <div class="text-center my-3">
-                    <h2>Le profil de votre chien</h2>
-                    <p>parlez nous de votre compagnons ! 🐶 </p>
+                    <?php
+                    if (isset($_SESSION['consumer']))
+                    { ?>
+                    <h3>Ici vous pouvez <span class="fw-bold">modifier</span> le profil de votre chien <?= htmlentities($_SESSION['dog']->name) ?></h3>
+                    <?php } ?>
+                    <p>Parlez nous de votre compagnons ! 🐶 </p>
                 </div>
             </div>
 

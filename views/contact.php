@@ -1,7 +1,12 @@
 
 <section class="container-fluid">
+    <div class="row justify-content-center">
+    <div class="col-12  ">
+        <img class="img-fluid my-5 rounded" src="../public/assets/img/dogMail.jpg" alt="">
+    </div>
+</div>
     <div class="text-center mb-5">
-        <h2 class="mt-5">Vous cherchez a nous joindre ? </h2>
+        <h2 class="title">Vous cherchez a nous joindre ? </h2>
     </div>
     <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" id="formContact ">
         <div class="container">
@@ -32,7 +37,7 @@
                 </div>
 
                 <div class="text-center">
-                <input type="submit" value="Envoyer" class="btn btn-primary mt-3" id="validForm">
+                    <button type="submit" class="btn btn-success mt-5">Envoyer</button>
                 </div>
         </div>
             

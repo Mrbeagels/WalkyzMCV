@@ -31,6 +31,7 @@
         </div>
     </div>
 </div>
+<?php var_dump($_SESSION); ?>
 <!-- Explication du site -->
 <div class=" row d-flex justify-content-around h-50 my-5 container-fluid">
     <div class="col-12 col-lg-3 text-center">
@@ -38,7 +39,7 @@
     </div>
     <div class="homeCard col-12 col-lg-4">
         <div class="card-body">
-            <h4 class="card-title headingDecoration">Rejoindre un groupe de balade</h4>
+            <h3 class="card-title headingDecoration">Rejoindre un groupe de balade</h3>
             <h5 class=" my-3">Vous pouvez voir en quelques instants si une balade proche de chez vous va démarrer</h5>
             <p class="card-text">Explorer de nouveaux coins de balade et changer vos habitudes. Chaque maître à sa routine de balade, il est peut-être temps de changer la vôtre, pour le plus grand plaisir de votre chien (et le vôtre !).Idéale en vacance ou en week-end.
             </p>
@@ -47,25 +48,18 @@
 
     <div class="homeCard col-12 col-lg-4">
         <div class="card-body">
-            <h4 class="card-title headingDecoration ">Créer une balade</h4>
+            <h3 class="card-title headingDecoration ">Créer une balade</h3>
             <h5 class=" my-3">Regroupez-vous avec d'autres maîtres afin de vous balader ensemble</h5>
             <p class="card-text">Fatigué de faire votre balade tout seul ? Envie de partager un moment convivial avec d'autres maîtres et d'autres chien ? Grâce à Walkyz, vous pouvez indiquer ou, quand et pour combien de temps vous allez vous balader afin d'inviter vos amis.</p>
         </div>
     </div>
 </div> 
-<!-- <a href="../controllers/createWalk-controller.php"> provisoir creation de balade </a> <br>
-<a href="../controllers/listConsumer-controller.php"> list utilisateur </a> <br>
-<a href="../controllers/dogProfil-controller.php"> créer un chien </a> <br>
-<a href="../controllers/editDog-controller.php">Modifier un chieng</a> <br>
-<a href="../controllers/listDog-controller.php">liste des chieng</a> <br>
-<a href="../controllers/listWalk-controller.php">liste des balades</a> -->
-
 
 
 
 <!-- Video de présentation -->
 <div class="d-flex justify-content-center mt-5">
-    <h2 class="mb-5 headingDecoration">Présentation du concept de Walkyz :</h2>
+    <h3 class="mb-5 headingDecoration">Présentation du concept de Walkyz :</h3>
 
 </div>
 <div class="d-flex justify-content-center my-3">
@@ -77,7 +71,7 @@
 <!-- Comment ça marche -->
 <div class="container-fluid bgHowItWork" id="bgHowItWork">
     <div class="d-flex justify-content-center align-items-center my-5 ">
-        <h2 class="headingDecoration mt-5">Comment ça marche ? Simplicité et envie d'aventure :</h2>
+        <h3 class="headingDecoration mt-5">Comment ça marche ? Simplicité et envie d'aventure :</h3>
     </div>
     <div class="row justify-content-around align-items-center mb-5">
         <div class="col-12 col-lg-3 text-center ">
@@ -102,7 +96,7 @@
     <div class="row d-flex align-items-center justify-content-center">
         <img class="illuFront" src="../public/assets/img/front.png" alt="Ensemble d'illustration resumant le principe du site, des chiens, des balades, de la connexion entre les gens et une carte">
         <div class="col-12 col-lg-7 d-flex flex-column justify-content-center text-center">
-            <h2 class="headingDecoration">Tous les jours de nouveaux membres à deux ou quatre pattes se joignent à nous, pourquoi pas vous ?</h2>
+            <h3 class="headingDecoration">Tous les jours de nouveaux membres à deux ou quatre pattes se joignent à nous, pourquoi pas vous ?</h3>
             <p>Walkyz est une communauté en pleine croissance, avec de nouveaux maîtres et toutous tous les jours. <br></p>
             <p>Vous avez la possibilité de partager du bonheur près de chez vous ou au contraire de visiter de nouveaux lieux de balade avec votre chien en partagent des moments de joie.</p>
             <p>Votre compagnon est 100 % gagnant : plus de sorties, plus de caresses, plus de jeux, plus de copains, une meilleure sociabilisation ... Tout ce dont rêve un doggo</p>
@@ -115,7 +109,7 @@
 
 <div class="container-fluid mt-5">
     <div class="d-flex justify-content-center text-decoration-underline ">
-        <h2 class="headingDecoration mb-5">Les chiens du mois d'Octobre</h2>
+        <h3 class="headingDecoration mb-5">Les chiens du mois d'Octobre</h3>
     </div>
         <div class="row">
         <div class="d-flex flex-column justify-content-center align-items-center col-12 col-lg-4">

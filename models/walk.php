@@ -69,11 +69,11 @@ class Walk {
     }
     // Les setters
     /**
-     * @param int $duration
+     * @param string $duration
      * 
      * @return void
      */
-    public function setDuration(int $duration): void
+    public function setDuration(string $duration): void
     {
         $this->duration = $duration;
     }
@@ -360,7 +360,7 @@ public static function delete($id_walk)
             // On stocke une instance de la classe PDO dans une variable
             $pdo = Database::getInstance();
             // On créé la requête
-            $sql = "SELECT `name`, `address`,`walk_date`,`duration`, `type`, `description`, `city`, `id_consumer` 
+            $sql = "SELECT `name`, `address`,`walk_date`,`duration`, `type`, `description`, `city`, `id_consumer`, `zipCode` 
             FROM `walk` 
             WHERE((`name` LIKE :search) OR (`address` LIKE :search) OR (`type` LIKE :search) OR (`walk_date` LIKE :search)OR (`city` LIKE :search))";
             if($limit!=0){
@@ -385,5 +385,43 @@ public static function delete($id_walk)
         }
     }
 
+
+    // moisi du fion 
+
+    
+    // methode de la liste de balade
+    /**
+     * Méthode qui permet de recuperer le profil du chien et la balade pour affichage
+     * 
+     * @return array
+     */
+    public static function getAllDogAndWalk(int $id_consumer): array
+    {
+
+        $pdo = Database::getInstance();
+
+        try {
+            $sql = '    SELECT * 
+                        FROM `walk` 
+                        INNER JOIN `dog_profil`
+                        ON `walk`.`id_consumer` = `dog_profil`.`id`';
+            
+            $sth = $pdo->prepare($sql);
+
+            if(!is_null($id_consumer)){
+                $sth->bindValue(':id_consumer',$id_consumer,PDO::PARAM_INT);
+            }
+            
+            if ($sth->execute() === false) {
+                return [];
+            } else {
+                return $sth->fetchAll();
+            }
+        } catch (PDOException $ex) {
+            var_dump($ex);
+            // On retourne false si une exception est levée
+            return [];
+        }
+    }
 
 }

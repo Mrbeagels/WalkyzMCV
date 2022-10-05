@@ -44,6 +44,9 @@ color: black;
 .iconNav{
     font-size: 1.6rem;
 }
+.errorField{
+    color: red;
+}
 /* home page */
 .backgroundImg{
     height: 60vh;

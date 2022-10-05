@@ -56,7 +56,7 @@
                                     <h4 class="text-dark fw-bold">Les balades</h4>
                                 </li>
                                 <li><a class="text-decoration-none text-dark" href="../controllers/createWalk-controller.php">Créer une balade</a></li>
-                                <li><a class="text-decoration-none text-dark" href="../controllers/listWalk-controller.php">Voir les balades</a></li>
+                                <li><a class="text-decoration-none text-dark" href="../controllers/listWalkConsumer-controller.php">Voir les balades</a></li>
                                 <li><a class="text-decoration-none text-dark" href="../controllers/editWalk-controller.php">Modifier une balade</a></li>
                                 <li>
                                     <h4 class="text-dark fw-bold">Mon chien</h4>
@@ -92,7 +92,7 @@
 
 <!-- Nav bar en mode > 576 px  -->
 <div class="container-fluid headerColor navBarLg">
-    <nav class="navbar text-center">
+    <nav class="navbar text-center justify-content-center">
         <div class="container-fluid justify-content-arround  ">
             <a href="../controllers/pages-controller.php"><img src="../public/assets/img/Logo.png" class="logo" alt="Walkyz son logo orange si charismatique, on a envie de faire des bisous sur cette tête de dougy"></a>
             <div>
@@ -150,7 +150,7 @@
         </div>
     </nav>
     <!-- Debut des onglets de navigation  -->
-    <div class=" d-flex justify-content-around w-100 pb-3">
+    <div class=" d-flex justify-content-between pb-4 ">
         <?php
         if (empty($_SESSION['consumer'])) { ?>
             <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Créer ma première balade</a></p>
@@ -164,7 +164,7 @@
 
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../controllers/createWalk-controller.php">Créer une nouvelle balade</a></li>
-                    <li><a class="dropdown-item" href="../controllers/listWalk-controller.php">Voir les balades</a></li>
+                    <li><a class="dropdown-item" href="../controllers/listWalkConsumer-controller.php">Voir les balades</a></li>
                     <li><a class="dropdown-item" href="../controllers/editWalk-controller.php">Modifier une balade</a></li>
                 </ul>
             </div>
@@ -242,10 +242,11 @@
             <p><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">Contact</a></p>
         <?php }
         if (isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role)) { ?>
-            <button class="btn btn-success"><a class="text-decoration-none text-light" href="#bgHowItWork">Comment ça marche ?</a></button>
+            <button class="btn btn-success"><a class="text-decoration-none text-light" href="../controllers/pages-controller.php#bgHowItWork">Comment ça marche ?</a></button>
         <?php }
         if (isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role)) { ?>
             <p><a class="text-decoration-none text-light btn btn-success" href="../controllers/signOut-controller.php">Déconnexion</a></p>
+
         <?php } ?>
 
     </div>

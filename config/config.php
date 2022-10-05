@@ -7,6 +7,7 @@ define('REGEX_NO_NUMBER',"^[A-Za-zéèêëàâäôöûüç' \-]+$");
 define('REGEX_ZIPCODE','^[0-9]{5}$');
 define('REGEX_LINKEDIN','^(https:\/\/)?((www\.|fr\.)?([a-zA-Z0-9\.\/=\?\-]*))$');
 define('REGEX_DATE','^([0-9]{4})[\/\-]?([0-9]{2})[\/\-]?([0-9]{2})$');
+define('REGEX_DATETIME','^([0-9]{4})[\/\-]?([0-9]{2})[\/\-]?([0-9]{2})T([0-9]{2}):([0-9]{2})$');
 define('REGEX_TEXTAREA','^[a-zA-Z0-9 éèêëàâäôöûüç,.\'-]');
 define('REGEX_PASSWORD', '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}');
 define('REGEX_AGE', '^[0-9]{1,3}$');
@@ -14,8 +15,8 @@ define('REGEX_AGE', '^[0-9]{1,3}$');
 // Tableau de valeurs pour mes champs
 define('CIVILITY', ['HOMME', 'FEMME', 'AUTRE']);
 define('AUTHORIZED_IMAGE_FORMAT', ['image/jpeg', 'image/png']);
-define('TYPEOFWALKYZ',['Courte balade  (≃ 1h)', 'Longue balade (> 2h)', 'Faire jouer nos chiens', 'Autre']);
-define('WHENWALKYZ', ['En semaine, pendant la journée', 'En semaine le soir', 'Le week-end','Autre']);
+define('TYPEOFWALKYZ',['Courte balade  (≃ 1h)', 'Longue balade (> 2h)', 'Faire jouer nos chiens ensembles', 'agility et exercice']);
+define('WHENWALKYZ', ['En semaine, pendant la journée', 'En semaine le soir', 'Le week-end','autre']);
 define('STATS', ['dominant', 'Passif-Agressif', 'Timide', 'Amical', 'Indépendant', 'Joueur']);
 define('BEHAVIOR', ['Joueur', 'Très peu intéressé par les autres chiens','Il préfère faire sa vie de son côté', 'Se comporte mal avec les autres chiens' ]);
 

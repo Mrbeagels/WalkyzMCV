@@ -3,20 +3,26 @@ require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../models/consumer.php');
 require_once __DIR__ . '/../helpers/JWT.php';
 
-
+// var_dump($error);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // php des formulaire
-    //===================== email : Nettoyage et validation =======================
-    $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
 
-    if (!empty($mail)) {
-        $testEmail = filter_var($mail, FILTER_VALIDATE_EMAIL);
-        if (!$testEmail) {
-            $error["mail"] = "L'adresse email n'est pas au bon format!!";
-        }
+ /*************************** MAIL **************************/
+    //**** NETTOYAGE ****/
+    $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
+    
+    //**** VERIFICATION ****/
+    if(empty($mail)){
+        $error['mail'] = 'Le champ est obligatoire';
     } else {
-        $error["mail"] = "L'adresse mail est obligatoire!!";
+        $isOk = filter_var($mail, FILTER_VALIDATE_EMAIL);
+        if(!$isOk){
+            $error['mail'] = 'Le mail n\'est pas valide';
+        }
+        if(Consumer::isMailExists($mail)){
+            $error['mail'] = 'Ce mail existe déjà';
+        } 
     }
+
 
     // mdp 1 
     $password = $_POST['password'];
@@ -26,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(!empty($password_verif)){
     // Je m'assure que le mots de passe soit bien deux fois le meme 
     if ($password !== $password_verif) {
-        $errors['password'] = 'Les mots de passe ne sont pas identiques';
+        $error['password'] = 'Les mots de passe ne sont pas identiques';
     } else {
         $password = password_hash($password, PASSWORD_DEFAULT);
     }
@@ -38,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($civility)) {
         $testCivility = filter_var($civility, FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 2)));
         if (!$testCivility) {
-            $error["civility"] = "Merci de renseigner une civilité0";
+            $error["civility"] = "Merci de renseigner une civilité";
         }
     }
 
@@ -124,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-
+var_dump($error);
     // Si il n'y a pas d'erreur et que les champs en require sont rempli on passe a l'enregistrement en BDD
 
     if (empty($error)) {
@@ -150,7 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('location: /controllers/signin-controller.php');
             die;
         } else {
-            $errors['mail'] = 'Un problème est survenu';
+            $error['mail'] = 'Un problème est survenu';
         }
         if ($response) {
             $errorArray['global'] = 'Votre profil est bien enregistré';

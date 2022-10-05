@@ -1,7 +1,7 @@
 
 <section class="container-fluid">
     <div class="text-center ">
-    <h1 class="my-3">Création d'une nouvelle balade</h1>
+    <h1 class="my-3 title">Création d'une nouvelle balade</h1>
     <h4 class="mb-3"><?= htmlentities($_SESSION['consumer']->firstname) ?> votre prochaine balade en bonne compagnie est à portée de main ! </h4>
     </div>
 
@@ -85,12 +85,13 @@
                 <label for="date"> Date et heure</label>
                 <div class="mb-4">
                     <input 
-                    type="date" 
+                    type="datetime-local" 
                     name="walk_date" 
                     id="walk_date" 
                     value="<?= htmlentities($_SESSION['walk']->walk_date ?? '') ?>" 
                     class="form-control <?= isset($error['walk_date']) ? 'errorField' : '' ?>" 
-                    autocomplete="walk_date">
+                    autocomplete="walk_date"
+                    min ="<? $dayDate; ?>">
                     <small class="form-text error"><?= $error['walk_date'] ?? '' ?></small>
                     <p class="required">* Champs obligatoires</p>
                 </div>
@@ -100,7 +101,7 @@
         <!-- duration -->
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-7">
-                <label for="duration">Durée estimée de la balade</label>
+                <label for="duration">Durée estimé de la balade</label>
                 <div class="mb-4">
                     <input type="text" name="duration"
                     value="<?= htmlentities($_SESSION['walk']->duration ?? '') ?>" id="duration" class="form-control" placeholder="Ex : 1h30">
@@ -112,7 +113,7 @@
         <div class="text-center">
             <h3>Quel type de balade souhaitez-vous faire ? </h3>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center my-5">
             <div class="col-12 col-lg-6">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="type" id="type0" value="0" <?= (isset($_SESSION['walk']->type) && $_SESSION['walk']->type == 0) ? 'checked' : '' ?>>
@@ -135,7 +136,7 @@
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="type" id="type3" value="3" <?= (isset($_SESSION['walk']->type) && $_SESSION['walk']->type == 3) ? 'checked' : '' ?>>
                     <label class="form-check-label" for="type3">
-                        Autre
+                        Agility et exercice
                     </label>
                     <p class="required">* Champs obligatoires</p>
                 </div>
@@ -155,15 +156,14 @@
                             placeholder="Randonnée de plusieurs heures ou simplement lancer de frisbee dans le parc du village ? Informez les utilisateurs de ce que voulez faire pendant cette balade "><?= $description ?? '' ?></textarea>
                             <small 
                             class="form-text error"><?= $error['description'] ?? '' ?></small>
-                            <p class="required">* Champs obligatoires</p>
                         </div>
                     </div>
                 </div>
 
     </form>
-    <!-- btn redirection vers les balades déjà créer -->
-    <div class="text-center">
-        <input type="submit" value="Envoyer" class="btn btn-primary mt-3" id="validForm">
-    </div>
+
+    <div class="text-center mb-5">
+                    <button type="submit" class="btn btn-success mt-5">Valider ma balade</button>
+                </div>
 
 </section>
