@@ -224,7 +224,7 @@ class Walk {
             $sth->bindValue(':name', $this->getName(), PDO::PARAM_STR);
             $sth->bindValue(':address', $this->getAddress(), PDO::PARAM_STR);
             $sth->bindValue(':walk_date', $this->getWalk_date(), PDO::PARAM_STR);
-            $sth->bindValue(':duration', $this->getDuration(), PDO::PARAM_INT);
+            $sth->bindValue(':duration', $this->getDuration(), PDO::PARAM_STR);
             $sth->bindValue(':type', $this->getType(), PDO::PARAM_INT);
             $sth->bindValue(':description', $this->getDescription(), PDO::PARAM_STR);
             $sth->bindValue('id_consumer', $this->getId_consumer(), PDO::PARAM_STR);

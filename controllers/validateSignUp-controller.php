@@ -22,4 +22,3 @@ if($datas===false){
 
 include __DIR__ . '/../views/header.php';
 include __DIR__ . '/../views/validateSignUp.php';
-include __DIR__ . '/../views/footer.php';

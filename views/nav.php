@@ -97,7 +97,7 @@
             <a href="../controllers/pages-controller.php"><img src="../public/assets/img/Logo.png" class="logo" alt="Walkyz son logo orange si charismatique, on a envie de faire des bisous sur cette tête de dougy"></a>
             <div>
                 <a class="link" href="../controllers/pages-controller.php">
-                    <h1 class="title text-dark">WALKYZ </h1>
+                    <h1 class="title text-dark fw-bold">WALKYZ </h1>
                 </a>
                 <a class="link" href="../controllers/pages-controller.php">
                     <h3 class="text-dark">Le rendez-vous balade</h3>
@@ -150,7 +150,7 @@
         </div>
     </nav>
     <!-- Debut des onglets de navigation  -->
-    <div class=" d-flex justify-content-between pb-4 ">
+    <div class=" d-flex justify-content-between pb-3">
         <?php
         if (empty($_SESSION['consumer'])) { ?>
             <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Créer ma première balade</a></p>
@@ -198,6 +198,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../controllers/dogProfil-controller.php">Créer le profil de mon chien</a></li>
                     <li><a class="dropdown-item" href="../controllers/editDog-controller.php">Modifier le profil de mon chien</a></li>
+                    
                 </ul>
             </div>
         <?php

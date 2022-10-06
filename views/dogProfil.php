@@ -21,11 +21,15 @@
 
                 <div class="text-center my-3">
                     <?php
-                    if (isset($_SESSION['consumer']))
+                    if (!empty($_SESSION['dog']->name))
                     { ?>
                     <h3>Ici vous pouvez <span class="fw-bold">modifier</span> le profil de votre chien <?= htmlentities($_SESSION['dog']->name) ?></h3>
+                    <?php } else { ?>
+                        <h3>Ici vous pouvez <span class="fw-bold">créer</span> le profil de votre chien.</h3>
                     <?php } ?>
+
                     <p>Parlez nous de votre compagnons ! 🐶 </p>
+                
                 </div>
             </div>
 
@@ -66,6 +70,9 @@
                         <input type="number" name="weight" id="weight" title="Entrez son poids" placeholder="Entrez son poids*" class="form-control <?= isset($error['weight']) ? 'errorField' : '' ?>" autocomplete="weight" value="<?= htmlentities($_SESSION['dog']->weight ?? '') ?>" minlength="1" maxlength="3" pattern="<?= REGEX_AGE ?>">
                     <small id="weightHelp" class="form-text error"><?= $error['weight'] ?? '' ?></small>
                     </div>
+                </div>
+                <div class="">
+
                 </div>
             </div>
             <div class="row d-flex justify-content-center mt-3">
@@ -161,7 +168,7 @@
                                         <small class="form-text error"><?= $error['description'] ?? '' ?></small>
                                     </div>
                                 </div>
-                                <div class="text-center">
+                                <div class="text-center mb-5">
                                         <button type="submit" class="btn btn-success mt-5">Valider son profil</button>
                                 </div>
                         </div>

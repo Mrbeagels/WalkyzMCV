@@ -8,29 +8,38 @@
 
 <?php } else { 
 ?>
-<section class="bgFooter">
-    <h1 class="text-success text-center py-5">Liste des balades <span class="text-danger">consumer</span></h1>
-
-    <form method="GET">
-        <div class="col-12 text-center pb-4">
-            
-            <input type="search" id="site-search" name="search" placeholder="Recherche d'une balade" value="<?=$search??'';?>" minlength="1" maxlength="30" >
-            <button class="myButton btn btn-success" type="submit">Rechercher</button>
+<section class="bgFooter container-fluid">
+    <div class="row mt-5">
+        <div class="col-12 col-lg-4 justify-content-center align-items-center">
+            <img src="../public/assets/img/illudog.png" alt="homme a berbe qui promene son chien, couleur froides">
         </div>
-    </form>
+        <div class="col-12 col-lg-4">
+            <h1 class="text-success text-center">Liste des balades <span class="text-danger">consumer</span></h1>
+            <div class="text-center">
+                <form method="GET">
+                        <input type="search" id="site-search" name="search" placeholder="Recherche d'une balade" value="<?=$search??'';?>" minlength="1" maxlength="30" >
+                        <button class="myButton btn btn-success" type="submit">Rechercher</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 justify-content-center align-items-center">
+            <img src="../public/assets/img/woof-success.png" alt="corgi qui rattrape un os au vol">
+        </div>
+    </div>
+    
 
 
     <?php
             // Si la variable $search n'est pas vide alors j'affiche comme avant la liste des utilisateurs issu de la recherche
             foreach ($walks as $walk) { ?>
-    <div class="card my-3">
-        <div class="card-header text-center">
+    <div class="card my-5">
+        <div class="card-header text-center ">
             <h2><?= htmlentities($walk->name)?>, le <?= htmlentities($walk->walk_date)?> à <?= htmlentities($walk->city)?></h2>
         </div>
         <div class="card-body bg-success bg-card">
             <h5 class="card-title"> Vous pouvez rejoindre cette balade le <?= htmlentities($walk->walk_date)?>, départ au <?= htmlentities($walk->address)?>, <?= htmlentities($walk->city) ?> (<?= $walk->zipCode ?>)</h5>
             <p class="card-text">Type de walkyz : <?= TYPEOFWALKYZ[htmlentities($walk->type)] ?></p>
-            <p class="card-text">Durée estimée de la Walkyz : <?= TYPEOFWALKYZ[htmlentities($walk->duration)] ?></p>
+            <p class="card-text">Durée estimée de la Walkyz : <?= htmlentities($walk->duration) ?></p>
             <?php 
             if (!empty($walk->description))
             { ?>
@@ -39,7 +48,7 @@
             }
             ?>
             <div class="text-end">
-                <a href="#" class="btn btn-primary"></a>
+                <a href="#" class="btn btn-primary"><i class="bi bi-person-plus"></i></a>
             </div>
         </div>
     </div>

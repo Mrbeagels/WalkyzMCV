@@ -40,3 +40,4 @@
             <a class=" text-dark" href="/controllers/forgotPassword-controller.php"><p class="required mt-3">Mon chien a mangé mon mot de passe</p></a>
         </div>
 </form>
+</div>

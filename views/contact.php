@@ -1,13 +1,14 @@
 
 <section class="container-fluid">
-    <div class="row justify-content-center">
-    <div class="col-12  ">
-        <img class="img-fluid my-5 rounded" src="../public/assets/img/dogMail.jpg" alt="">
-    </div>
-</div>
     <div class="text-center mb-5">
         <h2 class="title">Vous cherchez a nous joindre ? </h2>
     </div>
+    <div class="row justify-content-center">
+    <div class="col-12 col-lg-4  ">
+        <img class="img-fluid rounded" src="../public/assets/img/dogMail.jpg" alt="">
+    </div>
+    <div class="col-12 col-lg-8">
+
     <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" id="formContact ">
         <div class="container">
 
@@ -42,6 +43,8 @@
         </div>
             
     </form>
+    </div>
+</div>
     <div class="container my-5">
         <div class="d-flex justify-content-around text-center">
 

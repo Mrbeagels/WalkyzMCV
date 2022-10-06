@@ -1,10 +1,10 @@
 </body>
 <footer class="container-fluid">
-    <div class="row justify-content-center align-items-center">
-        <div class="col-12 col-lg-4">
-        <img src="../public/assets/img/illu-footer.jpg" class="img-fluid" alt="centre ville vivant pleins de gens et au millieu une dame rousse promene son chien">
+    <div class="row justify-content-between align-items-center">
+        <div class="col-12 col-lg-4 d-flex justify-content-center">
+        <img src="../public/assets/img/illufooter.png" class="img-fluid" alt="centre ville vivant pleins de gens et au millieu une dame rousse promene son chien">
         </div>
-        <div class="col-12 col-lg-4 ">
+        <div class="col-12 col-lg-4  ">
             <ul class="text-center list-unstyled">
                 <?php 
                     if(empty($_SESSION['consumer']))
@@ -17,32 +17,32 @@
             
                 <?php }else { ?>
                         <li>
-                        <h4 class="text-dark fw-bold">Les balades</h4>
+                        <h4 class="text-dark fw-bold py-2">Les balades</h4>
                     </li>
                     <li><a class="text-decoration-none text-dark" href="../controllers/createWalk-controller.php">Créer une balade</a></li>
                     <li><a class="text-decoration-none text-dark" href="../controllers/listWalk-controller.php">Voir les balades</a></li>
                     <li><a class="text-decoration-none text-dark" href="../controllers/editWalk-controller.php">Modifier une balade</a></li>
                     <li>
-                        <h4 class="text-dark fw-bold">Mon chien</h4>
+                        <h4 class="text-dark fw-bold py-2">Mon chien</h4>
                     </li>
                     <li><a class="text-decoration-none text-dark" href="../controllers/dogProfil-controller.php">Créer son profil</a></li>
                     <li><a class="text-decoration-none text-dark" href="../controllers/editDog-controller.php">Modifier son profil</a></li>
                     <li>
-                        <h4 class="text-dark fw-bold">Informations complémentaires</h4>
+                        <h4 class="text-dark fw-bold py-2">Informations complémentaires</h4>
                     </li>
                     <li><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">contactez-nous</a></li>
                     <li><a class="text-decoration-none text-dark" href="#bgHowItWork">Comment ça marche</a></li>
                 <?php } ?>
             </ul>
         </div>
-        <div class="col-12 col-lg-3">
-            <a href="../controllers/pages-controller.php"><img src="../public/assets/img/Logo.png" class="img-fluid" alt="logo du site walkyz, une tête de chien orange et blanche"></a>
+        <div class="col-12 col-lg-4 d-flex justify-content-center">
+            <a href="../controllers/pages-controller.php"><img src="../public/assets/img/Logo.png" class="img-fluid logofooter" alt="logo du site walkyz, une tête de chien orange et blanche"></a>
         </div>
     </div>
     <div class="row text-center mt-5">
-        <div class="col-3"><a  class="text-decoration-none text-black" href="../controllers/CGU-controller.php">CGU</a></div>
-        <div class="col-6"><p>Copyright Thibaud Marin 2022 pour l'examen de la Manu</p></div>
-        <div class="col-3"><a class="text-decoration-none text-black"  href="../controllers/legalNotice-controller.php">Mention légales</a></div>
+        <div class="col-4"><a  class="text-decoration-none text-black" href="../controllers/CGU-controller.php">CGU</a></div>
+        <div class="col-4"><p>Copyright Thibaud Marin 2022 pour l'examen de la Manu</p></div>
+        <div class="col-4"><a class="text-decoration-none text-black"  href="../controllers/legalNotice-controller.php">Mention légales</a></div>
     </div>
 
 </footer>
