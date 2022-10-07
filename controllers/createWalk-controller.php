@@ -10,7 +10,7 @@ $dayDate= date('Y-m-d');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // name de la balade
-    $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+    $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS));
 
     //===================== zipCode : Nettoyage et validation =======================
     $zipCode = trim(filter_input(INPUT_POST, 'zipCode', FILTER_SANITIZE_NUMBER_INT));

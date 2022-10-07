@@ -288,7 +288,7 @@ class Walk {
      * @return boolean
      */
 
-    public function update(int $id_walk): bool
+    public function update(int $id_consumer): bool
     {
         try {
 
@@ -314,7 +314,6 @@ class Walk {
             $sth->bindValue(':id_consumer', $this->getId_consumer());
             $sth->bindValue(':city', $this->getCity());
             $sth->bindValue(':zipCode', $this->getZipCode());
-            $sth->bindValue(':id_walk', $id_walk, PDO::PARAM_INT);
             return $sth->execute();
         } catch (PDOException $ex) {
             // var_dump($ex);

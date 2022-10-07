@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // weight
     $weight = filter_input(INPUT_POST, 'weight', FILTER_SANITIZE_NUMBER_INT);
     //===================== breed : Nettoyage et validation =======================
-    $breed = trim(filter_input(INPUT_POST, 'breed', FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $breed = trim(filter_input(INPUT_POST, 'breed', FILTER_SANITIZE_SPECIAL_CHARS));
     // On vérifie que ce n'est pas vide
     //===================== stats : Nettoyage et validation =======================
 

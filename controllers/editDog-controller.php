@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // weight
     $weight = filter_input(INPUT_POST, 'weight', FILTER_SANITIZE_NUMBER_INT);
     //===================== breed : Nettoyage et validation =======================
-    $breed = trim(filter_input(INPUT_POST, 'breed', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+    $breed = trim(filter_input(INPUT_POST, 'breed', FILTER_SANITIZE_SPECIAL_CHARS));
     // On vérifie que ce n'est pas vide
     //===================== stats : Nettoyage et validation =======================
 
@@ -46,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //===================== behavior : Nettoyage et validation =======================
 
     $behavior = intval(filter_input(INPUT_POST, 'behavior', FILTER_SANITIZE_NUMBER_INT));
-
     if (!empty($behavior)) {
         $testBehavior = filter_var($behavior, FILTER_VALIDATE_INT, array("options" => array("min_range" => 0, "max_range" => 3)));
         if (!$testBehavior) {

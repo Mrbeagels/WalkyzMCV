@@ -1,5 +1,4 @@
 <div class="container">
-<?php var_dump($_SESSION) ?>
     <div class="container">
         <!-- Profil canin -->
         <h1 class="text-center my-5 title">LE PROFIL DE VOTRE CHIEN</h1>

@@ -1,18 +1,20 @@
+
 <section class="container">
-    <h1 class="title text-center my-5"><?= (isset($id)) ? 'Modifier' : 'Créer' ?> votre profil </h1>
+    <h1 class="title text-center my-5"><?= (isset($id_consumer)) ? 'Modifier' : 'Créer' ?> votre profil </h1>
     <div class="row justify-content-center">
         <div class="col-12 col-lg-10 ">
             <img class="img-fluid rounded" src="../public/assets/img/coupleWalk.jpg" alt="couple marchant avec son chien">
         </div>
-
+<?php var_dump($_SESSION['consumer']); ?>
     </div>
         <div class="text-center">
             <h2 class="my-5">1 Vos informations de connexion</h2>
         </div>
-        <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST" id="formsignUp">
+        <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST" id="formsignUp">
             <!-- Adresse mail -->
             <div class="row d-flex justify-content-center mt-3">
                 <div class="col-7 ">
+                <?php var_dump($_SESSION['consumer']->firstname); ?>
                     <div class="mb-4">
                         <!-- Champs email -->
                         <input required aria-describedby="emailHelp" 
@@ -20,6 +22,7 @@
                         name="mail"
                         id="mail" 
                         value="<?= htmlentities($_SESSION['consumer']->mail ?? '') ?>" 
+
                         class="form-control" 
                         placeholder="Votre E-mail*" 
                         autocomplete="email">
@@ -28,7 +31,7 @@
                 </div>
             </div>
 
-
+<?php if(!isset($_SESSION['consumer']->password)) {?>
             <div class="row d-flex justify-content-center mt-3">
                 <div class="col-7">
                     <div class="mb-4">
@@ -60,7 +63,7 @@
                     </div>
                 </div>
             </div>
-
+<?php } ?>
             <div class="text-center">
                 <h2 class="my-5">2 Vos informations personnelles</h2>
             </div>

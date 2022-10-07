@@ -13,7 +13,7 @@
                         
                     </button>
                     <ul class="dropdown-menu bg-success" style="--bs-bg-opacity : .5">
-                        <a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">
+                        <a class="text-decoration-none text-dark" href="../controllers/editConsumer-controller.php?id=<?= htmlentities($_SESSION['consumer']->id_consumer)?>">
                                 <li> Modifier mon profil</ li>
                             </a>
                             <a class="text-decoration-none text-dark" href="../controllers/signOut-controller.php">
@@ -116,11 +116,14 @@
                             <span class="bi bi-person-check-fill"></span>
                         </button>
                         <ul class="dropdown-menu bg-success" style="--bs-bg-opacity : .5">
-                            <a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">
+                            <a class="text-decoration-none text-dark" href="../controllers/editConsumer-controller.php?id=<?= htmlentities($_SESSION['consumer']->id_consumer)?>">
                                 <li> Modifier mon profil</ li>
                             </a>
                             <a class="text-decoration-none text-dark" href="../controllers/signOut-controller.php">
                                 <li> Déconnexion</ li>
+                            </a>
+                            <a class="text-decoration-none text-dark" href="../controllers/deleteMyProfil-controller.php?id=<?= htmlentities($_SESSION['consumer']->id_consumer)?>">
+                                <li> Supprimer mon compte</ li>
                             </a>
                             <a class="text-decoration-none text-dark" href="../controllers/news-controller.php">
                                 <li> Actualités</ li>
@@ -198,7 +201,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../controllers/dogProfil-controller.php">Créer le profil de mon chien</a></li>
                     <li><a class="dropdown-item" href="../controllers/editDog-controller.php">Modifier le profil de mon chien</a></li>
-                    
+                    <li><a class="dropdown-item" href="../controllers/deleteDogConsumer-controller.php?id=<?= htmlentities($_SESSION['consumer']->id_consumer)?>">Supprimer le profil de mon chien</a></li>
                 </ul>
             </div>
         <?php

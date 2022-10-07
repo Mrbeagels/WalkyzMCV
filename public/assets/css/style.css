@@ -1,3 +1,6 @@
+body p{
+    font-size: 15px;
+}
 .link{
     text-decoration: none;
 }
@@ -7,10 +10,10 @@
 }
 
 .headerColor{
-    background-color: rgb(152,251,152)! important;
+    background-color:#acfbac! important;
 }
 .headerMenuColor{
-    background-color: #48BF53;
+    background-color: #acfbac;
     height: 60px;
     align-items: center ;
 }
@@ -95,7 +98,7 @@ color: black;
     margin-bottom: 20px;
 }
 .bgHowItWork{
-    background-color:	rgb(152,251,152);
+    background-color:	#acfbac;
 }
 /* .illuFront{
     width: 400px;
@@ -136,7 +139,7 @@ i.vert-move {
     color:#98FB98 !important;
 } */
 footer{
-    background-color:	rgb(152,251,152);
+    background-color:	#acfbac;
 }
 
 

@@ -328,9 +328,11 @@ class Consumer {
 
             if ($sth->execute() === false) {
                 //Erreur générale
+                var_dump($sth);
                 return false;
             } else {
-                $consumer = $sth->fetch();
+                $consumer = $sth->fetchAll();
+                
                 if ($consumer === false) {
                     //Patient non trouvé
                     return false;
@@ -338,7 +340,9 @@ class Consumer {
                     return $consumer;
                 }
             }
+            
         } catch (\PDOException $ex) {
+            var_dump($ex);
             return false;
         }
     }
@@ -354,30 +358,32 @@ class Consumer {
     public function update(int $id_consumer): bool
     {
         try {
+            // var_dump("bonjour");die;
             $sql = 'UPDATE `consumer` SET
-                        `civility` = :civility
+                        `civility` = :civility,
                         `firstname` = :firstname, 
                         `lastname` = :lastname, 
                         `birthdate` = :birthdate, 
-                        `mail` =:mail,
+                        `mail` = :mail,
                         `walk_type` = :walk_type,
-                        `walk_time_slot` = : walk_time_slot,
-                        `walk_description` = : walk_description,
+                        `walk_time_slot` = :walk_time_slot,
+                        `walk_description` = :walk_description
                     WHERE `id_consumer` = :id_consumer';
 
-            $sth = $this->_pdo->prepare($sql);
+            $sth = $this->pdo->prepare($sql);
             $sth->bindValue(':civility', $this->getCivility());
-            $sth->bindValue(':lastname', $this->getLastname());
             $sth->bindValue(':firstname', $this->getFirstname());
+            $sth->bindValue(':lastname', $this->getLastname());
             $sth->bindValue(':birthdate', $this->getBirthdate());
             $sth->bindValue(':mail', $this->getMail());
-            $sth->bindValue(':walk_type', $this->getWalk_type());
-            $sth->bindValue(':walk_time_slot', $this->getWalk_time_slot());
+            $sth->bindValue(':walk_type', $this->getWalk_type(),PDO::PARAM_INT);
+            $sth->bindValue(':walk_time_slot', $this->getWalk_time_slot(),PDO::PARAM_INT);
             $sth->bindValue(':walk_description', $this->getWalk_description());
-            
             $sth->bindValue(':id_consumer', $id_consumer, PDO::PARAM_INT);
+            // var_dump( $sth);die;
             return $sth->execute();
         } catch (PDOException $ex) {
+            var_dump($ex);
             return false;
         }
     }

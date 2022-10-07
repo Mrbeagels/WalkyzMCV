@@ -6,7 +6,7 @@
 
 
 
-<?php  } else { var_dump($_SESSION);
+<?php  } else {
 ?>
 <section class="bgFooter container-fluid">
     <div class="row mt-5 ">
@@ -47,7 +47,7 @@
                     <?php 
                     if (!empty($walk->description))
                     { ?>
-                        <p class="card-text">Description du créateur de l'évenement : <?=htmlentities($walk->description)?></p>
+                        <p class="card-text"> <span class="fw-bold"> Description du créateur de l'évenement :</span> <?=htmlentities($walk->description)?></p>
                     <?php 
                     }
                     ?>
@@ -60,7 +60,7 @@
                     <div class="text-end pt-2">
                         <a href="#" class="btn btn-primary "><i class="bi bi-person-plus"></i></a>
                         <a href="/controllers/editWalk-controller.php?id=<?= htmlentities($walk->id_consumer) ?>"><i class="text-success bi bi-pencil fs-3"></i></a>
-                        <a href="/controllers/deleteWalk-controller.php?id=<?= htmlentities($walk->id_consumer) ?>"><i class=" text-success bi bi-trash fs-3"></i> </a>
+                        <a href="/controllers/deleteWalkConsumer-controller.php?id=<?= htmlentities($walk->id_consumer) ?>"><i class=" text-success bi bi-trash fs-3"></i> </a>
                     </div>
                 </div>
             </div>
