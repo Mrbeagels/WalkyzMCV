@@ -54,15 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //===================== walk_description : Nettoyage et validation =======================
     $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));
-    if (!empty($description)) {
-        $testDescription = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
+    
 
-        if (!$testDescription) {
-            $error["description"] = "Votre description n'est pas conforme, merci de n'utiliser que des lettres et des chiffres.";
-        }
-    }
-
-    // var_dump($error);die;
+    // var_dump($error);
 if (empty($error)) {
     // **HYDRATATION **/
     $walk = new Walk;
@@ -77,14 +71,14 @@ if (empty($error)) {
     $walk->setZipCode($zipCode);
     $response = $walk->insert();
     
-    
+    // var_dump($walk);
             // Tentative d'ajouter le chieng a la session
             $walk = Walk::getUserWalk($id_consumer);
             $_SESSION['walk']=$walk;
 
         
             if ($response) {
-                $errorArray['global'] = 'Votre profil est bien enregistré';
+                $validation='Votre balade a bien été enregistrée. ';
             }
         }
 }

@@ -1,10 +1,10 @@
 </body>
 <footer class="container-fluid">
     <div class="row justify-content-between align-items-center">
-        <div class="col-12 col-lg-4 d-flex justify-content-center">
+        <div class="col-12 col-lg-3 d-flex justify-content-center">
         <img src="../public/assets/img/illufooter.png" class="img-fluid" alt="centre ville vivant pleins de gens et au millieu une dame rousse promene son chien">
         </div>
-        <div class="col-12 col-lg-4  ">
+        <div class="col-12 col-lg-3">
             <ul class="text-center list-unstyled">
                 <?php 
                     if(empty($_SESSION['consumer']))
@@ -27,22 +27,25 @@
                     </li>
                     <li><a class="text-decoration-none text-dark" href="../controllers/dogProfil-controller.php">Créer son profil</a></li>
                     <li><a class="text-decoration-none text-dark" href="../controllers/editDog-controller.php">Modifier son profil</a></li>
-                    <li>
-                        <h4 class="text-dark fw-bold py-2">Informations complémentaires</h4>
-                    </li>
-                    <li><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">contactez-nous</a></li>
-                    <li><a class="text-decoration-none text-dark" href="#bgHowItWork">Comment ça marche</a></li>
                 <?php } ?>
             </ul>
         </div>
-        <div class="col-12 col-lg-4 d-flex justify-content-center">
+        <div class="col-12 col-lg-3">
+            <ul class="text-center list-unstyled">
+            <h4 class="text-dark fw-bold py-2">Informations complémentaires</h4>
+                    
+                    <li><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">contactez-nous</a></li>
+                    <li><a class="text-decoration-none text-dark" href="#bgHowItWork">Comment ça marche</a></li>
+                    <a  class="text-decoration-none text-black" href="../controllers/CGU-controller.php">CGU</a>
+                    <a class="text-decoration-none text-black"  href="../controllers/legalNotice-controller.php">Mention légales</a>
+            </ul>
+        </div>
+        <div class="col-12 col-lg-3 d-flex justify-content-center">
             <a href="../controllers/pages-controller.php"><img src="../public/assets/img/Logo.png" class="img-fluid logofooter" alt="logo du site walkyz, une tête de chien orange et blanche"></a>
         </div>
     </div>
-    <div class="row text-center mt-5">
-        <div class="col-4"><a  class="text-decoration-none text-black" href="../controllers/CGU-controller.php">CGU</a></div>
-        <div class="col-4"><p>Copyright Thibaud Marin 2022 pour l'examen de la Manu</p></div>
-        <div class="col-4"><a class="text-decoration-none text-black"  href="../controllers/legalNotice-controller.php">Mention légales</a></div>
+    <div class="row text-center">
+        <small class="text-center copyright">Copyright Thibaud Marin 2022 pour l'examen de la Manu</small>
     </div>
 
 </footer>

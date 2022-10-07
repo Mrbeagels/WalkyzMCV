@@ -1,8 +1,14 @@
 <div class="container">
-
+<?php var_dump($_SESSION) ?>
     <div class="container">
         <!-- Profil canin -->
         <h1 class="text-center my-5 title">LE PROFIL DE VOTRE CHIEN</h1>
+        <?php if (!empty($validation)){ ?>
+            <h2 class="text-success my-5 text-center"> <?= $validation ?></h2>
+    <?php } ?>
+    <?php if (!empty($validationModification)){ ?>
+            <h2 class="text-success my-5 text-center"> <?= $validationModification ?></h2>
+    <?php } ?>
         <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
             <div class="row">
                 <div class="col-md-4">
@@ -58,7 +64,7 @@
                         <!-- Champs âge -->
                         <!-- Champs date de naissance -->
                     <label class="text-center" for="birthdate">Date de naissance * </label>
-                    <input type="date" name="birthdate" id="birthdate" value="<?= htmlentities($_SESSION['consumer']->birthdate ?? '') ?>" title="La date de naissance n' est pas au format attendu" placeholder="Entrez votre date de naissance" class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp">
+                    <input type="date" name="birthdate" id="birthdate" value="<?= htmlentities($_SESSION['dog']->birthdate ?? '') ?>" title="La date de naissance n' est pas au format attendu" placeholder="Entrez votre date de naissance" class="form-control <?= isset($error['birthdate']) ? 'errorField' : '' ?>" autocomplete="bday" aria-describedby="birthdateHelp">
                     <small id="birthdateHelp" class="form-text error"><?= $error['birthdate'] ?? '' ?></small>
                     </div>
                 </div>

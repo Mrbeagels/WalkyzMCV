@@ -18,54 +18,13 @@ $dog = Dog_profil::getByConsumer($id_consumer);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //===================== name : Nettoyage et validation =======================
     $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
-    // On vérifie que ce n'est pas vide
-    if (!empty($name)) {
-        $testRegex = filter_var($name, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-        // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
-        if (!$testRegex) {
-            $error["name"] = "Le prénom n'est pas au bon format!!";
-        } else {
-            // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
-            if (strlen($name) <= 1 || strlen($name) >= 70) {
-                $error["name"] = "La longueur du prénom n'est pas bon";
-            }
-        }
-    } else { // Pour les champs obligatoires, on retourne une erreur
-        $error["name"] = "Vous devez entrer un prénom!!";
-    }
+    
     //===================== nickname : Nettoyage et validation =======================
     $nickname = trim(filter_input(INPUT_POST, 'nickname', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
     // On vérifie que ce n'est pas vide
-    if (!empty($nickname)) {
-        $testRegex = filter_var($nickname, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-        // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
-        if (!$testRegex) {
-            $error["nickname"] = "Le prénom n'est pas au bon format!!";
-        } else {
-            // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
-            if (strlen($nickname) <= 1 || strlen($nickname) >= 70) {
-                $error["nickname"] = "La longueur du prénom n'est pas bon";
-            }
-        }
-    } else { // Pour les champs obligatoires, on retourne une erreur
-        $error["nickname"] = "Vous devez entrer un prénom!!";
-    }
 
     //===================== birthdate : Nettoyage et validation =======================
     $birthdate = filter_input(INPUT_POST, 'birthdate', FILTER_SANITIZE_NUMBER_INT);
-    if (!empty($birthdate)) {
-        $birthdateObj = DateTime::createFromFormat('Y-m-d', $birthdate);
-        $currentDateObj = new DateTime();
-        if (!$birthdateObj) {
-            $error["birthdate"] = "La date entrée n'est pas valide!";
-        } else {
-            $diff = $birthdateObj->diff($currentDateObj);
-            $age = $diff->days / 365;
-            if (!$birthdateObj || $diff->invert == 1 || $birthdateObj->format('Y-m-d') !== $birthdate || $age == 0 || $age > 120) {
-                $error["birthdate"] = "La date entrée n'est pas valide!";
-            }
-        }
-    }
 
 
     // weight
@@ -73,20 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //===================== breed : Nettoyage et validation =======================
     $breed = trim(filter_input(INPUT_POST, 'breed', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
     // On vérifie que ce n'est pas vide
-    if (!empty($breed)) {
-        $testRegex = filter_var($breed, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-        // Avec une regex (constante déclarée plus haut), on vérifie si c'est le format attendu 
-        if (!$testRegex) {
-            $error["breed"] = "Le prénom n'est pas au bon format!!";
-        } else {
-            // Dans ce cas précis, on vérifie aussi la longueur de chaine (on aurait pu le faire aussi direct dans la regex)
-            if (strlen($breed) <= 1 || strlen($breed) >= 70) {
-                $error["breed"] = "La longueur du prénom n'est pas bon";
-            }
-        }
-    } else { // Pour les champs obligatoires, on retourne une erreur
-        $error["dogBreed"] = "Vous devez entrer un prénom!!";
-    }
     //===================== stats : Nettoyage et validation =======================
 
     $stats = intval(filter_input(INPUT_POST, 'stats', FILTER_SANITIZE_NUMBER_INT));
@@ -111,15 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //===================== Description : Nettoyage et validation =======================
     $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS));
-    if (!empty($description)) {
-        $testdescription = filter_var($description, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_TEXTAREA . '/')));
-
-        if (!$testdescription) {
-            $error["description"] = "Votre description n'est pas conforme, merci de n'utiliser que des lettres et des chiffres.";
-        }
-    }
-
-    // Si il n'y a pas d'erreurs, on met à jour le patient.
 
     if (empty($error)) {
             // **HYDRATATION **/
@@ -136,11 +72,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $response = $dog->update($id_consumer);
             // var_dump($ex);
 
-        if($response){
-            $error['global'] = MESSAGES[1];
-        } else {
-            $error['global'] = ERRORS[4];
-        }    
+            if ($response) {
+                $validationModification = 'Le profil de votre chien est bien modifié ';
+            }  
     }
 
     // On récupère les données du patient mis à jour

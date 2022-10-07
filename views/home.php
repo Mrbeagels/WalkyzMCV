@@ -1,8 +1,7 @@
-
 <div class="backgroundImg">
     <div class="homeExplanation">
         <div class="cardHome text-center">
-            <div class="card-body">
+            <div >
                 <h5 id="title" class="card-title mt-3 fw-bold">Trouvez des copains de balade proche de chez vous, c'est facile et rapide ! Que du bonheur.</h5>
                 <p class="my-2">Vous souhaitez :</p>
                 <!-- Créer une nouvelle balade pour visiteur -- pour utilisateur connecter / admin -->
@@ -31,25 +30,24 @@
         </div>
     </div>
 </div>
-<?php var_dump($_SESSION['consumer']); ?>
-<?php var_dump($_SESSION['dog']); ?>
+
 <!-- Explication du site -->
 <div class=" row d-flex justify-content-around h-50 my-5 container-fluid">
     <div class="col-12 col-lg-3 text-center">
         <img src="../public/assets/img/lime-dog-walk.png" alt="Illustration jaune et bleu d'une femme qui promene son chien en laisse, un papillon passe devant le chien">
     </div>
     <div class="homeCard col-12 col-lg-4">
-        <div class="card-body">
+        <div class="card-bod">
             <h3 class="card-title headingDecoration ">Créer une balade</h3>
             <h5 class=" my-3">Regroupez-vous avec d'autres maîtres afin de vous balader ensemble</h5>
             <p class="card-text">Fatigué de faire votre balade tout seul ? Envie de partager un moment convivial avec d'autres maîtres et d'autres chien ? Grâce à Walkyz, vous pouvez indiquer ou, quand et pour combien de temps vous allez vous balader afin d'inviter vos amis.</p>
         </div>
     </div>
     <div class="homeCard col-12 col-lg-4">
-        <div class="card-body">
+        <div class="card-bod">
             <h3 class="card-title headingDecoration">Rejoindre un groupe de balade</h3>
             <h5 class=" my-3">Vous pouvez voir en quelques instants si une balade proche de chez vous va démarrer</h5>
-            <p class="card-text">Explorer de nouveaux coins de balade et changer vos habitudes. Chaque maître à sa routine de balade, il est peut-être temps de changer la vôtre, pour le plus grand plaisir de votre chien (et le vôtre !).Idéale en vacance ou en week-end.
+            <p class="card-text">Explorer de nouveaux coins de balade et changer vos habitudes. Chaque maître à sa routine de balade, il est peut-être temps de changer la vôtre, pour le plus grand plaisir de votre chien
             </p>
         </div>
     </div>
@@ -78,7 +76,7 @@
         <div class="col-12 col-lg-3 text-center ">
             <img class="registerPc" src="/public/assets/img/registerPc.png" alt="un homme s'enregistre sur walkyz depuis son ordinateur">
             <h4 class="headingDecoration">1. Créez votre profil</h4>
-            <p>Inscrivez-vous et remplissez votre profil ainsi que celui de votre toutou</p>
+            <p>Inscrivez-vous et remplissez votre profil ainsi que celui de votre toutou, parlez nous de vous ;)</p>
         </div>
         <div class="col-12 col-lg-3 text-center">
             <img class="smartphone " src="/public/assets/img/smartphone.png" alt="illustration bleu d'un smartphone, car nous sommes aussi disponible sur votre téléphone">

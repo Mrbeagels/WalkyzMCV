@@ -418,7 +418,7 @@ public static function delete($id_walk)
                 return $sth->fetchAll();
             }
         } catch (PDOException $ex) {
-            var_dump($ex);
+            // var_dump($ex);
             // On retourne false si une exception est levée
             return [];
         }

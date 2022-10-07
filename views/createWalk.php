@@ -1,10 +1,18 @@
 
+
 <section class="container-fluid">
     <div class="text-center ">
     <h1 class="my-3 title">Création d'une nouvelle balade</h1>
     <h4 class="mb-3"><?= htmlentities($_SESSION['consumer']->firstname) ?> votre prochaine balade en bonne compagnie est à portée de main ! </h4>
     </div>
 
+    <?php if (!empty($validation)){ ?>
+            <h2 class="text-success my-5 text-center"> <?= $validation ?></h2>
+    <?php } ?>
+    <?php if (!empty($validationModification)){ ?>
+            <h2 class="text-success my-5 text-center"> <?= $validationModification ?></h2>
+    <?php } ?>
+    
     <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
         <!-- Champs name -->
         <div class="row d-flex justify-content-center mt-3">
@@ -82,7 +90,7 @@
         <!-- date -->
         <div class="row d-flex justify-content-center mt-3">
             <div class="col-7 ">
-                <label for="date"> Date et heure</label>
+                <label for="date"> Date et heure de début</label>
                 <div class="mb-4">
                     <input 
                     type="datetime-local" 
