@@ -7,7 +7,6 @@
                 <a href="../controllers/signUp-controller.php" class="bi bi-person-circle text-dark img-fluid bootIcons"></a>
             <?php }
             if (isset($_SESSION['consumer']) && is_null($_SESSION['consumer']->role)) { ?>
-                <!-- <a href="../controllers/signUp-controller.php" class="bi bi-person-check-fill text-dark img-fluid bootIcons"></a> -->
                 <div class="btn-group dropend">
                     <button type="button" class="btn btn-success dropdown-toggle bi bi-person-check-fill" data-bs-toggle="dropdown" aria-expanded="false">
                         
@@ -34,7 +33,6 @@
                     <h1 class="title text-dark">WALKYZ </h1>
                 </a>
             </div>
-
             <button class="navbar-toggler buttonNav" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon iconNav"></span>
             </button>
@@ -68,7 +66,6 @@
                                 </li>
                                 <li><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">contactez-nous</a></li>
                                 <li><a class="text-decoration-none text-dark" href="#bgHowItWork">Comment ça marche</a></li>
-
                             <?php
                             }
                             if (isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role)) { ?>
@@ -80,17 +77,16 @@
                 <?php
                             }
                 ?>
-
-                </ul>
-                </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-
         </div>
     </nav>
 </div>
 
-<!-- Nav bar en mode > 576 px  -->
+                                                                            <!-- Nav bar en mode > 576 px  -->
+                                                                            <!-- trois vues différentes, visiteurs, utilisateurs et admin -->
 <div class="container-fluid headerColor navBarLg">
     <nav class="navbar text-center justify-content-center">
         <div class="container-fluid justify-content-arround  ">
@@ -100,7 +96,7 @@
                     <h1 class="title text-dark fw-bold">WALKYZ </h1>
                 </a>
                 <a class="link" href="../controllers/pages-controller.php">
-                    <h3 class="text-dark">Le rendez-vous balade</h3>
+                    <h3 class="text-dark titleSpans"> <span>Le</span><span> rendez-vous</span><span> balade</span></h3>
                 </a>
             </div>
             <!-- Bouton users -->
@@ -164,7 +160,6 @@
                 <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Les balades
                 </a>
-
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../controllers/createWalk-controller.php">Créer une nouvelle balade</a></li>
                     <li><a class="dropdown-item" href="../controllers/listWalkConsumer-controller.php">Voir les balades</a></li>
@@ -175,18 +170,15 @@
         }
         if (isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role)) { ?>
             <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Les balades
                 </a>
-
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../controllers/createWalk-controller.php">Créer une nouvelle balade</a></li>
                     <li><a class="dropdown-item" href="../controllers/listWalk-controller.php">DashBoard des balades</a></li </ul>
             </div>
         <?php
         }
-
-
         if (empty($_SESSION)) {
         ?>
             <p><a class="text-decoration-none text-dark" href="../controllers/signUp-controller.php">Inscription</a></p>
@@ -197,7 +189,6 @@
                 <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Mon chien
                 </a>
-
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../controllers/dogProfil-controller.php">Créer le profil de mon chien</a></li>
                     <li><a class="dropdown-item" href="../controllers/editDog-controller.php">Modifier le profil de mon chien</a></li>
@@ -211,14 +202,11 @@
                 <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Les chiens
                 </a>
-
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../controllers/listDog-controller.php">DashBoard des doggos</a></li>
                 </ul>
             </div>
         <?php }
-
-
         if (empty($_SESSION)) { ?>
             <p><a class="text-decoration-none text-dark" href="../controllers/signin-controller.php">Connexion</a></p>
         <?php }
@@ -227,21 +215,15 @@
         <?php
         }
         if (isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role)) { ?>
-
             <div class="dropdown">
                 <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Les utilisateurs
                 </a>
-
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../controllers/dogProfil-controller.php">DashBoard des utilisateurs</a></li>
                 </ul>
             </div>
-
-
-
         <?php }
-
         if (empty($_SESSION)) { ?>
             <p><a class="text-decoration-none text-dark" href="../controllers/contact-controller.php">Contact</a></p>
         <?php }
@@ -250,9 +232,6 @@
         <?php }
         if (isset($_SESSION['consumer']) && !is_null($_SESSION['consumer']->role)) { ?>
             <p><a class="text-decoration-none text-light btn btn-success" href="../controllers/signOut-controller.php">Déconnexion</a></p>
-
         <?php } ?>
-
     </div>
-
 </div>

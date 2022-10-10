@@ -5,7 +5,7 @@
         <div class="col-12 col-lg-10 ">
             <img class="img-fluid rounded" src="../public/assets/img/coupleWalk.jpg" alt="couple marchant avec son chien">
         </div>
-<?php var_dump($_SESSION['consumer']); ?>
+
     </div>
         <div class="text-center">
             <h2 class="my-5">1 Vos informations de connexion</h2>
@@ -14,7 +14,7 @@
             <!-- Adresse mail -->
             <div class="row d-flex justify-content-center mt-3">
                 <div class="col-7 ">
-                <?php var_dump($_SESSION['consumer']->firstname); ?>
+                
                     <div class="mb-4">
                         <!-- Champs email -->
                         <input required aria-describedby="emailHelp" 
