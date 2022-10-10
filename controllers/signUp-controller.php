@@ -3,14 +3,14 @@ require_once(dirname(__FILE__) . '/../config/config.php');
 require_once(dirname(__FILE__) . '/../models/consumer.php');
 require_once __DIR__ . '/../helpers/JWT.php';
 
+$error = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
  /*************************** MAIL **************************/
     //**** NETTOYAGE ****/
     $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
-    
-    //**** VERIFICATION ****/
+    var_dump($mail);
+    // **** VERIFICATION ****/
     if(empty($mail)){
         $error['mail'] = 'Le champ est obligatoire';
     } else {

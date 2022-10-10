@@ -14,7 +14,6 @@
             <!-- Adresse mail -->
             <div class="row d-flex justify-content-center mt-3">
                 <div class="col-7 ">
-                
                     <div class="mb-4">
                         <!-- Champs email -->
                         <input required aria-describedby="emailHelp" 
@@ -22,13 +21,13 @@
                         name="mail"
                         id="mail" 
                         value="<?= htmlentities($_SESSION['consumer']->mail ?? '') ?>" 
-
                         class="form-control" 
                         placeholder="Votre E-mail*" 
                         autocomplete="email">
-                        <div class="error text-danger"><?=$error['mail'] ?? ''?></div>
                     </div>
+                    <div class="error text-danger"><p><?=$error['mail'] ?? ''?></p></div>
                 </div>
+                
             </div>
 
 <?php if(!isset($_SESSION['consumer']->password)) {?>
@@ -43,7 +42,7 @@
                         placeholder="Mot de passe**" 
                         pattern="^<?= REGEX_PASSWORD ?>">
                         <p class="required">** Doit contenir une majuscule, une minuscule, un chiffre et faire minimum 8 caracteres</p>
-                        <div class="error text-danger"><?=$error['password'] ?? ''?></div>
+                        <div class="error text-danger"><?= $error['password'] ?? ''?></div>
                     </div>
                 </div>
             </div>

@@ -33,3 +33,8 @@ var observer = new IntersectionObserver(handleIntersect, option)
 document.querySelectorAll('.reveal').forEach(function (r){
     observer.observe(r)
 })
+
+// Thumbs movement : 
+function moveThumbs(x) {
+    x.classList.toggle("bi bi-hand-thumbs-down");
+}
