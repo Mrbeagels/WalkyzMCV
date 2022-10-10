@@ -220,7 +220,7 @@
                     Les utilisateurs
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../controllers/dogProfil-controller.php">DashBoard des utilisateurs</a></li>
+                    <li><a class="dropdown-item" href="../controllers/listConsumer-controller.php">DashBoard des utilisateurs</a></li>
                 </ul>
             </div>
         <?php }

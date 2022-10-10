@@ -385,42 +385,5 @@ public static function delete($id_walk)
     }
 
 
-    // moisi du fion 
-
     
-    // methode de la liste de balade
-    /**
-     * Méthode qui permet de recuperer le profil du chien et la balade pour affichage
-     * 
-     * @return array
-     */
-    public static function getAllDogAndWalk(int $id_consumer): array
-    {
-
-        $pdo = Database::getInstance();
-
-        try {
-            $sql = '    SELECT * 
-                        FROM `walk` 
-                        INNER JOIN `dog_profil`
-                        ON `walk`.`id_consumer` = `dog_profil`.`id`';
-            
-            $sth = $pdo->prepare($sql);
-
-            if(!is_null($id_consumer)){
-                $sth->bindValue(':id_consumer',$id_consumer,PDO::PARAM_INT);
-            }
-            
-            if ($sth->execute() === false) {
-                return [];
-            } else {
-                return $sth->fetchAll();
-            }
-        } catch (PDOException $ex) {
-            // var_dump($ex);
-            // On retourne false si une exception est levée
-            return [];
-        }
-    }
-
 }

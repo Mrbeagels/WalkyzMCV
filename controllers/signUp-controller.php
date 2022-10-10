@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  /*************************** MAIL **************************/
     //**** NETTOYAGE ****/
     $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
-    var_dump($mail);
     // **** VERIFICATION ****/
     if(empty($mail)){
         $error['mail'] = 'Le champ est obligatoire';
